@@ -1,3 +1,3 @@
-# Coming Soon
+# Coming Soon ...
 
-# Copyright 2022 | Kelompok Ruby
+## Copyright 2022 | Kelompok Ruby
