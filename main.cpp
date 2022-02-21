@@ -1,8 +1,9 @@
 #include <iostream>
+#include "app.h"
 
 int main() {
 	
-	printf("Hello World!");
+	app();
 
 	return 0;
 }
