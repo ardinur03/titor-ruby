@@ -12,7 +12,6 @@ Note:
 
 /*Variabel Global*/
 char text[MAXBARIS][MAXKOLOM];
-int banyakBaris;
 /*---------------*/
 
 void createFile(){
