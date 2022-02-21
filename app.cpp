@@ -12,18 +12,18 @@ void app() {
 void home(){
     int choose;
 
-    printf("|===========================================================|\n");
+    printf("+===========================================================+\n");
     printf("|                       TITOR APPS                          |\n");
-    printf("|===========================================================|\n");
+    printf("+===========================================================+\n");
     printf("|                                                           |\n");
     printf("| 1. Run                                                    |\n");
     printf("| 2. About                                                  |\n");
     printf("| 3. Shorcut                                                |\n");
     printf("| 4. Exit                                                   |\n");
     printf("|                                                           |\n");
-    printf("|===========================================================|\n");
+    printf("+===========================================================+\n");
     printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
-    printf("|===========================================================|\n");
+    printf("+===========================================================+\n");
 
     printf("Choose Menu :");
     scanf("%d", &choose);
@@ -49,6 +49,25 @@ void home(){
         break;
     }
 }   
+
+// Sub-menu Run
+void run(){
+    printf("+===========================================================+\n");
+    printf("|                       Menu TiTOR                          |\n");
+    printf("+===========================================================+\n"); 
+    printf("|                                                           |\n");
+    printf("| 1. Create File                                            |\n");
+    printf("| 2. Open File                                              |\n");
+    printf("| 3. Edit File                                              |\n");
+    printf("| 4. Delete File                                            |\n");
+    printf("| 5. Rename File                                            |\n");
+    printf("| 4. Exit                                                   |\n");
+    printf("|                                                           |\n");
+    printf("+===========================================================+\n");
+    printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
+    printf("+===========================================================+\n");
+
+}
 
 void backMenuHome(){
     printf("Tekan Enter untuk kembali ke menu home ...\n");
