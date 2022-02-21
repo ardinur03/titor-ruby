@@ -5,6 +5,7 @@
 Note:
 + Dapat menampilkan isi dari array text
 - Array text belum dibaca dari file
+- Dibutuhkan modul untuk menghitung jumlah baris pada suatu file
 */
 
 void displayFile(){
