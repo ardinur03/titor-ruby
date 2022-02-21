@@ -29,7 +29,11 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
+<<<<<<< HEAD
 UnitCount=3
+=======
+UnitCount=1
+>>>>>>> main
 
 [VersionInfo]
 Major=1
@@ -60,6 +64,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit2]
 FileName=app.cpp
 CompileCpp=1
@@ -80,3 +85,5 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+=======
+>>>>>>> main
