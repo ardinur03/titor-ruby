@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main()
+int main6()
 {
     // Path to old and new files
     char oldName[100], newName[100];
