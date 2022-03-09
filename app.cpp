@@ -30,7 +30,7 @@ void home(){
     switch (choose)
     {
     case 1:
-        printf("Running...\n");
+        run();
         backMenuHome();
         break;
     case 2:
@@ -57,7 +57,7 @@ void home(){
 
 
 // Sub-menu Run
-void run(){
+void run1(){
 
     int choose;
 
@@ -81,7 +81,6 @@ void run(){
     switch (choose)
     {
     case 1:
-        printf("Running...\n");
         backMenuHome();
         break;
     case 2:
@@ -99,6 +98,40 @@ void run(){
     default:
         break;
     }
+}
+
+void textEditor(){
+    // printf("  ctrl+n   : New File                      ctrl+o : Open File\n");
+    // printf("  ctrl+del : Delete File                   ctrl+r : Rename File\n");
+    // printf("  ctrl+d   : Duplicate File                ctrl+q : Quit\n");
+    printf(" TiTOR APPS\n");
+
+}
+
+void run(){
+    system("cls");
+    int choose;
+
+    textEditor();
+    // View menu text editor
+
+    choose = getch();
+    switch (choose)
+    {
+    case NEWFILE:
+        printf("New File...\n");
+        break;
+    case OPENFILE:
+        printf("Open File...\n");
+        break;
+    case EDITFILE:
+        printf("Edit File...\n");
+        break;
+    // tambahin shortcutnya fi app.h gais
+    default:
+        break;
+    }
+
 }
 
 void backMenuHome(){

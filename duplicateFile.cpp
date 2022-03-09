@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-main()
+main3()
 {
    char ch, source_file[20], target_file[20];
    FILE *source, *target;

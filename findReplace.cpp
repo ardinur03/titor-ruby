@@ -4,7 +4,7 @@
 #define BUFFER_SIZE 1000
 
 
-int main()
+int main1()
 {
     /* File pointer to hold reference of input file */
     FILE * fPtr;

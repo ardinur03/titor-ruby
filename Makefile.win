@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o app.o
-LINKOBJ  = main.o app.o
+OBJ      = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o
+LINKOBJ  = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -29,3 +29,21 @@ main.o: main.cpp
 
 app.o: app.cpp
 	$(CPP) -c app.cpp -o app.o $(CXXFLAGS)
+
+deleteFile.o: deleteFile.cpp
+	$(CPP) -c deleteFile.cpp -o deleteFile.o $(CXXFLAGS)
+
+deleteText.o: deleteText.cpp
+	$(CPP) -c deleteText.cpp -o deleteText.o $(CXXFLAGS)
+
+duplicateFile.o: duplicateFile.cpp
+	$(CPP) -c duplicateFile.cpp -o duplicateFile.o $(CXXFLAGS)
+
+kelolaText.o: kelolaText.cpp
+	$(CPP) -c kelolaText.cpp -o kelolaText.o $(CXXFLAGS)
+
+renameFile.o: renameFile.cpp
+	$(CPP) -c renameFile.cpp -o renameFile.o $(CXXFLAGS)
+
+findReplace.o: findReplace.cpp
+	$(CPP) -c findReplace.cpp -o findReplace.o $(CXXFLAGS)

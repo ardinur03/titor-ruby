@@ -1,5 +1,5 @@
 #include<stdio.h>
-int main(){
+int main4(){
     FILE *fptr1, *fptr2;
     char file1[] ="file1.txt";
     char file2[] ="file2.txt";
