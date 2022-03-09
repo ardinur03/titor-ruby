@@ -50,8 +50,17 @@ void home(){
     }
 }   
 
+
+// prosedure about application TiTOR
+
+// prosedure shorcut application TiTOR
+
+
 // Sub-menu Run
 void run(){
+
+    int choose;
+
     printf("+===========================================================+\n");
     printf("|                       Menu TiTOR                          |\n");
     printf("+===========================================================+\n"); 
@@ -61,12 +70,35 @@ void run(){
     printf("| 3. Edit File                                              |\n");
     printf("| 4. Delete File                                            |\n");
     printf("| 5. Rename File                                            |\n");
-    printf("| 4. Exit                                                   |\n");
+    printf("| 6. Exit                                                   |\n");
     printf("|                                                           |\n");
     printf("+===========================================================+\n");
     printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
     printf("+===========================================================+\n");
 
+    printf("Choose Menu :");
+    scanf("%d", &choose);
+    switch (choose)
+    {
+    case 1:
+        printf("Running...\n");
+        backMenuHome();
+        break;
+    case 2:
+        printf("About...\n");
+        backMenuHome();
+        break;
+    case 3:
+        printf("Shorcut...\n");
+        backMenuHome();
+        break;
+    case 4:
+        printf("Exit...\n");
+        backMenuHome();
+        break;
+    default:
+        break;
+    }
 }
 
 void backMenuHome(){
@@ -75,3 +107,4 @@ void backMenuHome(){
     system("cls");
     home();
 }
+

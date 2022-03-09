@@ -30,9 +30,13 @@ SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
 <<<<<<< HEAD
+UnitCount=7
+=======
+<<<<<<< HEAD
 UnitCount=3
 =======
 UnitCount=1
+>>>>>>> main
 >>>>>>> main
 
 [VersionInfo]
@@ -65,6 +69,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 [Unit2]
 FileName=app.cpp
 CompileCpp=1
@@ -85,5 +92,44 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
+[Unit4]
+FileName=main.o
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=Makefile.win
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=README.md
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=TitorApps.dev
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 =======
+=======
+>>>>>>> main
 >>>>>>> main
