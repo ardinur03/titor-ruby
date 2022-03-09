@@ -5,7 +5,7 @@ void app();
 void home();
 void backMenuHome();
 void run();
-
+void procedure();
 #define COPY 3  // ctrl + c
 #define BACKSPACE 8 // backspace
 #define TAB 9 // tab

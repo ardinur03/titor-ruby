@@ -35,6 +35,7 @@ void home(){
         break;
     case 2:
         printf("About...\n");
+        procedure();
         backMenuHome();
         break;
     case 3:
@@ -52,6 +53,26 @@ void home(){
 
 
 // prosedure about application TiTOR
+void procedure(){
+	printf("+==================================================================+\n");
+    printf("|                            About TiTOR                           |\n");
+    printf("+==================================================================+\n"); 
+    printf("|                                                                  |\n");
+    printf("| TiTOR atau Text EdiTOR adalah aplikasi yang dapat mempermudah    |\n");
+	printf("| user dalam menambah, mengubah,  dan menyimpan text dengan        |\n");
+    printf("| tampilan yang sederhana dan mudah digunakan.Aplikasi ini berbasis|\n");
+    printf("| console yang dibuat menggunakan bahasa c++. Pembuatan aplikasi   |\n");
+    printf("| ini disusun oleh :                                               |\n");
+    printf("| Lolla Mariah                                                     |\n");
+    printf("| Luthfie Yannuardy                                                |\n");
+    printf("| Muhamad Ardi Nur Insan                                           |\n");
+    printf("| Muhammad Zidan Hidayat                                           |\n");
+    printf("| Naufal Salman Mulyadi                                            |\n");
+    printf("| Shofiyah                                                         |\n");
+    printf("|                                                                  |\n");
+    printf("|                                                   --Titor2022    |\n");
+    printf("|+================================================================+|\n");
+}
 
 // prosedure shorcut application TiTOR
 
