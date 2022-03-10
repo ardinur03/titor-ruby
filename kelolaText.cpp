@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <conio.h>
 #include <windows.h>
-#include "kelolaText.h"
+#define MAXBARIS 80
+#define MAXKOLOM 40
+#define BACKSPACE 8
 
 char text[MAXBARIS][MAXKOLOM];
 
@@ -17,53 +18,73 @@ void printText(int jmlBaris){
   	}
 }
 
-void editMode(int jmlBaris){
-	int input;
-	int barisEdit = 0;
-	char curText[MAXKOLOM];
-	
-	if(jmlBaris>1){
-		printf("Baris keberapa yang akan diubah dari (1-%d): ", jmlBaris);
-		scanf("%d", &input);
-		barisEdit = input - 1;	
+void printLabelCmdMode(){
+	printf("\n\tCOMMAND MODE\n\n");
+	printf("I: Pindah Baris Keatas      E: Edit Baris\n");
+	printf("K: Pindah Baris Kebawah     Q: Mode Insert\n\n");	
+}
+
+void incCurBaris(int *curBaris, int jmlBaris){
+	if(*curBaris<jmlBaris-1){
+		(*curBaris)++;
 	}
+}
+
+void decCurBaris(int *curBaris, int jmlBaris){
+	if(*curBaris>0){
+		(*curBaris)--;
+	}
+}
+
+void editBaris(int curBaris){
+	printf("EDITING LINE| %-2d: ", curBaris+1);
+	gets(text[curBaris]);
+}
+
+void commandMode(int jmlBaris){
+	int curBaris = jmlBaris-1;
+	bool done = false;
+	
+	printText(jmlBaris);
+	printLabelCmdMode();
 	
 	do{
-		printText(jmlBaris);
-		printf("\nE| %-2d: ", barisEdit+1);
-		fflush(stdin);
-		gets(curText);
-		
-		if(strcmp(curText, "^a")==0){
-			printText(jmlBaris);
-			break;
-		}else if(curText[1] == '~' || curText[2] == '~'){
-			barisEdit = atoi(curText) - 1;
-		}else{
-			strcpy(text[barisEdit], curText);
-			barisEdit++;	
-		}
-	}while(barisEdit < jmlBaris);
+		printf("Line: %-2d \r", curBaris+1);
+		switch(getch()){
+			case 'i':
+				decCurBaris(&curBaris, jmlBaris);
+				break;
+			case 'k':
+				incCurBaris(&curBaris, jmlBaris);
+				break;
+			case 'e':
+				editBaris(curBaris);
+				incCurBaris(&curBaris, jmlBaris);
+				printText(jmlBaris);
+				printLabelCmdMode();
+				break;
+			case 'q':
+				done = true;
+				break;
+		}	
+	}while(done == false);
+	
 	printText(jmlBaris);
 }
 
-void appendMode(int jmlBaris){
+void insertMode(int jmlBaris){
 	char curText[MAXKOLOM];
 	do{
-    	printf("A| %-2d: ", jmlBaris+1);
+    	printf("I| %-2d: ", jmlBaris+1);
     	gets(curText);
     	
 		if(strcmp(curText, "^e")==0){
-			editMode(jmlBaris);
-		}else if(strcmp(curText, "^p")==0){
-			printText(jmlBaris);
+			commandMode(jmlBaris);
 		}else if(strcmp(curText, "^q")==0){
-			break;	
+			break;
 		}else{
 			strcpy(text[jmlBaris], curText);
 			jmlBaris++;
 		}
 	}while(jmlBaris <= MAXBARIS);
 }
-
-		
