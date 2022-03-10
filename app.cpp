@@ -1,7 +1,8 @@
-#include <iostream>
+#include "stdlib.h"
 #include <stdio.h>
 #include <conio.h>
 #include "app.h"
+#include "deleteFile.h"
 
 void app() {
     home();
@@ -31,7 +32,6 @@ void home(){
     {
     case 1:
         run();
-        backMenuHome();
         break;
     case 2:
         printf("About...\n");
@@ -122,10 +122,10 @@ void run1(){
 }
 
 void textEditor(){
-    // printf("  ctrl+n   : New File                      ctrl+o : Open File\n");
-    // printf("  ctrl+del : Delete File                   ctrl+r : Rename File\n");
-    // printf("  ctrl+d   : Duplicate File                ctrl+q : Quit\n");
     printf(" TiTOR APPS\n");
+    printf("\t  ctrl+n   : New File                    ctrl+o : Open File\n");
+    printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
+    printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
 
 }
 
@@ -134,24 +134,32 @@ void run(){
     int choose;
 
     textEditor();
+    
     // View menu text editor
-
-    choose = getch();
-    switch (choose)
+    do
     {
-    case NEWFILE:
-        printf("New File...\n");
-        break;
-    case OPENFILE:
-        printf("Open File...\n");
-        break;
-    case EDITFILE:
-        printf("Edit File...\n");
-        break;
-    // tambahin shortcutnya fi app.h gais
-    default:
-        break;
-    }
+        choose = getch();
+        switch (choose)
+        {
+        case NEWFILE: // ctrl + n = new file
+            printf("New File...\n");
+            break;
+        case OPENFILE: // ctrl + o =  Open File
+            printf("Open File...\n");
+            break;
+        case DELETEFILE: // ctrl + d = Delete File
+            deleteFile();   
+            break;
+        case QUIT: // ctrl + q = Quit
+            backMenuHome();
+            break;
+        // tambahin shortcutnya fi app.h gais
+        default:
+            
+            break;
+        }
+    } while (choose != QUIT);
+    
 
 }
 
