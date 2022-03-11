@@ -6,6 +6,7 @@ void home();
 void backMenuHome();
 void run();
 void procedure();
+void procedureShorcut();
 
 #define ENTER 13 // enter
 #define SAVE 19 // ctrl + s

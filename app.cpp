@@ -40,6 +40,7 @@ void home(){
         break;
     case 3:
         printf("Shorcut...\n");
+        procedureShorcut();
         backMenuHome();
         break;
     case 4:
@@ -75,6 +76,19 @@ void procedure(){
 }
 
 // prosedure shorcut application TiTOR
+void procedureShorcut(){
+	printf("+==================================================================+\n");
+    printf("|                            About TiTOR                           |\n");
+    printf("+==================================================================+\n"); 
+    printf("|                                                                  |\n");
+    printf("| ctrl + n : Digunakan untuk membuat File                          |\n");
+	printf("| ctrl + d : Digunakan untuk menduplikat File                      |\n");
+    printf("| ctrl + x : Digunakan untuk delete File                           |\n");
+    printf("| ctrl + o : Digunakan untuk membuka File                          |\n");
+    printf("| ctrl + n : Digunakan untuk rename File                           |\n");
+    printf("| ctrl + q : Digunakan untuk keluar                                |\n");
+    printf("|+================================================================+|\n");
+}
 
 
 // Sub-menu Run
