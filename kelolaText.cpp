@@ -19,7 +19,7 @@ void printText(int jmlBaris){
 
 void printLabelCmdMode(){
 	printf("\n\tCOMMAND MODE\n\n");
-	printf("I: Pindah Baris Keatas      E: Edit Baris\n");
+	printf("I: Pindah Baris Keatas      E: Edit Baris       BACKSPACE: Hapus Baris\n");
 	printf("K: Pindah Baris Kebawah     Q: Mode Insert\n\n");	
 }
 
@@ -35,31 +35,46 @@ void decCurBaris(int *curBaris, int jmlBaris){
 	}
 }
 
-void editBaris(int curBaris){
-	printf("EDITING LINE| %-2d: ", curBaris+1);
-	gets_s(text[curBaris]);
+void delBaris(int curBaris, int *jmlBaris){
+	if((*jmlBaris)>0){
+		for(int i = curBaris-1; i<=(*jmlBaris)-1; i++){
+		text[i][MAXKOLOM] = text[i+1][MAXKOLOM];
+		}
+		(*jmlBaris)--;
+	}
 }
 
-void commandMode(int jmlBaris){
-	int curBaris = jmlBaris-1;
+void editBaris(int curBaris){
+	printf("EDITING LINE| %-2d: ", curBaris+1);
+	gets(text[curBaris]);
+}
+
+void commandMode(int *jmlBaris){
+	int curBaris = (*jmlBaris)-1;
 	bool done = false;
 	
-	printText(jmlBaris);
+	printText(*jmlBaris);
 	printLabelCmdMode();
 	
 	do{
 		printf("Line: %-2d \r", curBaris+1);
 		switch(getch()){
 			case 'i':
-				decCurBaris(&curBaris, jmlBaris);
+				decCurBaris(&curBaris, *jmlBaris);
 				break;
 			case 'k':
-				incCurBaris(&curBaris, jmlBaris);
+				incCurBaris(&curBaris, *jmlBaris);
 				break;
 			case 'e':
 				editBaris(curBaris);
-				incCurBaris(&curBaris, jmlBaris);
-				printText(jmlBaris);
+				incCurBaris(&curBaris, *jmlBaris);
+				printText(*jmlBaris);
+				printLabelCmdMode();
+				break;
+			case BACKSPACE:
+				delBaris(curBaris, jmlBaris);
+				decCurBaris(&curBaris, *jmlBaris);
+				printText(*jmlBaris);
 				printLabelCmdMode();
 				break;
 			case 'q':
@@ -68,17 +83,17 @@ void commandMode(int jmlBaris){
 		}	
 	}while(done == false);
 	
-	printText(jmlBaris);
+	printText(*jmlBaris);
 }
 
 void insertMode(int jmlBaris){
 	char curText[MAXKOLOM];
 	do{
     	printf("I| %-2d: ", jmlBaris+1);
-    	gets_s(curText);
+    	gets(curText);
     	
 		if(strcmp(curText, "^e")==0){
-			commandMode(jmlBaris);
+			commandMode(&jmlBaris);
 		}else if(strcmp(curText, "^q")==0){
 			break;
 		}else{
