@@ -3,6 +3,7 @@
 #include <conio.h>
 #include "app.h"
 #include "deleteFile.h"
+#include "kelolaText.h"
 
 void app() {
     home();
@@ -128,6 +129,10 @@ void textEditor(){
 
 }
 
+void newFile(){
+    //
+}
+
 void run(){
     system("cls");
     int choose;
@@ -141,7 +146,7 @@ void run(){
         switch (choose)
         {
         case NEWFILE: // ctrl + n = new file
-            printf("New File...\n");
+            newFile();
             break;
         case OPENFILE: // ctrl + o =  Open File
             printf("Open File...\n");

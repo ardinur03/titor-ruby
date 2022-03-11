@@ -1,9 +1,8 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-#define MAXBARIS 80
-#define MAXKOLOM 40
-#define BACKSPACE 8
+#include "kelolaText.h"
 
 char text[MAXBARIS][MAXKOLOM];
 
@@ -38,7 +37,7 @@ void decCurBaris(int *curBaris, int jmlBaris){
 
 void editBaris(int curBaris){
 	printf("EDITING LINE| %-2d: ", curBaris+1);
-	gets(text[curBaris]);
+	gets_s(text[curBaris]);
 }
 
 void commandMode(int jmlBaris){
@@ -76,7 +75,7 @@ void insertMode(int jmlBaris){
 	char curText[MAXKOLOM];
 	do{
     	printf("I| %-2d: ", jmlBaris+1);
-    	gets(curText);
+    	gets_s(curText);
     	
 		if(strcmp(curText, "^e")==0){
 			commandMode(jmlBaris);

@@ -3,6 +3,7 @@
 
 #define MAXBARIS 80
 #define MAXKOLOM 40
+#define BACKSPACE 8
 
 extern char text[MAXBARIS][MAXKOLOM];
 
