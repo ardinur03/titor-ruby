@@ -87,6 +87,10 @@ void procedureShorcut(){
     printf("| ctrl + o : Digunakan untuk membuka File                          |\n");
     printf("| ctrl + n : Digunakan untuk rename File                           |\n");
     printf("| ctrl + q : Digunakan untuk keluar                                |\n");
+    printf("| ctrl + s : Digunakan untuk save                                  |\n");
+    printf("| ctrl + v : Digunakan untuk paste                                 |\n");
+    printf("| ctrl + y : Digunakan untuk redo                                  |\n");
+    printf("| ctrl + z : Digunakan untuk undo                                  |\n");
     printf("|+================================================================+|\n");
 }
 
