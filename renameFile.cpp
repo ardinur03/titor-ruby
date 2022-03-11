@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main6()
+void renameFile()
 {
     // Path to old and new files
     char oldName[100], newName[100];
@@ -23,5 +23,4 @@ int main6()
         printf("Tidak dapat mengganti nama file. Silakan periksa file yang ada dan Anda memiliki izin untuk memodifikasi file.\n");
     }
 
-    return 0;
 }

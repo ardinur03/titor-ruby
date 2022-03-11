@@ -4,7 +4,7 @@
 #define BUFFER_SIZE 1000
 
 
-int main1()
+void findReplace()
 {
     /* File pointer to hold reference of input file */
     FILE * fPtr;
@@ -73,5 +73,4 @@ int main1()
 
     printf("\nSuccessfully replaced '%d' line with '%s'.", line, newline);
 
-    return 0;
 }

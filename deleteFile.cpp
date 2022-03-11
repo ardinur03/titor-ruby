@@ -2,7 +2,7 @@
 #include <conio.h>
 #include "stdlib.h"
 
-// prototype
+// prototype function
 int destroyFile(char nama_file_temp[30]);
 
 void deleteFile(){
@@ -12,9 +12,9 @@ void deleteFile(){
     scanf("%s", namaFile);
     statusFile = destroyFile(namaFile);
     if (statusFile == true){
-        printf("File %s berhasil dihapus\n", namaFile);
+        printf("File : %s berhasil dihapus\n", namaFile);
     } else  {
-        printf("File %s gagal dihapus\n", namaFile);
+        printf("File : %s gagal dihapus atau file tidak ada di dalam direktori\n", namaFile);
     }
 }
 

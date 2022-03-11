@@ -8,7 +8,6 @@ void app() {
     home();
 }
 
-
 // menu utama home
 void home(){
     int choose;
