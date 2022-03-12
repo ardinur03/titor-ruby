@@ -142,7 +142,7 @@ bool barisPenuh(int jmlBaris){
 	return false;
 }
 
-int insertMode(){
+void insertMode(int jmlBaris){
 	char choice;
 	char buffer[MAXKOLOM];
 	bool done = false;
