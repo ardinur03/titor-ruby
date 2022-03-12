@@ -3,7 +3,6 @@
 
 #define MAXBARIS 80
 #define MAXKOLOM 40
-#define BACKSPACE 8
 #define MAXBUFFER 128
 #define BACKSPACE 8
 #define ENTER 13

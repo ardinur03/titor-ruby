@@ -2,10 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-<<<<<<< HEAD
-=======
 #include <string.h>
->>>>>>> naufal_save_file
 #include "kelolaText.h"
 
 char text[MAXBARIS][MAXKOLOM];
@@ -24,11 +21,7 @@ void printText(int jmlBaris){
 void printLabelCmdMode(){
 	printf("\n\tCOMMAND MODE\n\n");
 	printf("I: Pindah Baris Keatas      E: Edit Baris       BACKSPACE: Hapus Baris\n");
-<<<<<<< HEAD
-	printf("K: Pindah Baris Kebawah     Q: Mode Insert\n\n");	
-=======
 	printf("K: Pindah Baris Kebawah     Q: Mode Insert      ENTER    : Tambah Baris\n\n");	
->>>>>>> naufal_save_file
 }
 
 void incCurBaris(int *curBaris, int jmlBaris){
@@ -43,11 +36,7 @@ void decCurBaris(int *curBaris, int jmlBaris){
 	}
 }
 
-<<<<<<< HEAD
-void delBaris(int curBaris, int *jmlBaris){
-=======
 void delBaris(int curBaris, int *jmlBaris){ 
->>>>>>> naufal_save_file
 	if((*jmlBaris)>1){
 		for(int i = curBaris; i<(*jmlBaris)-1; i++){
 			strcpy(text[i], text[i+1]);
@@ -56,8 +45,6 @@ void delBaris(int curBaris, int *jmlBaris){
 	}
 }
 
-<<<<<<< HEAD
-=======
 void addNewBaris(int curBaris, int *jmlBaris){
 	int i = *jmlBaris - 1;
 	int PrecI = i - 1;
@@ -76,7 +63,6 @@ void addNewBaris(int curBaris, int *jmlBaris){
 	}
 }
 
->>>>>>> naufal_save_file
 void editBaris(int curBaris){
 	printf("EDITING LINE| %-2d: ", curBaris+1);
 	gets(text[curBaris]);
@@ -88,10 +74,6 @@ void commandMode(int *jmlBaris){
 	
 	printText(*jmlBaris);
 	printLabelCmdMode();
-<<<<<<< HEAD
-	
-=======
->>>>>>> naufal_save_file
 	do{
 		printf("Line: %-2d \r", curBaris+1);
 		switch(getch()){
@@ -113,12 +95,6 @@ void commandMode(int *jmlBaris){
 				printText(*jmlBaris);
 				printLabelCmdMode();
 				break;
-<<<<<<< HEAD
-			case 'q':
-				done = true;
-				break;
-		}	
-=======
 			case ENTER:
 				addNewBaris(curBaris, jmlBaris);
 				printText(*jmlBaris);
@@ -128,29 +104,12 @@ void commandMode(int *jmlBaris){
 				done = true;
 				break;
 		}
->>>>>>> naufal_save_file
 	}while(done == false);
 	
 	printText(*jmlBaris);
 }
 
 void insertMode(int jmlBaris){
-<<<<<<< HEAD
-	char curText[MAXKOLOM];
-	do{
-    	printf("I| %-2d: ", jmlBaris+1);
-    	gets(curText);
-    	
-		if(strcmp(curText, "^e")==0){
-			commandMode(&jmlBaris);
-		}else if(strcmp(curText, "^q")==0){
-			break;
-		}else{
-			strcpy(text[jmlBaris], curText);
-			jmlBaris++;
-		}
-	}while(jmlBaris <= MAXBARIS);
-=======
 	char buffer[MAXBUFFER];
 	do{
     	printf("I| %-2d: ", jmlBaris+1);
@@ -169,5 +128,4 @@ void insertMode(int jmlBaris){
 
 int main(){
 	insertMode(0);
->>>>>>> naufal_save_file
 }
