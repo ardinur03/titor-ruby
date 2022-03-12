@@ -148,7 +148,8 @@ void textEditor(){
 }
 
 void newFile(){
-    //
+	system("cls");
+    insertMode(0);
 }
 
 void run(){

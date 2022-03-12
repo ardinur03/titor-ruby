@@ -38,6 +38,4 @@ void duplicateFile()
 
    fclose(source);
    fclose(target);
-
-   return 0;
 }

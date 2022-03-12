@@ -149,6 +149,7 @@ void insertMode(int jmlBaris){
 	do{	
 		if(barisPenuh(jmlBaris)==false){
 			printf("I| %-2d: ", jmlBaris+1);
+			fflush(stdin);
 	    	fgets(buffer, MAXKOLOM, stdin);
 	    	buffer[strcspn(buffer, "\n")] = 0;
 	    	
