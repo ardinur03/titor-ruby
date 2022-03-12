@@ -3,13 +3,10 @@
 
 #define MAXBARIS 80
 #define MAXKOLOM 40
-<<<<<<< HEAD
 #define BACKSPACE 8
-=======
 #define MAXBUFFER 128
 #define BACKSPACE 8
 #define ENTER 13
->>>>>>> naufal_save_file
 
 extern char text[MAXBARIS][MAXKOLOM];
 
@@ -21,9 +18,6 @@ void printLabelCmdMode();
 void incCurBaris(int *curBaris, int jmlBaris);
 void decCurBaris(int *curBaris, int jmlBaris);
 void delBaris(int curBaris, int *jmlBaris);
-<<<<<<< HEAD
-=======
 void addNewBaris(int curBaris, int *jmlBaris);
->>>>>>> naufal_save_file
 
 #endif
