@@ -36,9 +36,9 @@ void decCurBaris(int *curBaris, int jmlBaris){
 }
 
 void delBaris(int curBaris, int *jmlBaris){
-	if((*jmlBaris)>0){
-		for(int i = curBaris-1; i<=(*jmlBaris)-1; i++){
-		text[i][MAXKOLOM] = text[i+1][MAXKOLOM];
+	if((*jmlBaris)>1){
+		for(int i = curBaris; i<(*jmlBaris)-1; i++){
+			strcpy(text[i], text[i+1]);
 		}
 		(*jmlBaris)--;
 	}
