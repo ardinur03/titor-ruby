@@ -19,9 +19,9 @@ void printText(int jmlBaris){
 }
 
 void printLabelCmdMode(){
-	printf("\n\tCOMMAND MODE\n\n");
-	printf("I: Pindah Baris Keatas      E: Edit Baris       BACKSPACE: Hapus Baris\n");
-	printf("K: Pindah Baris Kebawah     Q: Mode Insert      ENTER    : Tambah Baris\n\n");	
+	printf("\n                                      COMMAND MODE\n\n");
+	printf("I: Pindah Baris Keatas      E: Edit Baris      BACKSPACE: Hapus Baris       CTRL+C: Salin Baris\n");
+	printf("K: Pindah Baris Kebawah     Q: Mode Insert     ENTER    : Tambah Baris      CTRL+V: Tempel Baris\n\n");
 }
 
 void incCurBaris(int *curBaris, int jmlBaris){
@@ -63,14 +63,30 @@ void addNewBaris(int curBaris, int *jmlBaris){
 	}
 }
 
+void copyBaris(int curBaris, char *temp, bool *isClipboardEmpty){
+	strcpy(temp, text[curBaris]);
+	*isClipboardEmpty = false;
+	printf("Baris telah disalin\n");
+}
+
+void pasteBaris(int curBaris, int *jmlBaris, char *temp, bool isClipboardEmpty){
+	if(isClipboardEmpty == false){
+		addNewBaris(curBaris, jmlBaris);
+		strcpy(text[curBaris], temp);
+	}
+}
+
 void editBaris(int curBaris){
 	printf("EDITING LINE| %-2d: ", curBaris+1);
-	gets(text[curBaris]);
+	fgets(text[curBaris], MAXKOLOM, stdin);
+	text[curBaris][strcspn(text[curBaris], "\n")] = 0;
 }
 
 void commandMode(int *jmlBaris){
 	int curBaris = (*jmlBaris)-1;
 	bool done = false;
+	bool isClipboardEmpty = true;
+	char clipboard[MAXKOLOM];
 	
 	printText(*jmlBaris);
 	printLabelCmdMode();
@@ -100,32 +116,70 @@ void commandMode(int *jmlBaris){
 				printText(*jmlBaris);
 				printLabelCmdMode();
 				break;
+			case CTRL_C:
+				copyBaris(curBaris, clipboard, &isClipboardEmpty);
+				break;
+			case CTRL_V:
+				pasteBaris(curBaris, jmlBaris, clipboard, isClipboardEmpty);
+				printText(*jmlBaris);
+				printLabelCmdMode();
+				break;
 			case 'q':
 				done = true;
 				break;
 		}
 	}while(done == false);
 	
-	printText(*jmlBaris);
+	if(barisPenuh(*jmlBaris) == false){
+		printText(*jmlBaris);
+	}
+}
+
+bool barisPenuh(int jmlBaris){
+	if(jmlBaris==MAXBARIS){
+		return true;
+	}
+	return false;
 }
 
 void insertMode(int jmlBaris){
-	char buffer[MAXBUFFER];
-	do{
-    	printf("I| %-2d: ", jmlBaris+1);
-    	gets(buffer);
-    	
-		if(strcmp(buffer, "^e")==0){
-			commandMode(&jmlBaris);
-		}else if(strcmp(buffer, "^q")==0){
-			break;
-		}else{
-			strcpy(text[jmlBaris], buffer);
-			jmlBaris++;
+	char choice;
+	char buffer[MAXKOLOM];
+	bool done = false;
+	do{	
+		if(barisPenuh(jmlBaris)==false){
+			printf("I| %-2d: ", jmlBaris+1);
+			fflush(stdin);
+	    	fgets(buffer, MAXKOLOM, stdin);
+	    	buffer[strcspn(buffer, "\n")] = 0;
+	    	
+			if(strcmp(buffer, "^e")==0){
+				commandMode(&jmlBaris);
+			}else if(strcmp(buffer, "^q")==0){
+				done = true;
+				break;
+			}else{
+				strcpy(text[jmlBaris], buffer);
+				jmlBaris++;
+			}
+		}else{	
+			while(1){
+				system("cls");
+				printf("Anda telah mencapai batas baris, apakah anda ingin mengedit teks kembali? (y/n)\n");
+				choice = getche();
+				if(choice == 'y'){
+					commandMode(&jmlBaris);
+					if(barisPenuh(jmlBaris)==false){
+						break;
+					}
+				}else if(choice == 'n'){
+					done = true;
+					break;
+				}else{
+					printf("\nPilihan tidak seusai");
+					Sleep(1000);
+				}
+			}
 		}
-	}while(jmlBaris <= MAXBARIS);
-}
-
-int main(){
-	insertMode(0);
+	}while(done == false);
 }
