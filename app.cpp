@@ -158,7 +158,7 @@ void newFile(){
         choise = getch();
         if (choise == 'y')
         {
-            saveFile(jmlBaris);
+            saveFile(jmlBaris, text);
             break;
         } else if (choise == 'n') {
             break;
