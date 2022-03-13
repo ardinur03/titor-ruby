@@ -149,7 +149,25 @@ void textEditor(){
 
 void newFile(){
 	system("cls");
-    insertMode(0);
+    char choise;
+    int jmlBaris = insertMode(0);
+    while (1)
+    {
+        printf("Apakah anda ingin menyimpan file? (y/n) : ");
+        choise = getch();
+        if (choise == 'y')
+        {
+            saveFile(jmlBaris);
+            break;
+        } else if (choise == 'n') {
+            break;
+        } else {
+            printf("\n");
+            printf("Inputan tidak benar!\n");
+        }
+
+    }
+    
 }
 
 void run(){
@@ -181,7 +199,7 @@ void run(){
             
             break;
         }
-    } while (choose != QUIT);
+    } while (choose != QUIT );
     
 
 }

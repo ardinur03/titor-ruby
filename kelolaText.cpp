@@ -142,7 +142,7 @@ bool barisPenuh(int jmlBaris){
 	return false;
 }
 
-void insertMode(int jmlBaris){
+int insertMode(int jmlBaris){
 	char choice;
 	char buffer[MAXKOLOM];
 	bool done = false;
@@ -182,4 +182,60 @@ void insertMode(int jmlBaris){
 			}
 		}
 	}while(done == false);
+	
+	return jmlBaris;
+}
+
+
+void storeFile(char *filename, int jmlBaris){
+	FILE *file;
+	file = fopen(filename, "w");
+	for(int i=0; i<jmlBaris; i++){
+		fprintf(file, "%s\n", text[i]);
+	}
+	fclose(file);
+}
+
+void saveFile(int jmlBaris){
+	FILE *fp;
+	char *namaFile, *ektensiFile, *namaFileTemp;
+
+
+	system("cls");
+
+	printf("Masukkan nama file: ");
+	fscanf(stdin, "%s", namaFile);
+	printf("Masukkan nama ektensi file: ");
+	fscanf(stdin, "%s", ektensiFile);
+
+	// gabungkan variabel namaFile dan ektensiFile
+	char* name_with_extension;
+	namaFileTemp = malloc(strlen(namaFile)+1+4); /* make space for the new string (should check the return value ...) */
+	strcpy(name_with_extension, ektensiFile); /* copy name into the new var */
+	strcat(name_with_extension, ektensiFile); /* add the extension */
+	
+	fp = fopen(namaFileTemp, "w");
+	if(fp == NULL){
+		printf("Gagal membuka file %s\n", namaFileTemp);
+		exit(1);
+	}
+	
+	for(int i=0; i<jmlBaris; i++){
+		fprintf(fp, "%s\n", text[i]);
+	}
+	
+	fclose(fp);
+	
+	printf("File %s berhasil disimpan\n", namaFileTemp);
+	
+	free(namaFileTemp);
+
+	
+
+	// // buat file baru fopen("data_transaksi.dat","ab+");
+	// fp = fopen(namaFileTemp, "w");
+
+
+	// storeFile(namaFile, jmlBaris);
+	// fclose(fp);
 }
