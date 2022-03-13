@@ -5,9 +5,9 @@
 #include <string.h>
 #include "kelolaText.h"
 
-char text[MAXBARIS][MAXKOLOM];
 
-void printText(int jmlBaris){
+
+void printText(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	system("cls");
   	for(int i = 0; i < jmlBaris; i++){
   		printf(" | %-2d: ", i+1);
@@ -36,59 +36,59 @@ void decCurBaris(int *curBaris, int jmlBaris){
 	}
 }
 
-void delBaris(int curBaris, int *jmlBaris){ 
+void delBaris(int curBaris, int *jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){ 
 	if((*jmlBaris)>1){
 		for(int i = curBaris; i<(*jmlBaris)-1; i++){
-			strcpy(text[i], text[i+1]);
+			strcpy((*text)[i], (*text)[i+1]);
 		}
 		(*jmlBaris)--;
 	}
 }
 
-void addNewBaris(int curBaris, int *jmlBaris){
+void addNewBaris(int curBaris, int *jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	int i = *jmlBaris - 1;
 	int PrecI = i - 1;
 	int lastIdx = i;
 	char* last;
-	last = text[lastIdx];
+	last = (*text)[lastIdx];
 	if((*jmlBaris)<MAXBARIS){
 		(*jmlBaris)++;
-		strcpy(text[*jmlBaris-1], last);
+		strcpy((*text)[*jmlBaris-1], last);
 		while(i != curBaris){
-			strcpy(text[i], text[PrecI]);
+			strcpy((*text)[i], (*text)[PrecI]);
 			PrecI--;
 			i--;
-		}	
-		memset(text[curBaris], 0, MAXKOLOM);
+		}
+		memset((*text)[curBaris], 0, MAXKOLOM);
 	}
 }
 
-void copyBaris(int curBaris, char *temp, bool *isClipboardEmpty){
+void copyBaris(int curBaris, char *temp, bool *isClipboardEmpty, char text[MAXBARIS][MAXKOLOM]){
 	strcpy(temp, text[curBaris]);
 	*isClipboardEmpty = false;
 	printf("Baris telah disalin\n");
 }
 
-void pasteBaris(int curBaris, int *jmlBaris, char *temp, bool isClipboardEmpty){
+void pasteBaris(int curBaris, int *jmlBaris, char *temp, bool isClipboardEmpty, char (*text)[MAXBARIS][MAXKOLOM]){
 	if(isClipboardEmpty == false){
-		addNewBaris(curBaris, jmlBaris);
-		strcpy(text[curBaris], temp);
+		addNewBaris(curBaris, jmlBaris, text);
+		strcpy((*text)[curBaris], temp);
 	}
 }
 
-void editBaris(int curBaris){
+void editBaris(int curBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	printf("EDITING LINE| %-2d: ", curBaris+1);
-	fgets(text[curBaris], MAXKOLOM, stdin);
-	text[curBaris][strcspn(text[curBaris], "\n")] = 0;
+	fgets((*text)[curBaris], MAXKOLOM, stdin);
+	(*text)[curBaris][strcspn((*text)[curBaris], "\n")] = 0;
 }
 
-void commandMode(int *jmlBaris){
+void commandMode(int *jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	int curBaris = (*jmlBaris)-1;
 	bool done = false;
 	bool isClipboardEmpty = true;
 	char clipboard[MAXKOLOM];
 	
-	printText(*jmlBaris);
+	printText(*jmlBaris, *text);
 	printLabelCmdMode();
 	do{
 		printf("Line: %-2d \r", curBaris+1);
@@ -100,28 +100,28 @@ void commandMode(int *jmlBaris){
 				incCurBaris(&curBaris, *jmlBaris);
 				break;
 			case 'e':
-				editBaris(curBaris);
+				editBaris(curBaris, text);
 				incCurBaris(&curBaris, *jmlBaris);
-				printText(*jmlBaris);
+				printText(*jmlBaris, *text);
 				printLabelCmdMode();
 				break;
 			case BACKSPACE:
-				delBaris(curBaris, jmlBaris);
+				delBaris(curBaris, jmlBaris, text);
 				decCurBaris(&curBaris, *jmlBaris);
-				printText(*jmlBaris);
+				printText(*jmlBaris, *text);
 				printLabelCmdMode();
 				break;
 			case ENTER:
-				addNewBaris(curBaris, jmlBaris);
-				printText(*jmlBaris);
+				addNewBaris(curBaris, jmlBaris, text);
+				printText(*jmlBaris, *text);
 				printLabelCmdMode();
 				break;
 			case CTRL_C:
-				copyBaris(curBaris, clipboard, &isClipboardEmpty);
+				copyBaris(curBaris, clipboard, &isClipboardEmpty, *text);
 				break;
 			case CTRL_V:
-				pasteBaris(curBaris, jmlBaris, clipboard, isClipboardEmpty);
-				printText(*jmlBaris);
+				pasteBaris(curBaris, jmlBaris, clipboard, isClipboardEmpty, text);
+				printText(*jmlBaris, *text);
 				printLabelCmdMode();
 				break;
 			case 'q':
@@ -131,7 +131,7 @@ void commandMode(int *jmlBaris){
 	}while(done == false);
 	
 	if(barisPenuh(*jmlBaris) == false){
-		printText(*jmlBaris);
+		printText(*jmlBaris, *text);
 	}
 }
 
@@ -142,11 +142,11 @@ bool barisPenuh(int jmlBaris){
 	return false;
 }
 
-int insertMode(int jmlBaris){
+int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	char choice;
 	char buffer[MAXKOLOM];
 	bool done = false;
-	do{	
+	do{
 		if(barisPenuh(jmlBaris)==false){
 			printf("I| %-2d: ", jmlBaris+1);
 			fflush(stdin);
@@ -154,12 +154,12 @@ int insertMode(int jmlBaris){
 	    	buffer[strcspn(buffer, "\n")] = 0;
 	    	
 			if(strcmp(buffer, "^e")==0){
-				commandMode(&jmlBaris);
+				commandMode(&jmlBaris, text);
 			}else if(strcmp(buffer, "^q")==0){
 				done = true;
 				break;
 			}else{
-				strcpy(text[jmlBaris], buffer);
+				strcpy((*text)[jmlBaris], buffer);
 				jmlBaris++;
 			}
 		}else{	
@@ -168,7 +168,7 @@ int insertMode(int jmlBaris){
 				printf("Anda telah mencapai batas baris, apakah anda ingin mengedit teks kembali? (y/n)\n");
 				choice = getche();
 				if(choice == 'y'){
-					commandMode(&jmlBaris);
+					commandMode(&jmlBaris, text);
 					if(barisPenuh(jmlBaris)==false){
 						break;
 					}
@@ -187,48 +187,48 @@ int insertMode(int jmlBaris){
 }
 
 
-void storeFile(char *filename, int jmlBaris){
-	FILE *file;
-	file = fopen(filename, "w");
-	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s\n", text[i]);
-	}
-	fclose(file);
-}
+// void storeFile(char *filename, int jmlBaris){
+// 	FILE *file;
+// 	file = fopen(filename, "w");
+// 	for(int i=0; i<jmlBaris; i++){
+// 		fprintf(file, "%s\n", text[i]);
+// 	}
+// 	fclose(file);
+// }
 
-void saveFile(int jmlBaris){
-	FILE *fp;
-	char *namaFile, *ektensiFile, *namaFileTemp;
+// void saveFile(int jmlBaris){
+// 	FILE *fp;
+// 	char *namaFile, *ektensiFile, *namaFileTemp;
 
 
-	system("cls");
+// 	system("cls");
 
-	printf("Masukkan nama file: ");
-	fscanf(stdin, "%s", namaFile);
-	printf("Masukkan nama ektensi file: ");
-	fscanf(stdin, "%s", ektensiFile);
+// 	printf("Masukkan nama file: ");
+// 	fscanf(stdin, "%s", namaFile);
+// 	printf("Masukkan nama ektensi file: ");
+// 	fscanf(stdin, "%s", ektensiFile);
 
-	// gabungkan variabel namaFile dan ektensiFile
-	char* name_with_extension;
-	namaFileTemp = malloc(strlen(namaFile)+1+4); /* make space for the new string (should check the return value ...) */
-	strcpy(name_with_extension, ektensiFile); /* copy name into the new var */
-	strcat(name_with_extension, ektensiFile); /* add the extension */
+// 	// gabungkan variabel namaFile dan ektensiFile
+// 	char* name_with_extension;
+// 	namaFileTemp = malloc(strlen(namaFile)+1+4); /* make space for the new string (should check the return value ...) */
+// 	strcpy(name_with_extension, ektensiFile); /* copy name into the new var */
+// 	strcat(name_with_extension, ektensiFile); /* add the extension */
 	
-	fp = fopen(namaFileTemp, "w");
-	if(fp == NULL){
-		printf("Gagal membuka file %s\n", namaFileTemp);
-		exit(1);
-	}
+// 	fp = fopen(namaFileTemp, "w");
+// 	if(fp == NULL){
+// 		printf("Gagal membuka file %s\n", namaFileTemp);
+// 		exit(1);
+// 	}
 	
-	for(int i=0; i<jmlBaris; i++){
-		fprintf(fp, "%s\n", text[i]);
-	}
+// 	for(int i=0; i<jmlBaris; i++){
+// 		fprintf(fp, "%s\n", text[i]);
+// 	}
 	
-	fclose(fp);
+// 	fclose(fp);
 	
-	printf("File %s berhasil disimpan\n", namaFileTemp);
+// 	printf("File %s berhasil disimpan\n", namaFileTemp);
 	
-	free(namaFileTemp);
+// 	free(namaFileTemp);
 
 	
 
@@ -238,4 +238,4 @@ void saveFile(int jmlBaris){
 
 	// storeFile(namaFile, jmlBaris);
 	// fclose(fp);
-}
+// }

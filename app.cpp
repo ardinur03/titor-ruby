@@ -150,7 +150,8 @@ void textEditor(){
 void newFile(){
 	system("cls");
     char choise;
-    int jmlBaris = insertMode(0);
+    char text[MAXBARIS][MAXKOLOM];
+    int jmlBaris = insertMode(0, &text);
     while (1)
     {
         printf("Apakah anda ingin menyimpan file? (y/n) : ");
