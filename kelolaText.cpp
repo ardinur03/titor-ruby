@@ -3,10 +3,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <string.h>
-#include <cstring> 
 #include "kelolaText.h"
-
-
 
 void printText(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	system("cls");
@@ -155,7 +152,13 @@ int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	    	buffer[strcspn(buffer, "\n")] = 0;
 	    	
 			if(strcmp(buffer, "^e")==0){
-				commandMode(&jmlBaris, text);
+				if(jmlBaris==0){
+					printf("Baris masih kosong");
+					Sleep(1000);
+					system("cls");
+				}else{
+					commandMode(&jmlBaris, text);
+				}
 			}else if(strcmp(buffer, "^q")==0){
 				done = true;
 				break;
@@ -185,32 +188,4 @@ int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	}while(done == false);
 	
 	return jmlBaris;
-}
-
-void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
-	FILE *file;
-	file = fopen(filename, "w");
-	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s\n", text[i]);
-	}
-	fclose(file);
-}
-
-void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
-	char *namaFile, *ektensiFile, *namaFileTemp;
-	system("cls");
-
-	printf("Masukkan nama file: ");
-	namaFile=(char*) malloc(20* sizeof(char)); 
-	scanf("%s", namaFile);
-	printf("Masukkan nama ektensi file: ");
-	ektensiFile=(char*) malloc(5* sizeof(char));
-	scanf("%s", ektensiFile);
-
-	strcat(namaFile, ".");
-	namaFileTemp = strcat(namaFile, ektensiFile);
-
-	storeFile(namaFileTemp, jmlBaris, text);
-	getch();	
-	
 }

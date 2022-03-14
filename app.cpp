@@ -4,6 +4,7 @@
 #include "app.h"
 #include "deleteFile.h"
 #include "kelolaText.h"
+#include "saveToFile.h"
 
 void app() {
     home();
@@ -26,7 +27,7 @@ void home(){
     printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
     printf("+===========================================================+\n");
 
-    printf("Choose Menu :");
+    printf("Choose Menu : ");
     scanf("%d", &choose);
     switch (choose)
     {
@@ -45,7 +46,7 @@ void home(){
         break;
     case 4:
         printf("Exit...\n");
-        backMenuHome();
+        exit(-1);
         break;
     default:
         break;
@@ -149,37 +150,34 @@ void textEditor(){
 
 void newFile(){
 	system("cls");
-    char choise;
+    char choice;
     char text[MAXBARIS][MAXKOLOM];
     int jmlBaris = insertMode(0, &text);
     while (1)
     {
         printf("Apakah anda ingin menyimpan file? (y/n) : ");
-        choise = getch();
-        if (choise == 'y')
+        choice = getch();
+        if (choice == 'y')
         {
             saveFile(jmlBaris, text);
             break;
-        } else if (choise == 'n') {
+        } else if (choice == 'n') {
             break;
         } else {
             printf("\n");
             printf("Inputan tidak benar!\n");
         }
-
-    }
-    
+    }   
 }
 
 void run(){
-    system("cls");
     int choose;
-
-    textEditor();
     
     // View menu text editor
     do
     {
+    	system("cls");
+    	textEditor();
         choose = getch();
         switch (choose)
         {
@@ -211,4 +209,3 @@ void backMenuHome(){
     system("cls");
     home();
 }
-
