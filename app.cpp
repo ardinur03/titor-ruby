@@ -5,6 +5,7 @@
 #include "deleteFile.h"
 #include "kelolaText.h"
 #include "saveToFile.h"
+#include "openFile.h"
 
 void app() {
     home();
@@ -173,25 +174,30 @@ void newFile(){
 void run(){
     int choose;
     
+    	system("cls");
     // View menu text editor
     do
     {
-    	system("cls");
     	textEditor();
         choose = getch();
         switch (choose)
         {
         case NEWFILE: // ctrl + n = new file
             newFile();
+    	    system("cls");
             break;
         case OPENFILE: // ctrl + o =  Open File
-            printf("Open File...\n");
+            openFile();
+    	    system("cls");
             break;
         case DELETEFILE: // ctrl + d = Delete File
             deleteFile();   
             break;
         case QUIT: // ctrl + q = Quit
             backMenuHome();
+            break;
+        case SAVE_FILE:
+            // ctrl + s = Save File
             break;
         // tambahin shortcutnya fi app.h gais
         default:

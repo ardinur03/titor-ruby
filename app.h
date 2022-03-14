@@ -10,7 +10,7 @@ void procedureShorcut();
 void saveFile(int jmlBaris);
 
 #define ENTER 13 // enter
-#define SAVE 19 // ctrl + s
+#define SAVE_FILE 19 // ctrl + s
 #define PASTE 22 // ctrl + v
 #define REDO 25 // ctrl + y
 #define UNDO 26 // ctrl + z
@@ -22,5 +22,6 @@ void saveFile(int jmlBaris);
 #define DELETEFILE 24 // ctrl + x
 #define RENAMEFILE 18 // ctrl + r
 #define QUIT 17 // ctrl + q
+
 
 #endif

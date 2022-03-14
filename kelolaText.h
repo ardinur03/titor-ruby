@@ -21,6 +21,6 @@ void addNewBaris(int curBaris, int *jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]);
 bool barisPenuh(int jmlBaris);
 void copyBaris(int curBaris, char *temp, bool *isClipboardEmpty, char text[MAXBARIS][MAXKOLOM]);
 void pasteBaris(int curBaris, int *jmlBaris, char *temp, bool isClipboardEmpty, char (*text)[MAXBARIS][MAXKOLOM]);
-void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]);
+// void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]);
 
 #endif
