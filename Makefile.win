@@ -4,6 +4,7 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
+<<<<<<< HEAD
 OBJ      = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o saveToFile.o openFile.o
 LINKOBJ  = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o saveToFile.o openFile.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
@@ -13,6 +14,17 @@ BIN      = TitorApps.exe
 CXXFLAGS = $(CXXINCS) -std=c99
 CFLAGS   = $(INCS) -std=c99
 RM       = rm.exe -f
+=======
+OBJ      = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o
+LINKOBJ  = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = TitorApps.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+>>>>>>> 8c884cb3b31f29b1d2e57c2f2e81d6c79676df94
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -47,9 +59,3 @@ renameFile.o: renameFile.cpp
 
 findReplace.o: findReplace.cpp
 	$(CPP) -c findReplace.cpp -o findReplace.o $(CXXFLAGS)
-
-saveToFile.o: saveToFile.cpp
-	$(CPP) -c saveToFile.cpp -o saveToFile.o $(CXXFLAGS)
-
-openFile.o: openFile.cpp
-	$(CPP) -c openFile.cpp -o openFile.o $(CXXFLAGS)

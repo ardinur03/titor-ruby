@@ -17,9 +17,15 @@ CursorRow=2
 TopLine=1
 LeftChar=1
 [Editor_2]
+<<<<<<< HEAD
 CursorCol=11
 CursorRow=188
 TopLine=155
+=======
+CursorCol=6
+CursorRow=34
+TopLine=31
+>>>>>>> 8c884cb3b31f29b1d2e57c2f2e81d6c79676df94
 LeftChar=1
 [Editor_4]
 CursorCol=1
