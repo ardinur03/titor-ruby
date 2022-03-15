@@ -35,7 +35,7 @@ UnitCount=7
 <<<<<<< HEAD
 UnitCount=3
 =======
-UnitCount=19
+UnitCount=23
 >>>>>>> main
 >>>>>>> main
 
@@ -242,7 +242,7 @@ BuildCmd=
 CompileCpp=1
 
 [Unit20]
-FileName=findReplace.cpp
+FileName=saveToFile.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -253,6 +253,36 @@ BuildCmd=
 
 [Unit10]
 FileName=kelolaText.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=saveToFIle.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit22]
+FileName=openFile.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit23]
+FileName=openFile.h
 CompileCpp=1
 Folder=
 Compile=1

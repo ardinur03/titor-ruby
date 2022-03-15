@@ -146,7 +146,6 @@ void textEditor(){
     printf("\t  ctrl+n   : New File                    ctrl+o : Open File\n");
     printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
     printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
-
 }
 
 void newFile(){
@@ -163,6 +162,9 @@ void newFile(){
             saveFile(jmlBaris, text);
             break;
         } else if (choice == 'n') {
+        	system("cls");
+        	printf("\nFile anda tidak tersimpan!");
+        	getch();
             break;
         } else {
             printf("\n");
@@ -201,8 +203,9 @@ void run(){
             break;
         // tambahin shortcutnya fi app.h gais
         default:
-            
-            break;
+        system("cls");
+		printf("\t\t\t\tInput Salah!\n");
+		break;
         }
     } while (choose != QUIT );
     
