@@ -16,16 +16,16 @@ void findReplace()
     int line, count;
 
 
-    printf("Enter path of source file: ");
+    printf("pilih file yang akan di edit: ");
     scanf("%s", path);
 
-    printf("Enter line number to replace: ");
+    printf("masukan baris yang akan di ubah: ");
     scanf("%d", &line);
 
     /* Remove extra new line character from stdin */
     fflush(stdin);
 
-    printf("Replace '%d' line with: ", line);
+    printf("Replace '%d' baris tersebut akan di ubah dengan apa: ", line);
     fgets(newline, BUFFER_SIZE, stdin);
 
 
