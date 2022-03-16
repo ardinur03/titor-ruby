@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
 #define BUFFER_SIZE 1000
 
 
-void findReplace()
+void findReplace(char *fileName_param)
 {
     /* File pointer to hold reference of input file */
     FILE * fPtr;
@@ -14,10 +15,9 @@ void findReplace()
     char buffer[BUFFER_SIZE];
     char newline[BUFFER_SIZE];
     int line, count;
-
-
-    printf("pilih file yang akan di edit: ");
-    scanf("%s", path);
+    
+//    printf("pilih file yang akan di edit: ");
+//    scanf("%s", path);
 
     printf("masukan baris yang akan di ubah: ");
     scanf("%d", &line);
@@ -30,7 +30,7 @@ void findReplace()
 
 
     /*  Open all required files */
-    fPtr  = fopen(path, "r");
+    fPtr  = fopen(fileName_param, "r");
     fTemp = fopen("replace.tmp", "w"); 
 
     /* fopen() return NULL if unable to open file in given mode. */
@@ -66,10 +66,10 @@ void findReplace()
 
 
     /* Delete original source file */
-    remove(path);
+    remove(fileName_param);
 
     /* Rename temporary file as original file */
-    rename("replace.tmp", path);
+    rename("replace.tmp", fileName_param);
 
     printf("\nSuccessfully replaced '%d' line with '%s'.", line, newline);
 
