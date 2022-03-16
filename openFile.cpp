@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <cstring>
 #include "kelolaText.h"
+#include "findReplace.h"
 #include <windows.h>
 #include <conio.h>
 
 void openFile(){
+	char choice;
     system("cls");
     char *fileName;
 
@@ -22,5 +24,14 @@ void openFile(){
         }
         fclose(file);
     }
+    printf("Apakah anda ingin mengedit teks ? (y/n)\n");
     getch();
+    choice = getche();
+				if(choice == 'y'){
+					findReplace(fileName);
+					getch();
+				}else{
+					printf("\nPilihan tidak seusai");
+				}
 }
+

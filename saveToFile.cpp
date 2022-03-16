@@ -20,7 +20,7 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	printf("Masukkan nama file: ");
 	namaFile=(char*) malloc(20* sizeof(char)); 
 	scanf("%s", namaFile);
-	printf("Masukkan nama ektensi file: ");
+	printf("Masukkan nama ektensi file (tanpa titik): ");
 	ektensiFile=(char*) malloc(5* sizeof(char));
 	scanf("%s", ektensiFile);
 
