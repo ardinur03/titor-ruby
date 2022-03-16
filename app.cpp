@@ -6,6 +6,8 @@
 #include "kelolaText.h"
 #include "saveToFile.h"
 #include "openFile.h"
+#include "duplicateFile.h"
+#include "renameFile.h"
 
 void app() {
     home();
@@ -184,15 +186,21 @@ void run(){
         choose = getch();
         switch (choose)
         {
-        case NEWFILE: // ctrl + n = new file
+        case NEWFILE: // ctrl + n = New file
             newFile();
     	    system("cls");
             break;
+        case DUPLICATE:
+        	duplicateFile(); // ctrl + d = Duplicate File
+        	break;
+        case RENAMEFILE:
+        	renameFile(); // ctrl + r = Rename File
+        	break;
         case OPENFILE: // ctrl + o =  Open File
             openFile();
     	    system("cls");
             break;
-        case DELETEFILE: // ctrl + d = Delete File
+        case DELETEFILE: // ctrl + x = Delete File
             deleteFile();   
             break;
         case QUIT: // ctrl + q = Quit
@@ -201,7 +209,7 @@ void run(){
         case SAVE_FILE:
             // ctrl + s = Save File
             break;
-        // tambahin shortcutnya fi app.h gais
+        
         default:
         system("cls");
 		printf("\t\t\t\tInput Salah!\n");
