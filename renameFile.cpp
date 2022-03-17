@@ -8,21 +8,21 @@ void renameFile()
 
     // Input old and new file name
     system ("cls");
-    printf("masukan nama file yang akan diubah: ");
+    printf("Enter the name of the file you want to change: ");
     scanf("%s", oldName);
 
-    printf("masukan nama file baru: ");
+    printf("enter new file name: ");
     scanf("%s", newName);
 
 
     // rename old file with new name
     if (rename(oldName, newName) == 0)
     {
-        printf("File berhasil diganti namanya.\n");
+        printf("The file was renamed successfully.\n");
     }
     else
     {
-        printf("Tidak dapat mengganti nama file. Silakan periksa file yang ada dan Anda memiliki izin untuk memodifikasi file.\n");
+        printf("Unable to rename file. Please check the file exists and you have permission to modify the file.\n");
     }
 
 }

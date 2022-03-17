@@ -17,10 +17,10 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	char *namaFile, *ektensiFile, *namaFileTemp;
 	system("cls");
 
-	printf("Masukkan nama file: ");
+	printf("Enter file name: ");
 	namaFile=(char*) malloc(20* sizeof(char)); 
 	scanf("%s", namaFile);
-	printf("Masukkan nama ektensi file (tanpa titik): ");
+	printf("Enter the file extension name (without full stop): ");
 	ektensiFile=(char*) malloc(5* sizeof(char));
 	scanf("%s", ektensiFile);
 
@@ -28,7 +28,7 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	namaFileTemp = strcat(namaFile, ektensiFile);
 
 	storeFile(namaFileTemp, jmlBaris, text);
-	printf("File sudah berhasil di simpan\n");
-	printf("Tekan tombol apapun untuk kembali");
+	printf("File has been saved successfully\n");
+	printf("Press any button to go back");
 	getch();
 }

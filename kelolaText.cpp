@@ -64,7 +64,7 @@ void addNewBaris(int curBaris, int *jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 void copyBaris(int curBaris, char *temp, bool *isClipboardEmpty, char text[MAXBARIS][MAXKOLOM]){
 	strcpy(temp, text[curBaris]);
 	*isClipboardEmpty = false;
-	printf("Baris telah disalin\n");
+	printf("The line has been copied\n");
 }
 
 void pasteBaris(int curBaris, int *jmlBaris, char *temp, bool isClipboardEmpty, char (*text)[MAXBARIS][MAXKOLOM]){
@@ -153,7 +153,7 @@ int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 	    	
 			if(strcmp(buffer, "^e")==0){
 				if(jmlBaris==0){
-					printf("Baris masih kosong");
+					printf("Line is still empty");
 					Sleep(1000);
 					system("cls");
 				}else{
@@ -169,7 +169,7 @@ int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 		}else{	
 			while(1){
 				system("cls");
-				printf("Anda telah mencapai batas baris, apakah anda ingin mengedit teks kembali? (y/n)\n");
+				printf("You have reached the line limit, do you want to edit the text again? (y/n)\n");
 				choice = getche();
 				if(choice == 'y'){
 					commandMode(&jmlBaris, text);
@@ -180,7 +180,7 @@ int insertMode(int jmlBaris, char (*text)[MAXBARIS][MAXKOLOM]){
 					done = true;
 					break;
 				}else{
-					printf("\nPilihan tidak seusai");
+					printf("\nWrong Input!");
 					Sleep(1000);
 				}
 			}

@@ -52,7 +52,7 @@ void home(){
         exit(-1);
         break;
     default:
-    	printf("\nInput Salah!");
+    	printf("\n Wrong Input!");
 	 	getch();
 	 	system("cls");
 		home();
@@ -161,7 +161,7 @@ void newFile(){
     int jmlBaris = insertMode(0, &text);
     while (1)
     {
-        printf("Apakah anda ingin menyimpan file? (y/n) : ");
+        printf("Do you want to save the file? (y/n) : ");
         choice = getch();
         if (choice == 'y')
         {
@@ -169,12 +169,12 @@ void newFile(){
             break;
         } else if (choice == 'n') {
         	system("cls");
-        	printf("\nFile anda tidak tersimpan!");
+        	printf("\nYour file is not saved!");
         	getch();
             break;
         } else {
             printf("\n");
-            printf("Inputan tidak benar!\n");
+            printf("Wrong Input!\n");
         }
     }   
 }
@@ -216,7 +216,7 @@ void run(){
         
         default:
         system("cls");
-		printf("\t\t\t\tInput Salah!\n");
+		printf("\t\t\t\tWrong Input!\n");
 		break;
         }
     } while (choose != QUIT );
@@ -225,7 +225,7 @@ void run(){
 }
 
 void backMenuHome(){
-    printf("Tekan Enter untuk kembali ke menu home ...\n");
+    printf("Press Enter to return to the home menu ...\n");
     getch();
     system("cls");
     home();

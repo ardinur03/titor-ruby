@@ -10,14 +10,14 @@ void openFile(){
     system("cls");
     char *fileName;
 
-	printf("Masukkan nama file: ");
+	printf("Enter file name: ");
 	fileName=(char*) malloc(20* sizeof(char)); 
     scanf("%s", fileName);
     
     FILE *file = fopen(fileName, "r");
     if (!file) {
-        printf("File tidak ditemukan!\n");
-        printf("Tekan enter untuk kembali ...");
+        printf("File not found!\n");
+        printf("Press enter to go back ...");
         getch();
         openFile();
     } else {
@@ -27,14 +27,14 @@ void openFile(){
         }
         fclose(file);
     }
-    printf("Apakah anda ingin mengedit teks ? (y/n)\n");
+    printf("Do you want to edit the text? (y/n)\n");
     getch();
     choice = getche();
     if(choice == 'y'){
         findReplace(fileName);
         getch();
     }else{
-        printf("\nPilihan tidak seusai");
+        printf("\nWrong Input!");
     }
 }
 
