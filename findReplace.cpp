@@ -19,13 +19,13 @@ void findReplace(char *fileName_param)
 //    printf("pilih file yang akan di edit: ");
 //    scanf("%s", path);
 
-    printf("masukan baris yang akan di ubah: ");
+    printf("Enter line number to replace : ");
     scanf("%d", &line);
 
     /* Remove extra new line character from stdin */
     fflush(stdin);
 
-    printf("Replace '%d' baris tersebut akan di ubah dengan apa: ", line);
+    printf("Replace '%d' the line be changed to ?: ", line);
     fgets(newline, BUFFER_SIZE, stdin);
 
 

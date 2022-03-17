@@ -1,10 +1,10 @@
 [Editors]
 <<<<<<< HEAD
-Order=2,20,19,21,9,8,18,23,22
+Order=2,8,18,22,23
 =======
 Order=2,20,19,21,9
 >>>>>>> main
-Focused=19
+Focused=23
 [Editor_0]
 CursorCol=1
 CursorRow=3
@@ -86,9 +86,9 @@ TopLine=1
 LeftChar=1
 <<<<<<< HEAD
 [Editor_18]
-CursorCol=49
-CursorRow=55
-TopLine=38
+CursorCol=2
+CursorRow=76
+TopLine=1
 =======
 LeftChar=1
 [Editor_7]
