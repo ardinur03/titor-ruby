@@ -17,6 +17,9 @@ void openFile(){
     FILE *file = fopen(fileName, "r");
     if (!file) {
         printf("File tidak ditemukan!\n");
+        printf("Tekan enter untuk kembali ...");
+        getch();
+        openFile();
     } else {
         char text[100];
         while (fgets(text, 100, file) != NULL) {
@@ -27,11 +30,11 @@ void openFile(){
     printf("Apakah anda ingin mengedit teks ? (y/n)\n");
     getch();
     choice = getche();
-				if(choice == 'y'){
-					findReplace(fileName);
-					getch();
-				}else{
-					printf("\nPilihan tidak seusai");
-				}
+    if(choice == 'y'){
+        findReplace(fileName);
+        getch();
+    }else{
+        printf("\nPilihan tidak seusai");
+    }
 }
 

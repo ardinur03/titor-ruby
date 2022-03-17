@@ -10,35 +10,38 @@ void duplicateFile()
    FILE *source, *target;
    system ("cls");
 
+   backErrorSource:
    printf("Enter name of file to copy\n");
-   fflush(stdin);
-   gets(source_file);
+   scanf("%s", source_file);
 
    source = fopen(source_file, "r");
 
    if (source == NULL)
    {
-      printf("Press any key to exit...\n");
-      exit(EXIT_FAILURE);
-   }
+      printf("\nError opening file\n");
+      goto backErrorSource;
+   } 
 
+   backError:
    printf("Enter name of target file\n");
-   gets(target_file);
-
+   scanf("%s", target_file);
    target = fopen(target_file, "w");
 
    if (target == NULL)
    {
       fclose(source);
-      printf("Press any key to exit...\n");
-      exit(EXIT_FAILURE);
-   }
+      printf("\nError opening file\n");
+      goto backError;
+   } 
 
-   while ((ch = fgetc(source)) != EOF)
+   while ((ch = fgetc(source)) != EOF){
       fputc(ch, target);
-
+   }
    printf("File copied successfully.\n");
-
+   printf("Press any key to continue...");
+   getch();
    fclose(source);
    fclose(target);
+
+   system("cls");
 }
