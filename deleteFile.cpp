@@ -8,13 +8,13 @@ int destroyFile(char nama_file_temp[30]);
 void deleteFile(){
     char namaFile[30];
     bool statusFile;
-    printf("\t\tMasukkan nama file yang akan dihapus: ");
+    printf("\t\tEnter the name of the file you want to delete: ");
     scanf("%s", namaFile);
     statusFile = destroyFile(namaFile);
     if (statusFile == true){
-        printf("File : %s berhasil dihapus\n", namaFile);
+        printf("File : %s successfully deleted\n", namaFile);
     } else  {
-        printf("File : %s gagal dihapus atau file tidak ada di dalam direktori\n", namaFile);
+        printf("File : %s failed to delete or the file is not in the directory\n", namaFile);
     }
 }
 

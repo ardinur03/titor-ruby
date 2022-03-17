@@ -1,41 +1,19 @@
 [Editors]
 <<<<<<< HEAD
+<<<<<<< HEAD
 Order=2,8,18,22,23
 =======
 Order=2,20,19,21,9
 >>>>>>> main
 Focused=23
+=======
+Order=2
+Focused=2
+>>>>>>> main
 [Editor_0]
 CursorCol=1
 CursorRow=3
 TopLine=1
-LeftChar=1
-<<<<<<< HEAD
-[Editor_2]
-CursorCol=11
-CursorRow=188
-TopLine=155
-LeftChar=1
-[Editor_3]
-CursorCol=18
-CursorRow=8
-TopLine=1
-LeftChar=1
-[Editor_6]
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_7]
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_9]
-CursorCol=35
-CursorRow=73
-TopLine=153
-=======
 LeftChar=1
 [Editor_3]
 CursorCol=34
@@ -48,14 +26,9 @@ CursorRow=2
 TopLine=1
 LeftChar=1
 [Editor_2]
-<<<<<<< HEAD
-CursorCol=11
-CursorRow=188
-TopLine=155
-=======
-CursorCol=6
-CursorRow=34
-TopLine=31
+CursorCol=3
+CursorRow=58
+TopLine=7
 >>>>>>> 8c884cb3b31f29b1d2e57c2f2e81d6c79676df94
 LeftChar=1
 [Editor_4]
@@ -77,7 +50,6 @@ LeftChar=1
 CursorCol=1
 CursorRow=25
 TopLine=3
->>>>>>> main
 LeftChar=1
 [Editor_13]
 CursorCol=1
@@ -85,12 +57,15 @@ CursorRow=17
 TopLine=1
 LeftChar=1
 <<<<<<< HEAD
+<<<<<<< HEAD
 [Editor_18]
 CursorCol=2
 CursorRow=76
 TopLine=1
 =======
 LeftChar=1
+=======
+>>>>>>> main
 [Editor_7]
 CursorCol=4
 CursorRow=18
@@ -99,7 +74,7 @@ LeftChar=1
 [Editor_9]
 CursorCol=35
 CursorRow=73
-TopLine=168
+TopLine=165
 LeftChar=1
 [Editor_15]
 CursorCol=1
@@ -107,9 +82,9 @@ CursorRow=1
 TopLine=1
 LeftChar=1
 [Editor_18]
-CursorCol=1
-CursorRow=1
-TopLine=33
+CursorCol=44
+CursorRow=40
+TopLine=1
 LeftChar=1
 [Editor_17]
 CursorCol=1
@@ -124,11 +99,11 @@ LeftChar=1
 [Editor_8]
 CursorCol=1
 CursorRow=1
-TopLine=1
+TopLine=13
 LeftChar=1
 [Editor_21]
-CursorCol=1
-CursorRow=38
+CursorCol=32
+CursorRow=21
 TopLine=1
 LeftChar=1
 [Editor_11]
@@ -142,23 +117,12 @@ CursorRow=1
 TopLine=1
 LeftChar=1
 [Editor_19]
-CursorCol=24
-CursorRow=27
-TopLine=1
+CursorCol=27
+CursorRow=25
+TopLine=8
 LeftChar=1
 [Editor_20]
 CursorCol=1
 CursorRow=1
-TopLine=1
->>>>>>> main
-LeftChar=1
-[Editor_22]
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_23]
-CursorCol=7
-CursorRow=5
 TopLine=1
 LeftChar=1

@@ -6,6 +6,8 @@
 #include "kelolaText.h"
 #include "saveToFile.h"
 #include "openFile.h"
+#include "duplicateFile.h"
+#include "renameFile.h"
 
 void app() {
     home();
@@ -50,6 +52,10 @@ void home(){
         exit(-1);
         break;
     default:
+    	printf("\n Wrong Input!");
+	 	getch();
+	 	system("cls");
+		home();
         break;
     }
 }   
@@ -155,7 +161,7 @@ void newFile(){
     int jmlBaris = insertMode(0, &text);
     while (1)
     {
-        printf("Apakah anda ingin menyimpan file? (y/n) : ");
+        printf("Do you want to save the file? (y/n) : ");
         choice = getch();
         if (choice == 'y')
         {
@@ -163,12 +169,12 @@ void newFile(){
             break;
         } else if (choice == 'n') {
         	system("cls");
-        	printf("\nFile anda tidak tersimpan!");
+        	printf("\nYour file is not saved!");
         	getch();
             break;
         } else {
             printf("\n");
-            printf("Inputan tidak benar!\n");
+            printf("Wrong Input!\n");
         }
     }   
 }
@@ -184,15 +190,21 @@ void run(){
         choose = getch();
         switch (choose)
         {
-        case NEWFILE: // ctrl + n = new file
+        case NEWFILE: // ctrl + n = New file
             newFile();
     	    system("cls");
             break;
+        case DUPLICATE:
+        	duplicateFile(); // ctrl + d = Duplicate File
+        	break;
+        case RENAMEFILE:
+        	renameFile(); // ctrl + r = Rename File
+        	break;
         case OPENFILE: // ctrl + o =  Open File
             openFile();
     	    system("cls");
             break;
-        case DELETEFILE: // ctrl + d = Delete File
+        case DELETEFILE: // ctrl + x = Delete File
             deleteFile();   
             break;
         case QUIT: // ctrl + q = Quit
@@ -201,10 +213,10 @@ void run(){
         case SAVE_FILE:
             // ctrl + s = Save File
             break;
-        // tambahin shortcutnya fi app.h gais
+        
         default:
         system("cls");
-		printf("\t\t\t\tInput Salah!\n");
+		printf("\t\t\t\tWrong Input!\n");
 		break;
         }
     } while (choose != QUIT );
@@ -213,7 +225,7 @@ void run(){
 }
 
 void backMenuHome(){
-    printf("Tekan Enter untuk kembali ke menu home ...\n");
+    printf("Press Enter to return to the home menu ...\n");
     getch();
     system("cls");
     home();
