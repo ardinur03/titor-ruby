@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <windows.h>
 
 void renameFile()
 {
@@ -6,6 +7,7 @@ void renameFile()
     char oldName[100], newName[100];
 
     // Input old and new file name
+    system ("cls");
     printf("masukan nama file yang akan diubah: ");
     scanf("%s", oldName);
 
