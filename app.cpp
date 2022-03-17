@@ -52,6 +52,10 @@ void home(){
         exit(-1);
         break;
     default:
+    	printf("\nInput Salah!");
+	 	getch();
+	 	system("cls");
+		home();
         break;
     }
 }   
