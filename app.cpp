@@ -89,11 +89,11 @@ void procedureShorcut(){
     printf("|                            About TiTOR                           |\n");
     printf("+==================================================================+\n"); 
     printf("|                                                                  |\n");
-    printf("| ctrl + n : Used to create File                                   |\n");
-	printf("| ctrl + d : Used to duplicate Files                               |\n");
-    printf("| ctrl + x : Used to delete files                                  |\n");
-    printf("| ctrl + o : Used to open File                                     |\n");
-    printf("| ctrl + n : Used to rename files                                  |\n");
+    printf("| ctrl + n : Used to create file                                   |\n");
+	printf("| ctrl + d : Used to duplicate file                                |\n");
+    printf("| ctrl + x : Used to delete file                                   |\n");
+    printf("| ctrl + o : Used to open file                                     |\n");
+    printf("| ctrl + n : Used to rename file                                   |\n");
     printf("| ctrl + q : Used to go out                                        |\n");
     printf("| ctrl + s : Used for save                                         |\n");
     printf("| ctrl + v : Used for paste                                        |\n");
