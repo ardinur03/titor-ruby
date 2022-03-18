@@ -18,8 +18,8 @@ void printText(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 
 void printLabelCmdMode(){
 	printf("\n                                      COMMAND MODE\n\n");
-	printf("I: Pindah Baris Keatas      E: Edit Baris      BACKSPACE: Hapus Baris       CTRL+C: Salin Baris\n");
-	printf("K: Pindah Baris Kebawah     Q: Mode Insert     ENTER    : Tambah Baris      CTRL+V: Tempel Baris\n\n");
+	printf("I: Move Row Up              E: Edit Line       BACKSPACE: Delete Line       CTRL+C: Copy Line\n");
+	printf("K: Move Row Down            Q: Mode Insert     ENTER    : Add Line          CTRL+V: Paste Line\n\n");
 }
 
 void incCurBaris(int *curBaris, int jmlBaris){

@@ -67,11 +67,11 @@ void procedure(){
     printf("|                            About TiTOR                           |\n");
     printf("+==================================================================+\n"); 
     printf("|                                                                  |\n");
-    printf("| TiTOR atau Text EdiTOR adalah aplikasi yang dapat mempermudah    |\n");
-	printf("| user dalam menambah, mengubah,  dan menyimpan text dengan        |\n");
-    printf("| tampilan yang sederhana dan mudah digunakan.Aplikasi ini berbasis|\n");
-    printf("| console yang dibuat menggunakan bahasa c++. Pembuatan aplikasi   |\n");
-    printf("| ini disusun oleh :                                               |\n");
+    printf("| TiTOR or Text Editor is an application that can make it easier   |\n");
+	printf("| for users to add, change, and save text with a simple and        |\n");
+    printf("| easy-to-use interface. This application is based on a console    |\n");
+    printf("| made using the C++ language. The making of this application was  |\n");
+    printf("| compiled by :                                                    |\n");
     printf("| Lolla Mariah                                                     |\n");
     printf("| Luthfie Yannuardy                                                |\n");
     printf("| Muhamad Ardi Nur Insan                                           |\n");
@@ -89,16 +89,16 @@ void procedureShorcut(){
     printf("|                            About TiTOR                           |\n");
     printf("+==================================================================+\n"); 
     printf("|                                                                  |\n");
-    printf("| ctrl + n : Digunakan untuk membuat File                          |\n");
-	printf("| ctrl + d : Digunakan untuk menduplikat File                      |\n");
-    printf("| ctrl + x : Digunakan untuk delete File                           |\n");
-    printf("| ctrl + o : Digunakan untuk membuka File                          |\n");
-    printf("| ctrl + n : Digunakan untuk rename File                           |\n");
-    printf("| ctrl + q : Digunakan untuk keluar                                |\n");
-    printf("| ctrl + s : Digunakan untuk save                                  |\n");
-    printf("| ctrl + v : Digunakan untuk paste                                 |\n");
-    printf("| ctrl + y : Digunakan untuk redo                                  |\n");
-    printf("| ctrl + z : Digunakan untuk undo                                  |\n");
+    printf("| ctrl + n : Used to create File                                   |\n");
+	printf("| ctrl + d : Used to duplicate Files                               |\n");
+    printf("| ctrl + x : Used to delete files                                  |\n");
+    printf("| ctrl + o : Used to open File                                     |\n");
+    printf("| ctrl + n : Used to rename files                                  |\n");
+    printf("| ctrl + q : Used to go out                                        |\n");
+    printf("| ctrl + s : Used for save                                         |\n");
+    printf("| ctrl + v : Used for paste                                        |\n");
+    printf("| ctrl + y : Used for redo                                         |\n");
+    printf("| ctrl + z : Used for undo                                         |\n");
     printf("|+================================================================+|\n");
 }
 
