@@ -160,7 +160,7 @@ void newFile(){
 	system("cls");
     char choice;
     char text[MAXBARIS][MAXKOLOM];
-    int jmlBaris = insertMode(0, &text);
+    int jmlBaris = insertMode(0, text);
     while (1)
     {
         printf("Do you want to save the file? (y/n) : ");
