@@ -5,6 +5,7 @@
 #include <math.h>
 #include <windows.h>
 #include <ctype.h>
+#include "loading.h"
 
 void gotoxy(int X, int y) {
  COORD coord;
@@ -25,8 +26,4 @@ void loading_screen() {
  printf("\n\n");
  //system("pause");
  system("cls");
-}
-
-int main(){
-  loading_screen();
 }

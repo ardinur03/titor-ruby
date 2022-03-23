@@ -63,6 +63,7 @@ void home(){
 
 // prosedure about application TiTOR
 void procedure(){
+	system("cls");
 	printf("+==================================================================+\n");
     printf("|                            About TiTOR                           |\n");
     printf("+==================================================================+\n"); 
@@ -85,6 +86,7 @@ void procedure(){
 
 // prosedure shorcut application TiTOR
 void procedureShorcut(){
+	system("cls");
 	printf("+==================================================================+\n");
     printf("|                            About TiTOR                           |\n");
     printf("+==================================================================+\n"); 

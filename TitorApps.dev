@@ -28,14 +28,14 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+CompilerSettings=0;0;0;0;0;0;0;0;0;1;000;0;0;0;0;0;0;1;0;0;0;0;0;0
 <<<<<<< HEAD
 UnitCount=7
 =======
 <<<<<<< HEAD
 UnitCount=3
 =======
-UnitCount=23
+UnitCount=24
 >>>>>>> main
 >>>>>>> main
 
@@ -175,25 +175,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit13]
-FileName=Makefile.win
-Folder=
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit14]
-FileName=README.md
-Folder=
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit15]
 FileName=renameFile.cpp
 Folder=
 Compile=1
@@ -203,8 +185,18 @@ OverrideBuildCmd=0
 BuildCmd=
 CompileCpp=1
 
-[Unit16]
+[Unit15]
 FileName=TitorApps.dev
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+CompileCpp=1
+
+[Unit16]
+FileName=TitorApps.exe
 CompileCpp=1
 Folder=
 Compile=0
@@ -214,15 +206,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit17]
-FileName=TitorApps.exe
-Folder=
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit18]
 FileName=TitorApps.layout
 Folder=
 Compile=0
@@ -231,7 +214,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit18]
 FileName=findReplace.cpp
 Folder=
 Compile=1
@@ -241,8 +224,18 @@ OverrideBuildCmd=0
 BuildCmd=
 CompileCpp=1
 
-[Unit20]
+[Unit19]
 FileName=saveToFile.cpp
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+CompileCpp=1
+
+[Unit20]
+FileName=saveToFIle.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -262,16 +255,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit21]
-FileName=saveToFIle.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit22]
 FileName=openFile.cpp
 CompileCpp=1
 Folder=
@@ -281,12 +264,51 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit23]
+[Unit22]
 FileName=openFile.h
 CompileCpp=1
 Folder=
 Compile=1
 Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit23]
+FileName=loading.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit25]
+FileName=loading.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit24]
+FileName=loading.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit13]
+FileName=README.md
+Folder=
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
