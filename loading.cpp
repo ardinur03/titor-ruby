@@ -26,7 +26,3 @@ void loading_screen() {
  //system("pause");
  system("cls");
 }
-
-int main(){
-  loading_screen();
-}
