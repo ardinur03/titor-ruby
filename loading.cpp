@@ -5,6 +5,7 @@
 #include <math.h>
 #include <windows.h>
 #include <ctype.h>
+#include "loading.h"
 
 void gotoxy(int X, int y) {
  COORD coord;
