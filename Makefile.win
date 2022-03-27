@@ -1,18 +1,18 @@
 # Project: TitorApps
 # Makefile created by Embarcadero Dev-C++ 6.3
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o saveToFile.o openFile.o loading.o
-LINKOBJ  = main.o app.o deleteFile.o deleteText.o duplicateFile.o kelolaText.o renameFile.o findReplace.o saveToFile.o openFile.o loading.o
-LIBS     = -L"C:/Apps/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"C:/Apps/Dev-Cpp/TDM-GCC-64/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
-CXXINCS  = -I"C:/Apps/Dev-Cpp/TDM-GCC-64/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+OBJ      = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o loading.o openFile.o renameFile.o saveToFile.o
+LINKOBJ  = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o loading.o openFile.o renameFile.o saveToFile.o
+LIBS     = -L"D:/Dev-Cpp/TDM-GCC-64/lib" -L"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/Dev-Cpp/TDM-GCC-64/include" -I"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/Dev-Cpp/TDM-GCC-64/include" -I"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = TitorApps.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
-DEL      = C:\Apps\Dev-Cpp\devcpp.exe INTERNAL_DEL
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+DEL      = D:\Dev-Cpp\DevCpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -27,6 +27,9 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
+ansiEscapes.o: ansiEscapes.cpp
+	$(CPP) -c ansiEscapes.cpp -o ansiEscapes.o $(CXXFLAGS)
+
 app.o: app.cpp
 	$(CPP) -c app.cpp -o app.o $(CXXFLAGS)
 
@@ -39,20 +42,20 @@ deleteText.o: deleteText.cpp
 duplicateFile.o: duplicateFile.cpp
 	$(CPP) -c duplicateFile.cpp -o duplicateFile.o $(CXXFLAGS)
 
-kelolaText.o: kelolaText.cpp
-	$(CPP) -c kelolaText.cpp -o kelolaText.o $(CXXFLAGS)
-
-renameFile.o: renameFile.cpp
-	$(CPP) -c renameFile.cpp -o renameFile.o $(CXXFLAGS)
-
 findReplace.o: findReplace.cpp
 	$(CPP) -c findReplace.cpp -o findReplace.o $(CXXFLAGS)
 
-saveToFile.o: saveToFile.cpp
-	$(CPP) -c saveToFile.cpp -o saveToFile.o $(CXXFLAGS)
+kelolaText.o: kelolaText.cpp
+	$(CPP) -c kelolaText.cpp -o kelolaText.o $(CXXFLAGS)
+
+loading.o: loading.cpp
+	$(CPP) -c loading.cpp -o loading.o $(CXXFLAGS)
 
 openFile.o: openFile.cpp
 	$(CPP) -c openFile.cpp -o openFile.o $(CXXFLAGS)
 
-loading.o: loading.cpp
-	$(CPP) -c loading.cpp -o loading.o $(CXXFLAGS)
+renameFile.o: renameFile.cpp
+	$(CPP) -c renameFile.cpp -o renameFile.o $(CXXFLAGS)
+
+saveToFile.o: saveToFile.cpp
+	$(CPP) -c saveToFile.cpp -o saveToFile.o $(CXXFLAGS)

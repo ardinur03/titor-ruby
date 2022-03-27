@@ -7,7 +7,6 @@ void backMenuHome();
 void run();
 void procedure();
 void procedureShorcut();
-void saveFile(int jmlBaris);
 
 #define ENTER 13 // enter
 #define SAVE_FILE 19 // ctrl + s

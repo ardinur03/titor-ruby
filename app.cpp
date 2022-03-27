@@ -38,7 +38,7 @@ void home(){
         run();
         break;
     case 2:
-        printf("About... \n");
+        printf("About...\n");
         procedure();
         backMenuHome();
         break;
@@ -49,7 +49,7 @@ void home(){
         break;
     case 4:
         printf("Exit...\n");
-        exit(-1);
+        exit(0);
         break;
     default:
     	printf("\n Wrong Input!");
@@ -159,8 +159,9 @@ void textEditor(){
 void newFile(){
 	system("cls");
     char choice;
-    char text[MAXBARIS][MAXKOLOM];
-    int jmlBaris = insertMode(0, text);
+    char text[MAXBARIS][MAXKOLOMARR];
+    setArr(text);
+    int jmlBaris = insertMode(text, 1);
     while (1)
     {
         printf("Do you want to save the file? (y/n) : ");

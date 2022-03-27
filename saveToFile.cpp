@@ -4,7 +4,7 @@
 #include <windows.h>
 #include "kelolaText.h"
 
-void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
+void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	FILE *file;
 	file = fopen(filename, "w");
 	for(int i=0; i<jmlBaris; i++){
@@ -13,7 +13,7 @@ void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	fclose(file);
 }
 
-void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
+void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	char *namaFile, *ektensiFile, *namaFileTemp;
 	system("cls");
 
