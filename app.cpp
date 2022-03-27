@@ -38,7 +38,7 @@ void home(){
         run();
         break;
     case 2:
-        printf("About...\n");
+        printf("About... \n");
         procedure();
         backMenuHome();
         break;
