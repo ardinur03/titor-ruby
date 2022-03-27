@@ -38,7 +38,7 @@ void home(){
         run();
         break;
     case 2:
-        printf("About...\n");
+        printf("About... \n");
         procedure();
         backMenuHome();
         break;
@@ -88,7 +88,7 @@ void procedure(){
 void procedureShorcut(){
 	system("cls");
 	printf("+==================================================================+\n");
-    printf("|                            About TiTOR                           |\n");
+    printf("|                          Shorcut TiTOR                           |\n");
     printf("+==================================================================+\n"); 
     printf("|                                                                  |\n");
     printf("| ctrl + n : Used to create file                                   |\n");

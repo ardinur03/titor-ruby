@@ -20,10 +20,18 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOM]){
 	printf("Enter file name: ");
 	namaFile=(char*) malloc(20* sizeof(char)); 
 	scanf("%s", namaFile);
+	backAgain:
 	printf("Enter the file extension name (without full stop): ");
 	ektensiFile=(char*) malloc(5* sizeof(char));
 	scanf("%s", ektensiFile);
-
+	// validasi jangan input titik di dalam string
+	for(int i=0; i<strlen(ektensiFile); i++){
+		if(ektensiFile[i] =='.'){
+			printf("Extension name can't have full stop.\n");
+			getch();
+			goto backAgain;
+		}
+	}
 	strcat(namaFile, ".");
 	namaFileTemp = strcat(namaFile, ektensiFile);
 
