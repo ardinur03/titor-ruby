@@ -13,6 +13,7 @@ BIN      = TitorApps.exe
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3
 DEL      = C:\Apps\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BIN) all-after

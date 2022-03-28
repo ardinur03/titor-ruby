@@ -19,7 +19,7 @@ void printText(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 
 void print2DArr(char text[MAXBARIS][MAXKOLOMARR], int start, int end){
 	for(int i = start; i<end; i++){
-		printf("%s\n", text[i]);
+		printf("%s", text[i]);
 	}
 }
 

@@ -35,11 +35,11 @@ void findAndReplaceFile(){
         printf("Please check whether file exists and you have read/write privilege.\n");
         exit(EXIT_SUCCESS);
     }
-    
+    printf("\n");
 	/* print text sebelum */
-//	printFromFile(path); /*Masih error*/
+	printFromFile(path); 
 
-    printf("Enter word to replace: ");
+    printf("\n\nEnter word to replace: ");
     scanf("%s", oldWord);
 
     printf("Replace '%s' with: ", oldWord);
@@ -58,17 +58,18 @@ void findAndReplaceFile(){
         fputs(buffer, fTemp);
     }
 
-
     /* Close all files to release resource */
     fclose(fPtr);
     fclose(fTemp);
 
-
-    /* Delete original source file */
+   /* Delete original source file */
     remove(path);
 
     /* Rename temp file as original file */
     rename("replace.txt", path);
+
+    // print sesudah di find replaca
+	printFromFile(path); 
 
     printf("\nSuccessfully replaced all occurrences of '%s' with '%s'.\n", oldWord, newWord);
     system("Pause");

@@ -47,6 +47,7 @@ void printFromFile(char path[50]){
         printf("%s", text);
     }	
 	
+    fclose(read);
 }
 
 // open file and print to array 2 dimensi
@@ -55,6 +56,7 @@ void openFileTwoDimensi(){
     system("cls");
     char *fileName;
     char text[MAXBARIS][MAXKOLOMARR];
+    setArr(text);
     printf("TitorApps\n");
     printf("Enter file name: ");
     fileName=(char*) malloc(20* sizeof(char)); 
@@ -65,18 +67,21 @@ void openFileTwoDimensi(){
         printf("File not found!\n");
         printf("Press enter to go back ...");
         getch();
-        openFile();
+        // openFile();
     } else {
         system("cls");
 
         int i = 0;
+        int jmlBaris;
         while (fgets(text[i], MAXKOLOMARR, file) != NULL) {
             i++;
         }
         fclose(file);
 
+        print2DArr(text, 0, i);
+
         // insert mode
-        int jmlBaris = insertMode(text, i);
+        jmlBaris = insertMode(text, i);
 
         // update file fileName
         while (1)
@@ -100,13 +105,5 @@ void openFileTwoDimensi(){
 
     }
 
-    // printf("Do you want to edit the text? (y/n)\n");
-    // getch();
-    // choice = getche();
-    // if(choice == 'y'){
-    //     findReplace(fileName);
-    //     getch();
-    // }else{
-    //     printf("\nWrong Input!");
-    // }
 }
+
