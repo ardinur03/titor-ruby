@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 #include <windows.h>
 
 void renameFile()
@@ -11,9 +12,22 @@ void renameFile()
     printf("Enter the name of the file you want to change: ");
     scanf("%s", oldName);
 
+    backAgainNewName:
     printf("enter new file name: ");
     scanf("%s", newName);
-
+    // validasi jika ektensi .exe 
+	if(strcmp(newName, "exe")==0){
+		printf("\nInvalid file extension name.\n");
+		getch();
+		system("cls");
+		goto backAgainNewName;
+	}else if(fopen(newName, "r") != NULL){
+		printf("File already exists.\n");
+		printf("Press any key to continue...\n");
+		getch();
+		system("cls");
+		goto backAgainNewName;
+	}
 
     // rename old file with new name
     if (rename(oldName, newName) == 0)
