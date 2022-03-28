@@ -3,5 +3,5 @@
 
 void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]);
 void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]);
-
+void updateFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]);
 #endif

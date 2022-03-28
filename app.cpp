@@ -204,7 +204,7 @@ void run(){
         	renameFile(); // ctrl + r = Rename File
         	break;
         case OPENFILE: // ctrl + o =  Open File
-            openFile();
+            openFileTwoDimensi();
     	    system("cls");
             break;
         case DELETEFILE: // ctrl + x = Delete File

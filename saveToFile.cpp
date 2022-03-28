@@ -40,3 +40,12 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	printf("Press any button to go back");
 	getch();
 }
+
+void updateFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
+	FILE *file;
+	file = fopen(filename, "w");
+	for(int i=0; i<jmlBaris; i++){
+		fprintf(file, "%s\n", text[i]);
+	}
+	fclose(file);
+}

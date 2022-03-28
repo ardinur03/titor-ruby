@@ -1,5 +1,6 @@
 #ifndef ANSI_ESCAPES_H
 #define ANSI_ESCAPES_H
+#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x4
 
 enum clearScreenCodes{
 	CLEAR_FROM_CURSOR_TO_END,

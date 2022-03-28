@@ -2,4 +2,5 @@
 #define OPEN_FILE_H
 
 void openFile();
+void openFileTwoDimensi();
 #endif
