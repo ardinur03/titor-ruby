@@ -1,37 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <conio.h>
+#include <windows.h>
+#include "findReplace.h"
+#include "openFile.h"
 
-#define BUFFER_SIZE 1000
+#define BUFFER_SIZE 100
 
 
-void findReplace(char *fileName_param)
-{
+/* Function declaration */
+void findAndReplaceFile(){
+	system("cls");
     /* File pointer to hold reference of input file */
     FILE * fPtr;
     FILE * fTemp;
     char path[100];
     
     char buffer[BUFFER_SIZE];
-    char newline[BUFFER_SIZE];
-    int line, count;
-    
-//    printf("pilih file yang akan di edit: ");
-//    scanf("%s", path);
+    char oldWord[100], newWord[100];
 
-    printf("Enter line number to replace : ");
-    scanf("%d", &line);
-
-    /* Remove extra new line character from stdin */
-    fflush(stdin);
-
-    printf("Replace '%d' the line be changed to ?: ", line);
-    fgets(newline, BUFFER_SIZE, stdin);
-
-
+    printf("Enter path of source file: ");
+    scanf("%s", path);
+		        
     /*  Open all required files */
-    fPtr  = fopen(fileName_param, "r");
-    fTemp = fopen("replace.tmp", "w"); 
+    fPtr  = fopen(path, "r");
+    fTemp = fopen("replace.txt", "w"); 
 
     /* fopen() return NULL if unable to open file in given mode. */
     if (fPtr == NULL || fTemp == NULL)
@@ -41,22 +35,27 @@ void findReplace(char *fileName_param)
         printf("Please check whether file exists and you have read/write privilege.\n");
         exit(EXIT_SUCCESS);
     }
+    
+	/* print text sebelum */
+//	printFromFile(path); /*Masih error*/
 
+    printf("Enter word to replace: ");
+    scanf("%s", oldWord);
+
+    printf("Replace '%s' with: ", oldWord);
+    scanf("%s", newWord);
 
     /*
      * Read line from source file and write to destination 
-     * file after replacing given line.
+     * file after replacing given word.
      */
-    count = 0;
     while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
     {
-        count++;
+        // Replace all occurrence of word from current line
+        findReplace(buffer, oldWord, newWord);
 
-        /* If current line is line to replace */
-        if (count == line)
-            fputs(newline, fTemp);
-        else
-            fputs(buffer, fTemp);
+        // After replacing write it to temp file.
+        fputs(buffer, fTemp);
     }
 
 
@@ -66,11 +65,54 @@ void findReplace(char *fileName_param)
 
 
     /* Delete original source file */
-    remove(fileName_param);
+    remove(path);
 
-    /* Rename temporary file as original file */
-    rename("replace.tmp", fileName_param);
+    /* Rename temp file as original file */
+    rename("replace.txt", path);
 
-    printf("\nSuccessfully replaced '%d' line with '%s'.", line, newline);
+    printf("\nSuccessfully replaced all occurrences of '%s' with '%s'.\n", oldWord, newWord);
+    system("Pause");
+    //print text sesudah
+}
 
+
+
+/**
+ * Replace all occurrences of a given a word in string.
+ */
+void findReplace(char *str, const char *oldWord, const char *newWord)
+{
+    char *pos, temp[BUFFER_SIZE];
+    int index = 0;
+    int owlen;
+
+    owlen = strlen(oldWord);
+
+    // Fix: If oldWord and newWord are same it goes to infinite loop
+    if (!strcmp(oldWord, newWord)) {
+        return;
+    }
+
+
+    /*
+     * Repeat till all occurrences are replaced. 
+     */
+    while ((pos = strstr(str, oldWord)) != NULL)
+    {
+        // Backup current line
+        strcpy(temp, str);
+
+        // Index of current found word
+        index = pos - str;
+
+        // Terminate str after word found index
+        str[index] = '\0';
+
+        // Concatenate str with new word 
+        strcat(str, newWord);
+        
+        // Concatenate str with remaining words after 
+        // oldword found index.
+        strcat(str, temp + index + owlen);
+    }
 }

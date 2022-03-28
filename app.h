@@ -13,6 +13,7 @@ void procedureShorcut();
 #define PASTE 22 // ctrl + v
 #define REDO 25 // ctrl + y
 #define UNDO 26 // ctrl + z
+#define FIND_REPLACE 6 //ctrl + f
 
 #define NEWFILE 14 // ctrl + n
 #define OPENFILE 15 // ctrl + o

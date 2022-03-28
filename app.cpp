@@ -8,13 +8,16 @@
 #include "openFile.h"
 #include "duplicateFile.h"
 #include "renameFile.h"
+#include "findReplace.h"
 
-void app() {
+void app()
+{
     home();
 }
 
 // menu utama home
-void home(){
+void home()
+{
     int choose;
 
     printf("+===========================================================+\n");
@@ -52,24 +55,24 @@ void home(){
         exit(0);
         break;
     default:
-    	printf("\n Wrong Input!");
-	 	getch();
-	 	system("cls");
-		home();
+        printf("\n Wrong Input!");
+        getch();
+        system("cls");
+        home();
         break;
     }
-}   
-
+}
 
 // prosedure about application TiTOR
-void procedure(){
-	system("cls");
-	printf("+==================================================================+\n");
+void procedure()
+{
+    system("cls");
+    printf("+==================================================================+\n");
     printf("|                            About TiTOR                           |\n");
-    printf("+==================================================================+\n"); 
+    printf("+==================================================================+\n");
     printf("|                                                                  |\n");
     printf("| TiTOR or Text Editor is an application that can make it easier   |\n");
-	printf("| for users to add, change, and save text with a simple and        |\n");
+    printf("| for users to add, change, and save text with a simple and        |\n");
     printf("| easy-to-use interface. This application is based on a console    |\n");
     printf("| made using the C++ language. The making of this application was  |\n");
     printf("| compiled by :                                                    |\n");
@@ -85,14 +88,15 @@ void procedure(){
 }
 
 // prosedure shorcut application TiTOR
-void procedureShorcut(){
-	system("cls");
-	printf("+==================================================================+\n");
+void procedureShorcut()
+{
+    system("cls");
+    printf("+==================================================================+\n");
     printf("|                          Shorcut TiTOR                           |\n");
-    printf("+==================================================================+\n"); 
+    printf("+==================================================================+\n");
     printf("|                                                                  |\n");
     printf("| ctrl + n : Used to create file                                   |\n");
-	printf("| ctrl + d : Used to duplicate file                                |\n");
+    printf("| ctrl + d : Used to duplicate file                                |\n");
     printf("| ctrl + x : Used to delete file                                   |\n");
     printf("| ctrl + o : Used to open file                                     |\n");
     printf("| ctrl + n : Used to rename file                                   |\n");
@@ -104,15 +108,15 @@ void procedureShorcut(){
     printf("|+================================================================+|\n");
 }
 
-
 // Sub-menu Run
-void run1(){
+void run1()
+{
 
     int choose;
 
     printf("+===========================================================+\n");
     printf("|                       Menu TiTOR                          |\n");
-    printf("+===========================================================+\n"); 
+    printf("+===========================================================+\n");
     printf("|                                                           |\n");
     printf("| 1. Create File                                            |\n");
     printf("| 2. Open File                                              |\n");
@@ -149,15 +153,18 @@ void run1(){
     }
 }
 
-void textEditor(){
+void textEditor()
+{
     printf(" TiTOR APPS\n");
     printf("\t  ctrl+n   : New File                    ctrl+o : Open File\n");
     printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
     printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
+    printf("\t  ctrl+f   : Find and Replace\n");
 }
 
-void newFile(){
-	system("cls");
+void newFile()
+{
+    system("cls");
     char choice;
     char text[MAXBARIS][MAXKOLOMARR];
     setArr(text);
@@ -170,45 +177,51 @@ void newFile(){
         {
             saveFile(jmlBaris, text);
             break;
-        } else if (choice == 'n') {
-        	system("cls");
-        	printf("\nYour file is not saved!");
-        	getch();
+        }
+        else if (choice == 'n')
+        {
+            system("cls");
+            printf("\nYour file is not saved!");
+            getch();
             break;
-        } else {
+        }
+        else
+        {
             printf("\n");
             printf("Wrong Input!\n");
         }
-    }   
+    }
 }
 
-void run(){
+void run()
+{
     int choose;
-    
-    	system("cls");
+
+    system("cls");
     // View menu text editor
     do
     {
-    	textEditor();
+        textEditor();
         choose = getch();
         switch (choose)
         {
         case NEWFILE: // ctrl + n = New file
             newFile();
-    	    system("cls");
+            system("cls");
             break;
         case DUPLICATE:
-        	duplicateFile(); // ctrl + d = Duplicate File
-        	break;
+            duplicateFile(); // ctrl + d = Duplicate File
+            break;
         case RENAMEFILE:
-        	renameFile(); // ctrl + r = Rename File
-        	break;
+            renameFile(); // ctrl + r = Rename File
+            break;
         case OPENFILE: // ctrl + o =  Open File
             openFileTwoDimensi();
-    	    system("cls");
+            //            openFile();
+            system("cls");
             break;
         case DELETEFILE: // ctrl + x = Delete File
-            deleteFile();   
+            deleteFile();
             break;
         case QUIT: // ctrl + q = Quit
             backMenuHome();
@@ -216,18 +229,20 @@ void run(){
         case SAVE_FILE:
             // ctrl + s = Save File
             break;
-        
+        case FIND_REPLACE:
+            findAndReplaceFile();
+            system("cls");
+            break;
         default:
-        system("cls");
-		printf("\t\t\t\tWrong Input!\n");
-		break;
+            system("cls");
+            printf("\t\t\t\tWrong Input!\n");
+            break;
         }
-    } while (choose != QUIT );
-    
-
+    } while (choose != QUIT);
 }
 
-void backMenuHome(){
+void backMenuHome()
+{
     printf("Press Enter to return to the home menu ...\n");
     getch();
     system("cls");
