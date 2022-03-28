@@ -8,6 +8,7 @@
 #include "openFile.h"
 #include "duplicateFile.h"
 #include "renameFile.h"
+#include "findReplace.h"
 
 void app() {
     home();
@@ -154,6 +155,7 @@ void textEditor(){
     printf("\t  ctrl+n   : New File                    ctrl+o : Open File\n");
     printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
     printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
+    printf("\t  ctrl+f   : Find and Replace\n");
 }
 
 void newFile(){
@@ -204,7 +206,7 @@ void run(){
         	renameFile(); // ctrl + r = Rename File
         	break;
         case OPENFILE: // ctrl + o =  Open File
-            openFile();
+//            openFile();
     	    system("cls");
             break;
         case DELETEFILE: // ctrl + x = Delete File
@@ -216,15 +218,16 @@ void run(){
         case SAVE_FILE:
             // ctrl + s = Save File
             break;
-        
+        case FIND_REPLACE:
+        	findAndReplaceFile();
+        	system("cls");
+        	break;
         default:
         system("cls");
 		printf("\t\t\t\tWrong Input!\n");
 		break;
         }
     } while (choose != QUIT );
-    
-
 }
 
 void backMenuHome(){
