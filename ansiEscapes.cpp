@@ -29,9 +29,6 @@ void setupConsole(){
 }
 
 void restoreConsole(){
-	//reset colors
-//	printf("\x1b[0m");
-	
 	//reset console mode
 	if(!SetConsoleMode(stdoutHandle, outModeInit)) {
 		exit(GetLastError());

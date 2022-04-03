@@ -168,8 +168,6 @@ int insertMode(char text[MAXBARIS][MAXKOLOMARR], int jmlBaris){
 	setupConsole();
 	
 	do{
-//		printf("\n\n\n\ny: %d", y);
-//		printf("\nx: %d", x);
 		moveTo(y, x);
 		buffer = getch();
 		switch(buffer){
