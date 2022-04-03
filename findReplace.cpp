@@ -9,10 +9,10 @@
 #define BUFFER_SIZE 100
 
 
-/* Function declaration */
+/* Deklarasi Fungsi */
 void findAndReplaceFile(){
 	system("cls");
-    /* File pointer to hold reference of input file */
+    /* Buka semua file yang dibutuhkan */
     FILE * fPtr;
     FILE * fTemp;
     char path[100];
@@ -23,14 +23,14 @@ void findAndReplaceFile(){
     printf("Enter path of source file: ");
     scanf("%s", path);
 		        
-    /*  Open all required files */
+    /* Buka semua file yang dibutuhkan */
     fPtr  = fopen(path, "r");
     fTemp = fopen("replace.txt", "w"); 
 
-    /* fopen() return NULL if unable to open file in given mode. */
+   /* fopen() mengembalikan NULL jika tidak dapat membuka file dalam mode yang diberikan. */
     if (fPtr == NULL || fTemp == NULL)
     {
-        /* Unable to open file hence exit */
+        /* Tidak dapat membuka file maka keluar */
         printf("\nUnable to open file.\n");
         printf("Please check whether file exists and you have read/write privilege.\n");
         exit(EXIT_SUCCESS);
@@ -46,29 +46,29 @@ void findAndReplaceFile(){
     scanf("%s", newWord);
 
     /*
-     * Read line from source file and write to destination 
-     * file after replacing given word.
+     * Baca baris dari file sumber dan tulis ke tujuan
+     * file setelah mengganti kata yang diberikan.
      */
     while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
     {
-        // Replace all occurrence of word from current line
+        // Ganti semua kemunculan kata dari baris saat ini
         findReplace(buffer, oldWord, newWord);
 
-        // After replacing write it to temp file.
+        // Setelah diganti tulis ke file temp.
         fputs(buffer, fTemp);
     }
 
-    /* Close all files to release resource */
+    /* Tutup semua file untuk melepaskan sumber */
     fclose(fPtr);
     fclose(fTemp);
 
-   /* Delete original source file */
+   /* Hapus file sumber */
     remove(path);
 
-    /* Rename temp file as original file */
+    /* Ganti nama file temp sebagai file asli */
     rename("replace.txt", path);
 
-    // print sesudah di find replaca
+    // print sesudah di find replace
 	printFromFile(path); 
 
     printf("\nSuccessfully replaced all occurrences of '%s' with '%s'.\n", oldWord, newWord);
@@ -79,7 +79,7 @@ void findAndReplaceFile(){
 
 
 /**
- * Replace all occurrences of a given a word in string.
+* Ganti semua kemunculan kata yang diberikan dalam string.
  */
 void findReplace(char *str, const char *oldWord, const char *newWord)
 {
@@ -89,31 +89,32 @@ void findReplace(char *str, const char *oldWord, const char *newWord)
 
     owlen = strlen(oldWord);
 
-    // Fix: If oldWord and newWord are same it goes to infinite loop
+    // Fix: Jika oldWord dan newWord sama maka akan menuju infinite loop
     if (!strcmp(oldWord, newWord)) {
         return;
     }
 
 
     /*
-     * Repeat till all occurrences are replaced. 
+     * Ulangi sampai semua kejadian diganti. 
      */
     while ((pos = strstr(str, oldWord)) != NULL)
     {
-        // Backup current line
+        // Cadangkan baris saat ini
         strcpy(temp, str);
 
-        // Index of current found word
+        // Indeks kata yang ditemukan saat ini
         index = pos - str;
 
-        // Terminate str after word found index
+        
+		// Hentikan str setelah kata ditemukan indeks
         str[index] = '\0';
 
-        // Concatenate str with new word 
+        /// Gabungkan str dengan kata baru 
         strcat(str, newWord);
         
-        // Concatenate str with remaining words after 
-        // oldword found index.
+        // Gabungkan str dengan kata-kata yang tersisa setelahnya
+        // kata lama ditemukan indeks.
         strcat(str, temp + index + owlen);
     }
 }
