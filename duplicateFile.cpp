@@ -1,7 +1,7 @@
 /*
  * Nama file duplicateFile.cpp
- * sumber_source_code : ... 
- * di edit oleh : ...
+ * sumber_source_code : https://forgetcode.com/c/577-copy-one-file-to-another-file
+ * di edit oleh : Naufal Salman Mulyadi
 */
 
 #include <stdio.h>

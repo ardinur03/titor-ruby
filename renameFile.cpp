@@ -1,7 +1,8 @@
 /*
  * Nama file renameFile.cpp
- * sumber_source_code : ... 
- * di edit oleh : ...
+ * sumber_source_code : https://www.tutorialspoint.com/c_standard_library/c_function_rename.htm
+ * di edit oleh : Naufal Salman Mulyadi
+				  Muhammad Ardi Nur Insan (validasi)
 */
 
 #include <stdio.h>
