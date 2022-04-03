@@ -1,3 +1,19 @@
+/**
+ * @file app.cpp
+ * @author 
+ * Lolla Mariah - 211511018
+ * Luthfie Yannuardy - 211511019
+ * Muhamad Ardi Nur Insan - 211511022
+ * Muhammad Zidan Hidayat - 211511026
+ * Naufal Salman Mulyadi - 211511028
+ * Shofiyah - 211511031
+ * @version 0.1
+ * @date 14 Februari 2022
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+*/
+
 #include "stdlib.h"
 #include <stdio.h>
 #include <conio.h>
@@ -217,7 +233,6 @@ void run()
             break;
         case OPENFILE: // ctrl + o =  Open File
             openFileTwoDimensi();
-            //            openFile();
             system("cls");
             break;
         case DELETEFILE: // ctrl + x = Delete File

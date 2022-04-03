@@ -1,12 +1,16 @@
 #ifndef app_h
 #define app_h
 
-void app();
-void home();
-void backMenuHome();
+void app(); // menu utama home
+void home(); // menu utama home
+void backMenuHome(); // modul kembali ke modul home()
+/**
+ * run ini digunakan untuk menjalankan aplikasi TiTOR
+ * terdapat shorcut: new file, duplicate file, delete file, open file, rename file, find and replace text di dalam file
+*/
 void run();
-void procedure();
-void procedureShorcut();
+void procedure(); // prosedur yang berisi tentang aplikasi TiTOR
+void procedureShorcut(); // prosedur yang berisi shorcut aplikasi TiTOR
 
 #define ENTER 13 // enter
 #define SAVE_FILE 19 // ctrl + s
