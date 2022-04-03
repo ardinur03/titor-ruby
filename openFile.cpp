@@ -6,7 +6,6 @@
 #include <conio.h>
 #include "saveToFIle.h"
 
-
 void printFromFile(char path[50]){
 	char text[80];
 	FILE *read = fopen(path, "r");

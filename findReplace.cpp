@@ -1,3 +1,9 @@
+/*
+ * file findReplace.cpp
+ * sumber_source_code : ... 
+ * di edit oleh : 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +13,6 @@
 #include "openFile.h"
 
 #define BUFFER_SIZE 100
-
 
 /* Deklarasi Fungsi */
 void findAndReplaceFile(){
@@ -62,7 +67,7 @@ void findAndReplaceFile(){
     fclose(fPtr);
     fclose(fTemp);
 
-   /* Hapus file sumber */
+    /* Hapus file sumber */
     remove(path);
 
     /* Ganti nama file temp sebagai file asli */

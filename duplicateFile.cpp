@@ -1,3 +1,9 @@
+/*
+ * Nama file duplicateFile.cpp
+ * sumber_source_code : ... 
+ * di edit oleh : ...
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
