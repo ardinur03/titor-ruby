@@ -1,7 +1,7 @@
 /*
  * file findReplace.cpp
- * sumber_source_code : ... 
- * di edit oleh : 
+ * sumber_source_code : https://codeforwin.org/2018/02/c-program-find-and-replace-a-word-in-file.html 
+ * di edit oleh : lolla mariah
 */
 
 #include <stdio.h>
