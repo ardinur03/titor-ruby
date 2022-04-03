@@ -1,3 +1,9 @@
+/*
+ * @file saveToFile.cpp
+ * sumber_source_code : mencoba sendiri dan di explore di link https://www.tutorialspoint.com/c_standard_library/c_function_fopen.htm
+ * di edit oleh : Muhamad Ardi Nur Insan
+*/
+
 #include <stdio.h>
 #include <cstring>
 #include <conio.h>
@@ -46,7 +52,6 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 			goto backAgain;
 		}
 	}
-	
 	
 	strcat(namaFile, ".");
 	namaFileTemp = strcat(namaFile, ektensiFile);

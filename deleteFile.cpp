@@ -1,3 +1,8 @@
+/*
+ * @file deleteFile.cpp
+ * sumber_source_code : https://www.tutorialspoint.com/c_standard_library/c_function_remove.htm
+ * di edit oleh : Muhamad Ardi Nur Insan
+*/
 #include <stdio.h>
 #include <conio.h>
 #include "stdlib.h"

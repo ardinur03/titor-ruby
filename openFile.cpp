@@ -1,3 +1,9 @@
+/*
+ * @file openFile.cpp
+ * sumber_source_code  dari pembelajaran ddp semester 1 dan ada yang meng explore di link https://www.tutorialspoint.com/c_standard_library/c_function_malloc.htm
+ * di edit oleh : Muhamad Ardi Nur Insan
+*/
+
 #include <stdio.h>
 #include <cstring>
 #include "kelolaText.h"

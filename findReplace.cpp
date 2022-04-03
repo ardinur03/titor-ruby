@@ -81,8 +81,6 @@ void findAndReplaceFile(){
     //print text sesudah
 }
 
-
-
 /**
 * Ganti semua kemunculan kata yang diberikan dalam string.
  */
