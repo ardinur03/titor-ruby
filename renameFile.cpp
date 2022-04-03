@@ -4,10 +4,10 @@
 
 void renameFile()
 {
-    // Path to old and new files
+    // File lama ke file baru
     char oldName[100], newName[100];
 
-    // Input old and new file name
+    // Input nama file lama dan baru
     system ("cls");
     printf("Enter the name of the file you want to change: ");
     scanf("%s", oldName);
@@ -15,7 +15,7 @@ void renameFile()
     backAgainNewName:
     printf("enter new file name: ");
     scanf("%s", newName);
-    // validasi jika ektensi .exe 
+    // Validasi jika ektensi .exe 
 	if(strcmp(newName, "exe")==0){
 		printf("\nInvalid file extension name.\n");
 		getch();
@@ -29,7 +29,7 @@ void renameFile()
 		goto backAgainNewName;
 	}
 
-    // rename old file with new name
+    // Ganti nama file lama dengan nama baru
     if (rename(oldName, newName) == 0)
     {
         printf("The file was renamed successfully.\n");
