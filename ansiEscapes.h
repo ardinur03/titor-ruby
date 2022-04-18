@@ -20,6 +20,7 @@ void setupConsole();
 void restoreConsole();
 /*Restore Console mode ke default pada windows*/
 
+// compiler yang memanggil intruksi dengan pemanggilaan sebelumnya (copy per baris)
 static inline void clearScreen(){ //Menghapus seluruh layar
 	printf("\x1b[%dJ", CLEAR_ALL);
 }

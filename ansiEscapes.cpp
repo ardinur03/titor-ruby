@@ -1,3 +1,8 @@
+/*
+Source: https://solarianprogrammer.com/2019/04/08/c-programming-ansi-escape-codes-windows-macos-linux-terminals/
+		https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
+*/
+
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
