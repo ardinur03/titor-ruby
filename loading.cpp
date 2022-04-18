@@ -8,10 +8,10 @@
 #include "loading.h"
 
 void gotoxy(int X, int y) {
- COORD coord;
+ COORD coord; //struct yang berisikan dua variabel bertipe SHORT, yaitu X dan Y
  coord.X = X;
  coord.Y = y;
- SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+ SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord); //Menetapkan posisi cursor di layar.
 }
 
 void loading_screen() {
