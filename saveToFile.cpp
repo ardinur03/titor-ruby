@@ -9,6 +9,7 @@
 #include <conio.h>
 #include <windows.h>
 #include "kelolaText.h"
+#include "helper.h"
 
 void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	FILE *file;
@@ -26,6 +27,14 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	printf("Enter file name: ");
 	namaFile=(char*) malloc(20* sizeof(char)); 
 	scanf("%s", namaFile);
+
+	for(int i=0; i<strlen(namaFile); i++){
+		if(validateChar(namaFile[i])){
+			printf("Name File can't have %c \n", namaFile[i]);
+			goto backAgainNameFile;
+		}
+	}
+
 	backAgain:
 	printf("Enter the file extension name (without full stop): ");
 	ektensiFile=(char*) malloc(5* sizeof(char));
@@ -38,15 +47,14 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 		goto backAgain;
 	}
 
-	// validasi jangan input titik di dalam string
 	for(int i=0; i<strlen(ektensiFile); i++){
-		if(ektensiFile[i] =='.'){
-			printf("Extension name can't have full stop.\n");
+		if(validateChar(ektensiFile[i])){ 
+			printf("Extension name can't have %c \n", ektensiFile[i]);
 			getch();
 			system("cls");
 			goto backAgain;
-		}else if(ektensiFile[i] ==' '){
-			printf("Extension name can't have space.\n");
+		}else if(ektensiFile[i] == '.'){
+			printf("Extension name can't have full stop.\n");
 			getch();
 			system("cls");
 			goto backAgain;
@@ -78,3 +86,4 @@ void updateFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	}
 	fclose(file);
 }
+
