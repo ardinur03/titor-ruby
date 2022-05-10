@@ -1,6 +1,7 @@
 #ifndef helper_h
 #define helper_h
 
-int validateChar(char ektensiFileTemp);
+// prototype
+int validateChar(char ektensiFileTemp);	
 
 #endif
