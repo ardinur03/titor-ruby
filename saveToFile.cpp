@@ -23,7 +23,7 @@ void saveFile(int jmlBaris, List text){
 	printf("Enter file name: ");
 	namaFile=(char*) malloc(20* sizeof(char)); 
 	scanf("%s", namaFile);
-
+	// na/mafile
 	for(int i=0; i<strlen(namaFile); i++){
 		if(validateChar(namaFile[i])){
 			printf("Name File can't have %c \n", namaFile[i]);

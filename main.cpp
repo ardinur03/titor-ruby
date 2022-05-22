@@ -17,6 +17,7 @@
 #include "header.h"
 
 int main() {
+	system("mode con cols=130");
 	loading_screen();
 	app();
 	return 0;

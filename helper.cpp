@@ -47,3 +47,21 @@ void loading_screen()
 	// system("pause");
 	system("cls");
 }
+
+/**
+ * @details description : modul untuk ascii full down text editor titor apps
+*/
+void color(int color)
+{
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+/** @param color : warna yang akan di set  */
+
+void hideCursor(){
+    CONSOLE_CURSOR_INFO cci;
+    cci.dwSize = 1;
+    cci.bVisible = false;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cci);
+}
+/** awmbunyikan Cursor di dalam console */
+

@@ -43,4 +43,15 @@ void gotoxy(int X, int y); //fungsi yang digunakan untuk memindahkan, di layar k
  * @include {modul} manageText.cpp
 */
 int insertTextMode(List textTemp, int postYTemp);
+
+/**
+ * @include {modul} app.cpp
+ * 
+ */
+void color(int color); // fungsi yang digunakan untuk mengubah warna
+void hideCursor(); // fungsi yang digunakan untuk menyembunyikan cursor
+void menusBar(int menuKe, bool hilangMenu); // fungsi yang digunakan untuk menampilkan menu bar pulldown
+void menuBarApp(); // fungsi yang digunakan untuk menampilkan menu bar app
+void index(); // base index untuk menampilkan keseluruhan modul yang di gunakan dari menu bar, pulldown
+
 #endif
