@@ -13,12 +13,27 @@ void renameFile()
 
     // Input nama file lama dan baru
     system ("cls");
+    backAgainOldName:
     printf("Enter the name of the file you want to change: ");
     scanf("%s", oldName);
 
+	for(int i=0; i<strlen(oldName); i++){
+		if(validateChar(oldName[i])){
+			printf("Name File can't have %c \n", oldName[i]);
+			goto backAgainOldName;
+		}
+	}
+	
     backAgainNewName:
     printf("enter new file name: ");
     scanf("%s", newName);
+    
+    for(int i=0; i<strlen(newName); i++){
+		if(validateChar(newName[i])){
+			printf("Name File can't have %c \n", newName[i]);
+			goto backAgainNewName;
+		}
+	}
     // Validasi jika ektensi .exe 
 	if(strcmp(newName, "exe")==0){
 		printf("\nInvalid file extension name.\n");
