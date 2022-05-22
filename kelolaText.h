@@ -11,7 +11,7 @@
 #define ENTER 13 //Menambah baris baru
 #define CTRL_C 3 //Copy baris
 #define CTRL_E 5 //Memasuki command mode
-#define CTRL_Q 17 //Keluar dari kelola text
+#define CTRL_Q 17 //Keluar dari kelola 
 #define CTRL_V 22 //Paste konten baris
 #define CTRL_I 9 //Memindahkan kursor keatas
 #define CTRL_J 10 //Memindahkan kursor kekiri
@@ -77,9 +77,5 @@ void addNewLine(int curBaris, int *jmlBaris, char text[MAXBARIS][MAXKOLOMARR]);
 void delLine(int curBaris, int *jmlBaris, char text[MAXBARIS][MAXKOLOMARR]);
 /*User memilih baris yang akan dihapus, kemudian menggeser array baris kekiri*/
 /*dari baris terakhir hingga index baris yang dihapus*/
-
-
-
-
 
 #endif

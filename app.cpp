@@ -7,24 +7,16 @@
  * Muhammad Zidan Hidayat - 211511026
  * Naufal Salman Mulyadi - 211511028
  * Shofiyah - 211511031
- * @version 0.1
+ * @version 2.0
  * @date 14 Februari 2022
  * 
  * @copyright Copyright (c) 2022
  * 
 */
 
-#include "stdlib.h"
-#include <stdio.h>
-#include <conio.h>
-#include "app.h"
-#include "deleteFile.h"
+#include "helper.h"
+#include "header.h"
 #include "kelolaText.h"
-#include "saveToFile.h"
-#include "openFile.h"
-#include "duplicateFile.h"
-#include "renameFile.h"
-#include "findReplace.h"
 
 void app()
 {
@@ -35,9 +27,8 @@ void app()
 void home()
 {
     int choose;
-
     printf("+===========================================================+\n");
-    printf("|                       TITOR APPS                          |\n");
+    printf("|                       TITOR APPS TEMP                     |\n");
     printf("+===========================================================+\n");
     printf("|                                                           |\n");
     printf("| 1. Run                                                    |\n");
@@ -124,51 +115,6 @@ void procedureShorcut()
     printf("|+================================================================+|\n");
 }
 
-// Sub-menu Run
-void run1()
-{
-
-    int choose;
-
-    printf("+===========================================================+\n");
-    printf("|                       Menu TiTOR                          |\n");
-    printf("+===========================================================+\n");
-    printf("|                                                           |\n");
-    printf("| 1. Create File                                            |\n");
-    printf("| 2. Open File                                              |\n");
-    printf("| 3. Edit File                                              |\n");
-    printf("| 4. Delete File                                            |\n");
-    printf("| 5. Rename File                                            |\n");
-    printf("| 6. Exit                                                   |\n");
-    printf("|                                                           |\n");
-    printf("+===========================================================+\n");
-    printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
-    printf("+===========================================================+\n");
-
-    printf("Choose Menu :");
-    scanf("%d", &choose);
-    switch (choose)
-    {
-    case 1:
-        backMenuHome();
-        break;
-    case 2:
-        printf("About...\n");
-        backMenuHome();
-        break;
-    case 3:
-        printf("Shorcut...\n");
-        backMenuHome();
-        break;
-    case 4:
-        printf("Exit...\n");
-        backMenuHome();
-        break;
-    default:
-        break;
-    }
-}
-
 void textEditor()
 {
     printf(" TiTOR APPS\n");
@@ -176,37 +122,6 @@ void textEditor()
     printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
     printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
     printf("\t  ctrl+f   : Find and Replace\n");
-}
-
-void newFile()
-{
-    system("cls");
-    char choice;
-    char text[MAXBARIS][MAXKOLOMARR];
-    setArr(text);
-    int jmlBaris = insertMode(text, 1);
-    while (1)
-    {
-        printf("Do you want to save the file? (y/n) : ");
-        choice = getch();
-        if (choice == 'y')
-        {
-            saveFile(jmlBaris, text);
-            break;
-        }
-        else if (choice == 'n')
-        {
-            system("cls");
-            printf("\nYour file is not saved!");
-            getch();
-            break;
-        }
-        else
-        {
-            printf("\n");
-            printf("Wrong Input!\n");
-        }
-    }
 }
 
 void run()
@@ -225,7 +140,7 @@ void run()
             newFile();
             system("cls");
             break;
-        case DUPLICATE:
+        case DUPLICATEFILE:
             duplicateFile(); // ctrl + d = Duplicate File
             break;
         case RENAMEFILE:
@@ -255,6 +170,8 @@ void run()
         }
     } while (choose != QUIT);
 }
+
+
 
 void backMenuHome()
 {

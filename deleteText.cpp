@@ -26,7 +26,7 @@ void deleteText()
     if (curr == EOF)
       break;
   }
-  
+
   fclose(fptr1);
   fclose(fptr2);
 }

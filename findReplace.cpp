@@ -4,13 +4,8 @@
  * di edit oleh : lolla mariah
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-#include <windows.h>
-#include "findReplace.h"
-#include "openFile.h"
+#include "header.h"
+#include "helper.h"
 
 #define BUFFER_SIZE 100
 
