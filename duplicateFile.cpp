@@ -7,15 +7,20 @@
 
 void duplicateFile()
 {
-   char ch, source_file[20], target_file[20];
+   char ch, sourceFile[100], targetFile[100];
    FILE *source, *target;
    system ("cls");
 
    backErrorSource:
    printf("Enter name of file to copy\n");
-   scanf("%s", source_file);
-
-   source = fopen(source_file, "r");
+   scanf("%s", sourceFile);
+	for(int i=0; i<strlen(sourceFile); i++){
+		if(validateChar(sourceFile[i])){
+			printf("Name File can't have %c \n", sourceFile[i]);
+			goto backErrorSource;
+		}
+	}
+   source = fopen(sourceFile, "r");
 
    if (source == NULL)
    {
@@ -25,8 +30,14 @@ void duplicateFile()
 
    backError:
    printf("Enter name of target file\n");
-   scanf("%s", target_file);
-   target = fopen(target_file, "w");
+   scanf("%s", targetFile);
+   	for(int i=0; i<strlen(targetFile); i++){
+		if(validateChar(targetFile[i])){
+			printf("Name File can't have %c \n", targetFile[i]);
+			goto backError;
+		}
+	}
+   target = fopen(targetFile, "w");
 
    if (target == NULL)
    {
