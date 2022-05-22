@@ -4,23 +4,19 @@
  * di edit oleh : Muhamad Ardi Nur Insan
 */
 
-#include <stdio.h>
-#include <cstring>
-#include <conio.h>
-#include <windows.h>
-#include "kelolaText.h"
 #include "helper.h"
 
-void storeFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
+void storeFile(char *filename, int jmlBaris, List text){
 	FILE *file;
 	file = fopen(filename, "w");
 	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s\n", text[i]);
+		fprintf(file, "%s", text.First[i]);
+		// fprintf(file, "%s\n", text.First);
 	}
 	fclose(file);
 }
 
-void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
+void saveFile(int jmlBaris, List text){
 	char *namaFile, *ektensiFile, *namaFileTemp;
 	system("cls");
 	backAgainNameFile:
@@ -78,11 +74,11 @@ void saveFile(int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
 	getch();
 }
 
-void updateFile(char *filename, int jmlBaris, char text[MAXBARIS][MAXKOLOMARR]){
+void updateFile(char *filename, int jmlBaris, List text){
 	FILE *file;
 	file = fopen(filename, "w");
 	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s\n", text[i]);
+		fprintf(file, "%s\n", text.First[i]);
 	}
 	fclose(file);
 }

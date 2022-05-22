@@ -4,10 +4,7 @@
  * di edit oleh : Naufal Salman Mulyadi
 				  Muhammad Ardi Nur Insan (validasi)
 */
-
-#include <stdio.h>
-#include <conio.h>
-#include <windows.h>
+#include "helper.h"
 
 void renameFile()
 {

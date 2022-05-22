@@ -3,12 +3,7 @@
  * sumber_source_code : https://forgetcode.com/c/577-copy-one-file-to-another-file
  * di edit oleh : Naufal Salman Mulyadi
 */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <iostream>
-#include <windows.h>
+#include "helper.h"
 
 void duplicateFile()
 {

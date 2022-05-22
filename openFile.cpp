@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <cstring>
 #include "kelolaText.h"
-#include "findReplace.h"
 #include <windows.h>
 #include <conio.h>
 #include "saveToFIle.h"
@@ -62,7 +61,7 @@ void openFileTwoDimensi(){
             choice = getch();
             if (choice == 'y')
             {
-                updateFile(fileName, jmlBaris, text);
+                // updateFile(fileName, jmlBaris, text);
                 break;
             } else if (choice == 'n') {
                 printf("\nYour file is not updated!");
