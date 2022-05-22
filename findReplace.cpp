@@ -19,10 +19,18 @@ void findAndReplaceFile(){
     
     char buffer[BUFFER_SIZE];
     char oldWord[100], newWord[100];
-
+	backAgainPath:
+		
     printf("Enter path of source file: ");
     scanf("%s", path);
-		        
+    
+	for(int i=0; i<strlen(path); i++){
+	  if(validateChar(path[i])){
+	   printf("Name File can't have %c \n", path[i]);
+	   goto backAgainPath;
+	  }
+	 }  
+	       
     /* Buka semua file yang dibutuhkan */
     fPtr  = fopen(path, "r");
     fTemp = fopen("replace.txt", "w"); 
