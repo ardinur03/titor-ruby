@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o openFile.o renameFile.o saveToFile.o helper.o manageText.o newFile.o
-LINKOBJ  = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o openFile.o renameFile.o saveToFile.o helper.o manageText.o newFile.o
+OBJ      = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o openFile.o renameFile.o saveToFile.o helper.o newFile.o manageText.o
+LINKOBJ  = main.o ansiEscapes.o app.o deleteFile.o deleteText.o duplicateFile.o findReplace.o kelolaText.o openFile.o renameFile.o saveToFile.o helper.o newFile.o manageText.o
 LIBS     = -L"C:/Apps/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
 INCS     = -I"C:/Apps/Dev-Cpp/TDM-GCC-64/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Apps/Dev-Cpp/TDM-GCC-64/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Apps/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
@@ -60,8 +60,8 @@ saveToFile.o: saveToFile.cpp
 helper.o: helper.cpp
 	$(CPP) -c helper.cpp -o helper.o $(CXXFLAGS)
 
-manageText.o: manageText.cpp
-	$(CPP) -c manageText.cpp -o manageText.o $(CXXFLAGS)
-
 newFile.o: newFile.cpp
 	$(CPP) -c newFile.cpp -o newFile.o $(CXXFLAGS)
+
+manageText.o: manageText.cpp
+	$(CPP) -c manageText.cpp -o manageText.o $(CXXFLAGS)
