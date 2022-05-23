@@ -7,7 +7,7 @@ void newFile()
     system("cls");
     List textNow;
     char choice;
-
+	showCursor();
     int jmlBaris = insertTextMode(textNow, 0);
     while (1)
     {

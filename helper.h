@@ -18,6 +18,7 @@
 #define CTRL_J 10 //Memindahkan kursor kekiri
 #define CTRL_K 11 //Memindahkan kursor kebawah
 #define CTRL_L 12 //Memindahkan kursor ke kiri
+#define F1 59 //Memindahkan kursor ke kiri
 
 #define SAVE_FILE 19 // ctrl + s
 #define QUITAPP 17 // ctrl + q 
@@ -53,5 +54,6 @@ void hideCursor(); // fungsi yang digunakan untuk menyembunyikan cursor
 void menusBar(int menuKe, bool hilangMenu); // fungsi yang digunakan untuk menampilkan menu bar pulldown
 void menuBarApp(); // fungsi yang digunakan untuk menampilkan menu bar app
 void index(); // base index untuk menampilkan keseluruhan modul yang di gunakan dari menu bar, pulldown
+void showCursor(); // fungsi yang digunakan untuk menampilkan cursor
 
 #endif

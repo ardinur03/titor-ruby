@@ -334,14 +334,15 @@ int insertTextMode(List textTemp, int postYTemp){
 	InsertRow(&rows, NULL, &curRow, posX);
 
     do{
-    	SetCursorPosition(0, 15);
+    	// Debugging
+		// SetCursorPosition(0, 15);
 	    // printf("x: %-3d\n", posX);
 	    // printf("y: %-3d\n", posY);
 	    // printf("pos in row: %-3d\n", posInARow);
 	    // printf("amount of char in a row: %-3d\n", AmountOfChar(curRow));
 	    // printf("Pointer cursor: %p\n", cursor);
-	    printf("Pointer row: %p\n", curRow);
-	    printf("Pointer in a row: %p", Info(curRow));
+	    // printf("Pointer row: %p\n", curRow);
+	    // printf("Pointer in a row: %p", Info(curRow));
     	SetCursorPosition(posX, posY);
         buffer = getch();
         switch (buffer){
@@ -465,14 +466,9 @@ int insertTextMode(List textTemp, int postYTemp){
 					DeleteChar(&textTemp, &cursor);
 				}
             break;
-
-			
             case QUITAPP: 
                 done = true;
                 system("cls");
-
-
-
 			break;
 	        default:
 	        	printf("%c", buffer);

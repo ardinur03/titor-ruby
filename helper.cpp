@@ -65,3 +65,10 @@ void hideCursor(){
 }
 /** awmbunyikan Cursor di dalam console */
 
+void showCursor(){
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 1;
+	cci.bVisible = true;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cci);
+}
+/** menampilkan Cursor di dalam console */

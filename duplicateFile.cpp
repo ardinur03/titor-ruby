@@ -9,14 +9,17 @@ void duplicateFile()
 {
    char ch, sourceFile[100], targetFile[100];
    FILE *source, *target;
-   system ("cls");
-
+   showCursor();
    backErrorSource:
-   printf("Enter name of file to copy\n");
+   gotoxy(25, 5);
+   printf("Enter name of file to copy : ");
    scanf("%s", sourceFile);
 	for(int i=0; i<strlen(sourceFile); i++){
 		if(validateChar(sourceFile[i])){
-			printf("Name File can't have %c \n", sourceFile[i]);
+         gotoxy(25, 6);
+			printf("Name File can't have %c ", sourceFile[i]);
+         gotoxy(52, 5);
+         printf("        ");
 			goto backErrorSource;
 		}
 	}
@@ -24,16 +27,21 @@ void duplicateFile()
 
    if (source == NULL)
    {
-      printf("\nError opening file\n");
+      gotoxy(25, 6);
+      printf("Error opening file");
+      gotoxy(52, 5);
+      printf("        ");
       goto backErrorSource;
    } 
 
    backError:
-   printf("Enter name of target file\n");
+   gotoxy(25, 6);
+   printf("Enter name of target file : ");
    scanf("%s", targetFile);
    	for(int i=0; i<strlen(targetFile); i++){
 		if(validateChar(targetFile[i])){
-			printf("Name File can't have %c \n", targetFile[i]);
+         gotoxy(25, 7);
+			printf("Name File can't have %c ", targetFile[i]);
 			goto backError;
 		}
 	}
@@ -42,14 +50,17 @@ void duplicateFile()
    if (target == NULL)
    {
       fclose(source);
-      printf("\nError opening file\n");
+      gotoxy(25, 7);
+      printf("Error opening file");
       goto backError;
    } 
 
    while ((ch = fgetc(source)) != EOF){
       fputc(ch, target);
    }
-   printf("File copied successfully.\n");
+   gotoxy(25, 8);
+   printf("File copied successfully.");
+   gotoxy(25, 9);
    printf("Press any key to continue...");
    getch();
    fclose(source);
