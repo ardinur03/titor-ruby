@@ -42,6 +42,15 @@ void printFromFile(char path[50]);
 void renameFile();
 /** renameFile ini digunakan untuk mengganti nama file yang ada di dalam direktori secara dinamis */
 
+void vWelcome();
+/** vWelcome ini digunakan untuk menampilkan welcome screen */
+
+void vAbout();
+/** vAbout ini digunakan untuk menampilkan tentang aplikasi TiTOR */ 
+void vHelp();
+/** vHelp ini digunakan untuk menampilkan bantuan penggunaan aplikasi TiTOR */
+
+
 /**
  * @include {modul} app.cpp  End
 */
