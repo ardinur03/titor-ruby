@@ -35,6 +35,12 @@
 #define RENAMEFILE 18 // ctrl + r
 #define QUIT 17 // ctrl + q
 
+#define ARROW_UP 72 // arrow up
+#define ARROW_DOWN 80 // arrow down
+#define ARROW_LEFT 75 // arrow left
+#define ARROW_RIGHT 77 // arrow right
+
+
 // prototype
 int validateChar(char ektensiFileTemp);	
 void SetCursorPosition(int x, int y);
@@ -43,7 +49,7 @@ void gotoxy(int X, int y); //fungsi yang digunakan untuk memindahkan, di layar k
 /**
  * @include {modul} manageText.cpp
 */
-int insertTextMode(List textTemp, int postYTemp);
+int insertTextMode(List *textTemp);
 
 /**
  * @include {modul} app.cpp
@@ -55,5 +61,5 @@ void menusBar(int menuKe, bool hilangMenu); // fungsi yang digunakan untuk menam
 void menuBarApp(); // fungsi yang digunakan untuk menampilkan menu bar app
 void index(); // base index untuk menampilkan keseluruhan modul yang di gunakan dari menu bar, pulldown
 void showCursor(); // fungsi yang digunakan untuk menampilkan cursor
-
+void clearPage(); // fungsi yang digunakan untuk menghapus layar
 #endif

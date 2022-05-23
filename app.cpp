@@ -20,7 +20,10 @@
 
 int SetMenu1[] = {7, 7, 7, 7, 7}; 
 int SetMenu2[] = {7, 7, 7, 7, 7, 7}; 
-bool menuFile = false;
+bool showWelcome = true;
+bool menuFile    = false;
+bool menuAbout   = false;
+bool menuHelp    = false;
 
 void app()
 {
@@ -35,18 +38,22 @@ void index(){
      for (int i = 0;;){
         menuBarApp();
         hideCursor();
+
+        if(showWelcome) vWelcome();
+
         key = getch();
 
-        // pindah kursor ke kiri & kanan
-        if (key == 75 && (counter1 >= 2 && counter1 <= 5))
+        if (key == ARROW_LEFT && (counter1 >= 2 && counter1 <= 5))
         {
             system("cls");
+            showWelcome = true;
             counter1--;
         }
 
-        if (key == 77 && (counter1 >= 1 && counter1 <= 4))
+        if (key == ARROW_RIGHT && (counter1 >= 1 && counter1 <= 4))
         {
             system("cls");
+            showWelcome = true;
             counter1++;
         }
         if (key == '\r') // /r adalah carriage return
@@ -64,11 +71,11 @@ void index(){
                     hideCursor();
                     menusBar(1, menuFile);
                     key = getch();
-                    if(key == 72 && (counter2 >=2 && counter2 <= 6))
+                    if(key == ARROW_UP && (counter2 >=2 && counter2 <= 6))
                     {
                         counter2--;
                     }
-                    if(key == 80 && (counter2 >=1 && counter2 <= 5))
+                    if(key == ARROW_DOWN && (counter2 >=1 && counter2 <= 5))
                     {
                         counter2++;
                     }
@@ -118,11 +125,19 @@ void index(){
                 }
             }
             if (counter1 == 2){
-                // menusBar(1, menuFile);
-                printf("About");
+                showWelcome = false;
+                menuAbout = true;
+                system("cls");
+                menuBarApp();
+                vAbout();
             }
             if (counter1 == 3){
-                printf("Help");
+                showWelcome = false;
+                menuAbout = false;
+                menuHelp = true;
+                system("cls");
+                menuBarApp();
+                vHelp();
             }
             if (counter1 == 4){
                 printf("Contact");
@@ -134,11 +149,11 @@ void index(){
             } 
         }
 
-        SetMenu1[0] = (counter1 == 1) ? 8 : 7;
-        SetMenu1[1] = (counter1 == 2) ? 8 : 7;
-        SetMenu1[2] = (counter1 == 3) ? 8 : 7;
-        SetMenu1[3] = (counter1 == 4) ? 8 : 7;
-        SetMenu1[4] = (counter1 == 5) ? 8 : 7;
+        SetMenu1[0] = (counter1 == 1) ? menuAbout = false, 8 : 7; 
+        SetMenu1[1] = (counter1 == 2) ? menuHelp = false, 8 : 7; // menu About
+        SetMenu1[2] = (counter1 == 3) ? menuAbout = false, 8 : 7; // menu Help
+        SetMenu1[3] = (counter1 == 4) ? menuHelp = false,  8 : 7; // menu Contact
+        SetMenu1[4] = (counter1 == 5) ? 8 : 7; // menu Exit
     }
 }
 
@@ -273,10 +288,12 @@ void menuBarApp(){
     for (int i = 1; i < 129; i++)
     {
         gotoxy(i, 2);
-        if(menuFile && i == 3){ // munculin garis ╤
+        if(menuFile && i == 3 || menuFile && i == 19){ // munculin garis ╤
             printf("%c", 209);
-        } else if(menuFile && i == 19){ // munculin garis ╤
-            printf("%c", 209);
+        } else if(menuAbout && i == 8 || menuAbout && i == 14){ // munculin garis ╦
+            printf("%c", 203);
+        } else if(menuHelp && i == 15 || menuHelp && i == 20){ // munculin garis ╦
+            printf("%c", 203);
         } else { 
             printf("%c", 205); 
         }
@@ -294,9 +311,9 @@ void menuBarApp(){
         else if(i == 1){
             printf("%c", 186);
         }
-        // else{
-        //     printf("%c", 186);
-        // }
+        else{
+            printf("%c", 186);
+        }
     }
 
     // vertical line kanan
@@ -310,11 +327,23 @@ void menuBarApp(){
         }else if(i == 1){
             printf("%c", 186);
         }
-        // else{
-        //     printf("%c", 186);
-        // }
+        else{
+            printf("%c", 186);
+        }
     }
 
+    // horizontal line bawah
+    for (int i = 0; i < 129; i++)
+    {
+        gotoxy(i, 23);
+        if( i == 0){ // munculin garis
+            printf("%c", 200);
+        } else if(i == 128){ // munculin garis 
+            printf("%c", 188);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
     gotoxy(3, 1);
     color(SetMenu1[0]);
     printf("File");
@@ -332,161 +361,421 @@ void menuBarApp(){
     printf("Exit");
 }
 
-
-// menu utama home
-void home()
-{
-    int choose;
-    printf("+===========================================================+\n");
-    printf("|                       TITOR APPS TEMP                     |\n");
-    printf("+===========================================================+\n");
-    printf("|                                                           |\n");
-    printf("| 1. Run                                                    |\n");
-    printf("| 2. About                                                  |\n");
-    printf("| 3. Shorcut                                                |\n");
-    printf("| 4. Exit                                                   |\n");
-    printf("|                                                           |\n");
-    printf("+===========================================================+\n");
-    printf("|   Copyright (c) 2022 Kelompok RUBY. All rights reserved.  |\n");
-    printf("+===========================================================+\n");
-
-    printf("Choose Menu : ");
-    scanf("%d", &choose);
-    switch (choose)
-    {
-    case 1:
-        run();
-        break;
-    case 2:
-        printf("About...\n");
-        procedure();
-        backMenuHome();
-        break;
-    case 3:
-        printf("Shorcut...\n");
-        procedureShorcut();
-        backMenuHome();
-        break;
-    case 4:
-        printf("Exit...\n");
-        exit(0);
-        break;
-    default:
-        printf("\n Wrong Input!");
-        getch();
-        system("cls");
-        home();
-        break;
-    }
-}
-
-// prosedure about application TiTOR
-void procedure()
-{
-    system("cls");
-    printf("+==================================================================+\n");
-    printf("|                            About TiTOR                           |\n");
-    printf("+==================================================================+\n");
-    printf("|                                                                  |\n");
-    printf("| TiTOR or Text Editor is an application that can make it easier   |\n");
-    printf("| for users to add, change, and save text with a simple and        |\n");
-    printf("| easy-to-use interface. This application is based on a console    |\n");
-    printf("| made using the C++ language. The making of this application was  |\n");
-    printf("| compiled by :                                                    |\n");
-    printf("| Lolla Mariah                                                     |\n");
-    printf("| Luthfie Yannuardy                                                |\n");
-    printf("| Muhamad Ardi Nur Insan                                           |\n");
-    printf("| Muhammad Zidan Hidayat                                           |\n");
-    printf("| Naufal Salman Mulyadi                                            |\n");
-    printf("| Shofiyah                                                         |\n");
-    printf("|                                                                  |\n");
-    printf("|                                                   --Titor2022    |\n");
-    printf("|+================================================================+|\n");
-}
-
-// prosedure shorcut application TiTOR
-void procedureShorcut()
-{
-    system("cls");
-    printf("+==================================================================+\n");
-    printf("|                          Shorcut TiTOR                           |\n");
-    printf("+==================================================================+\n");
-    printf("|                                                                  |\n");
-    printf("| ctrl + n : Used to create file                                   |\n");
-    printf("| ctrl + d : Used to duplicate file                                |\n");
-    printf("| ctrl + x : Used to delete file                                   |\n");
-    printf("| ctrl + o : Used to open file                                     |\n");
-    printf("| ctrl + n : Used to rename file                                   |\n");
-    printf("| ctrl + q : Used to go out                                        |\n");
-    printf("| ctrl + s : Used for save                                         |\n");
-    printf("| ctrl + v : Used for paste                                        |\n");
-    printf("| ctrl + y : Used for redo                                         |\n");
-    printf("| ctrl + z : Used for undo                                         |\n");
-    printf("|+================================================================+|\n");
-}
-
-void textEditor()
-{
-    printf(" TiTOR APPS\n");
-    printf("\t  ctrl+n   : New File                    ctrl+o : Open File\n");
-    printf("\t  ctrl+d   : Duplicate File              ctrl+r : Rename File\n");
-    printf("\t  ctrl+x   : Delete File                 ctrl+q : Quit\n");
-    printf("\t  ctrl+f   : Find and Replace\n");
-}
-
-void run()
-{
-    int choose;
-
-    system("cls");
-    // View menu text editor
-    do
-    {
-        textEditor();
-        choose = getch();
-        switch (choose)
-        {
-        case NEWFILE: // ctrl + n = New file
-            newFile();
-            system("cls");
-            break;
-        case DUPLICATEFILE:
-            duplicateFile(); // ctrl + d = Duplicate File
-            break;
-        case RENAMEFILE:
-            renameFile(); // ctrl + r = Rename File
-            break;
-        case OPENFILE: // ctrl + o =  Open File
-            openFileTwoDimensi();
-            system("cls");
-            break;
-        case DELETEFILE: // ctrl + x = Delete File
-            deleteFile();
-            break;
-        case QUIT: // ctrl + q = Quit
-            backMenuHome();
-            break;
-        case SAVE_FILE:
-            // ctrl + s = Save File
-            break;
-        case FIND_REPLACE:
-            findAndReplaceFile();
-            system("cls");
-            break;
-        default:
-            system("cls");
-            printf("\t\t\t\tWrong Input!\n");
-            break;
+// prosedure welcomeApp
+void vWelcome(){
+    // welcome atas
+    // garis vertical kiri
+    for (int i = 4; i < 12; i++){
+    	color(7);
+    	gotoxy(6, i);
+        if(i == 4){
+            printf("%c", 201);
         }
-    } while (choose != QUIT);
+		else if(i == 11){
+            printf("%c", 200);
+        }
+        else{
+        	printf("%c", 186);
+		}
+	}
+
+    //vertical kanan
+	for (int i = 4; i < 12; i++){
+    	color(7);
+    	gotoxy(48, i);
+        if(i == 4){
+            printf("%c", 187);
+        }
+		else if(i == 11){
+            printf("%c", 188);
+        }
+        else{
+        	printf("%c", 186);
+		}
+	}
+
+    // horizontal line bawah
+    for (int i = 7; i < 48; i++)
+    {
+        gotoxy(i, 11);
+            printf("%c", 205); 
+    }
+
+    // horizontal line atas
+    for (int i = 7; i < 48; i++)
+    {
+        gotoxy(i, 4);
+            printf("%c", 205); 
+    }
+	gotoxy(17, 6);
+    printf("WELCOME To TiTOR APPS");
+    gotoxy(23, 8);
+    printf("RUBY TEAM");
+    
+    // Copyright bawah
+    // garis vertical kiri
+    for (int i = 20; i < 23; i++){
+    	color(7);
+    	gotoxy(88, i);
+        if(i == 20){
+            printf("%c", 201);
+        }
+		else if(i == 22){
+            printf("%c", 200);
+        }
+        else{
+        	printf("%c", 186);
+		}
+	}
+		//vertical kanan
+	for (int i = 20; i < 23; i++){
+    	color(7);
+    	gotoxy(125, i);
+        if(i == 20){
+            printf("%c", 187);
+        }
+		else if(i == 22){
+            printf("%c", 188);
+        }
+        else{
+        	printf("%c", 186);
+		}
+	}
+
+    // horizontal line bawah
+    for (int i = 89; i < 125; i++) {
+        gotoxy(i, 22);
+            printf("%c", 205); 
+    }
+
+    // horizontal line atas
+    for (int i = 89; i < 125; i++){
+        gotoxy(i, 20);
+            printf("%c", 205); 
+    }
+    gotoxy(89, 21);
+    printf("Copyright 2022 - Team Ruby TiTorApps");
 }
 
+// prosedure about
+void vAbout(){
+    // // vertical line about depan
+    for (int i = 3; i < 20; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(8, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// horizontal line about bawah
+    for (int i = 8; i < 118; i++)
+    {
+        gotoxy(i, 20);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // vertical line about belakang
+    for (int i = 5; i < 20; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(117, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// horizontal line about atas
+    for (int i = 15; i < 118; i++)
+    {
+        gotoxy(i, 4);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // vertical line about pendek
+    for (int i = 3; i < 4; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(14, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// garis gabung about depan atas
+	for (int i = 4; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 2);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 8){
+            printf("%c", 203);
+        }
+	}
+	
+	// garis gabung about tengah atas
+	for (int i = 4; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 2);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 14){
+            printf("%c", 203);
+        }
+	}
 
+	// garis gabung about tengah 
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 4);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 14){
+            printf("%c", 200);
+        }
+	}
+	
+	// garis gabung about tengah belakang
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 4);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 117){
+            printf("%c", 187);
+        }
+	}
+	
+	// garis gabung about depan bawah
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 20);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 8){
+            printf("%c", 200);
+        }
+	}
+	
+	// garis gabung about belakang bawah
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 20);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 117){
+            printf("%c", 188);
+        }
+	}
+
+    gotoxy(14, 7);
+    printf("TiTOR or Text Editor is an application that can make it easier for users to add, change, and save");
+	gotoxy(14, 8);
+    printf("text with a simple and easy-to-use interface. This application is based on a console made using the");
+	gotoxy(14, 9);
+    printf("C++ language. The making of this application was compiled by :");
+	gotoxy(14, 10);
+    printf("Lolla Mariah");
+    gotoxy(14, 11);
+    printf("Luthfie Yannuardy");
+    gotoxy(14, 12);
+    printf("Muhamad Ardi Nur Insan");
+    gotoxy(14, 13);
+    printf("Muhammad Zidan Hidayat");
+    gotoxy(14, 14);
+    printf("Naufal Salman Mulyadi");
+    gotoxy(14, 15);
+    printf("Shofiyah");
+    gotoxy(100, 18);
+    printf("--Titor2022");
+}
+
+// prosedure help
+void vHelp(){
+    // vertical line help depan
+    for (int i = 3; i < 20; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(15, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// horizontal line about bawah
+    for (int i = 16; i < 118; i++)
+    {
+        gotoxy(i, 20);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // vertical line about belakang
+    for (int i = 5; i < 20; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(117, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// horizontal line help atas
+    for (int i = 21; i < 118; i++)
+    {
+        gotoxy(i, 4);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // vertical line help pendek
+    for (int i = 3; i < 4; i++)
+    {
+    	// garis vertical
+    	color(7);
+    	gotoxy(20, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+	}
+	
+	// garis gabung help depan atas
+	for (int i = 4; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 2);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 20){
+            printf("%c", 203);
+        }
+	}
+	
+	// garis gabung file tengah atas
+	for (int i = 4; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 2);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 15){
+            printf("%c", 203);
+        }
+	}
+
+	// garis gabung help tengah 
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 4);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 20){
+            printf("%c", 200);
+        }
+	}
+	
+	// garis gabung help tengah belakang
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 4);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 117){
+            printf("%c", 187);
+        }
+	}
+	
+	// garis gabung about depan bawah
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 20);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 15){
+            printf("%c", 200);
+        }
+	}
+	
+	// garis gabung about belakang bawah
+	for (int i = 8; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 20);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 117){
+            printf("%c", 188);
+        }
+	}
+
+    gotoxy(20, 8);
+    printf("1. Create file berfungsi untuk membuat file baru");
+    gotoxy(20, 9);
+    printf("2. Duplicate file berfungsi untuk menggandakan file ");
+    gotoxy(20, 10);
+    printf("3. Open file berfungsi untuk membuka file");
+    gotoxy(20, 11);
+    printf("4. Delete file berfungsi untuk menghapus file");
+    gotoxy(20, 12);
+    printf("5. Rename file berfungsi untuk mengganti nama file");
+    gotoxy(20, 13);
+    printf("6. Save berfungsi untuk menyimpan file");
+    gotoxy(20, 14);
+}
 
 void backMenuHome()
 {
     printf("Press Enter to return to the home menu ...\n");
     getch();
     system("cls");
-    home();
+    index();
 }

@@ -304,7 +304,14 @@ void DeleteChar(List *L, address *current){
 	if(*current != NULL){
 		if(Next(*current) != NULL){ // jika cursor tidak berada di akhir
 			DelAfter(L, &P, *current);
- 		}
+ 		} 
+		//  else if(Prev(*current) == NULL){ 
+			// if (Next(*current) == NULL){
+			// 	DelAfter(L, &P, *current);
+			// }
+			// DelAfter(L, &P, *current);
+		//  }
+			
 	}
 	system("cls"); // clear screen
 	PrintInfo(*L); // print text
@@ -313,19 +320,18 @@ void DeleteChar(List *L, address *current){
 /**
  * @note insertTextMode untuk mengeloka char yang akan diketik
  * @param textTemp 
- * @param postYTemp 
  * @return int 
  */
-int insertTextMode(List textTemp, int postYTemp){
+int insertTextMode(List *textTemp){
 //    List textTemp;
 	RowsList rows;
     char buffer;
     address cursor;
     rowAddr curRow;
-	int posX=0, posY=postYTemp, posInARow=0;
+	int posX=0, posY=0, posInARow=0;
     bool done = false;
 	
-    CreateList(&textTemp);
+    CreateList(textTemp);
     CreateListOfRows(&rows);
     
 	cursor = NULL;
@@ -335,20 +341,20 @@ int insertTextMode(List textTemp, int postYTemp){
 
     do{
     	// Debugging
-		// SetCursorPosition(0, 15);
+		SetCursorPosition(0, 15);
 	    // printf("x: %-3d\n", posX);
 	    // printf("y: %-3d\n", posY);
-	    // printf("pos in row: %-3d\n", posInARow);
-	    // printf("amount of char in a row: %-3d\n", AmountOfChar(curRow));
-	    // printf("Pointer cursor: %p\n", cursor);
-	    // printf("Pointer row: %p\n", curRow);
-	    // printf("Pointer in a row: %p", Info(curRow));
+	    printf("pos in row: %-3d\n", posInARow);
+	    printf("amount of char in a row: %-3d\n", AmountOfChar(curRow));
+	    printf("Pointer cursor: %p\n", cursor);
+	    printf("Pointer row: %p\n", curRow);
+	    printf("Pointer in a row: %p", Info(curRow));
     	SetCursorPosition(posX, posY);
         buffer = getch();
         switch (buffer){
 	        case ']':
 	        	printf("\n\n\n");
-	            PrintInfo(textTemp);
+	            PrintInfo(*textTemp);
 	            break;
 	        case '[':
 	        	SetCursorPosition(5, 10);
@@ -369,7 +375,7 @@ int insertTextMode(List textTemp, int postYTemp){
 	        		cursor = Info(curRow);
 	        		for(int i=0; i < posInARow && AmountOfChar(curRow) != 0; i++){
 	        			if(cursor == NULL){
-	        				cursor = First(textTemp);	
+	        				cursor = First(*textTemp);	
 						}else if(Info(Next(cursor)) == '\n'){
 							posInARow = AmountOfChar(curRow);
 							posX = AmountOfChar(curRow);
@@ -415,10 +421,10 @@ int insertTextMode(List textTemp, int postYTemp){
 				}
             break;
 	        case 'l': //kanan
-	        	if(!ListEmpty(textTemp)){
+	        	if(!ListEmpty(*textTemp)){
 	        		if(cursor == NULL){ //Handle jika cursor berada di awal teks
-		        		cursor = First(textTemp);
-		        		if(Info(First(textTemp))== '\n'){
+		        		cursor = First(*textTemp);
+		        		if(Info(First(*textTemp))== '\n'){
 		        			posX = 0;
 							posInARow = 0;
 							posY++;
@@ -443,7 +449,7 @@ int insertTextMode(List textTemp, int postYTemp){
             break;
 	        case ENTER: // new feature
 	        	printf("%c", buffer);
-				enterNewLine(&textTemp, &cursor);
+				enterNewLine(textTemp, &cursor);
 				InsertRow(&rows, cursor, &curRow, posX);
 				posY++;
 				posX = 0;
@@ -458,21 +464,23 @@ int insertTextMode(List textTemp, int postYTemp){
 						posX = AmountOfChar(curRow);
 						posInARow = AmountOfChar(curRow);
 						posY--;
+			            AmountOfChar(curRow)++;
 					}else{
 						posX--;
 						posInARow--;
 					}
 					cursor = Prev(cursor);
-					DeleteChar(&textTemp, &cursor);
+					DeleteChar(textTemp, &cursor);
 				}
             break;
+
             case QUITAPP: 
                 done = true;
                 system("cls");
 			break;
 	        default:
 	        	printf("%c", buffer);
-	            Insert(&textTemp, buffer, &cursor);
+	            Insert(textTemp, buffer, &cursor);
 	            posX++;
 	            posInARow++;
 	            AmountOfChar(curRow)++;
