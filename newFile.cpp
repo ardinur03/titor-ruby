@@ -8,7 +8,7 @@ void newFile()
     List textNow;
     char choice;
 	showCursor();
-    int jmlBaris = insertTextMode(textNow, 0);
+    int jmlBaris = insertTextMode(&textNow);
     while (1)
     {
         printf("Do you want to save the file? (y/n) : ");

@@ -17,15 +17,6 @@ typedef struct tElmtList
     address prev;
 } ElmtList;
 
-/*Linked list untuk menyimpan jml char pada baris*/
-typedef struct tJmlChar *address2;
-typedef struct tJmlChar
-{
-    int info;
-    address2 next;
-    address2 prev;
-} JmlChar;
-
 typedef struct tRow *rowAddr;
 typedef struct tRow
 {
@@ -43,11 +34,6 @@ typedef struct
 {
     address First;
 } List;
-
-typedef struct
-{
-    address2 First;
-} List2;
 
 typedef struct
 {
