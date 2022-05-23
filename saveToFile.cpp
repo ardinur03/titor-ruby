@@ -8,9 +8,11 @@
 
 void storeFile(char *filename, int jmlBaris, List text){
 	FILE *file;
+	address tempList;
+	tempList = First(text);
 	file = fopen(filename, "w");
 	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s", text.First[i]);
+		fprintf(file, "%c", Info(tempList));
 		// fprintf(file, "%s\n", text.First);
 	}
 	fclose(file);

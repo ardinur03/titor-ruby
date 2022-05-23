@@ -93,12 +93,12 @@ void index(){
                         if (counter2 == 4)
                         {
                             gotoxy(25, 5);
-                            printf("Delete File");
+                            deleteFile();
                         }
                         if (counter2 == 5)
                         {
                             gotoxy(25, 5);
-                            printf("Duplicate File");
+                            duplicateFile();
                         }
                         if (counter2 == 6)
                         {
@@ -125,10 +125,12 @@ void index(){
                 printf("Help");
             }
             if (counter1 == 4){
-                printf("Exit");
+                printf("Contact");
             }
             if (counter1 == 5){
-                printf("asss");
+                color(7);
+                exit(0);
+                break;
             } 
         }
 
@@ -288,9 +290,13 @@ void menuBarApp(){
         gotoxy(0, i);
         if(i == 2){
             printf("%c", 204);
-        }else{
+        }
+        else if(i == 1){
             printf("%c", 186);
         }
+        // else{
+        //     printf("%c", 186);
+        // }
     }
 
     // vertical line kanan
@@ -301,9 +307,12 @@ void menuBarApp(){
         gotoxy(128, i);
         if(i == 2){
             printf("%c", 185);
-        }else{
+        }else if(i == 1){
             printf("%c", 186);
         }
+        // else{
+        //     printf("%c", 186);
+        // }
     }
 
     gotoxy(3, 1);
@@ -317,10 +326,10 @@ void menuBarApp(){
     printf("Help");
     gotoxy(22, 1);
     color(SetMenu1[3]);
-    printf("Exit");
-    gotoxy(28, 1);
+    printf("Contact");
+    gotoxy(31, 1);
     color(SetMenu1[4]);
-    printf("asss");
+    printf("Exit");
 }
 
 

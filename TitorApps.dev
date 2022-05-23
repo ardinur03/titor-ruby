@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;4;0;0;0
-UnitCount=20
+UnitCount=21
 
 [VersionInfo]
 Major=1
@@ -221,26 +221,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit18]
-FileName=manageText.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit19]
-FileName=manageText.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit20]
 FileName=newFile.cpp
 CompileCpp=1
 Folder=
@@ -250,8 +230,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
-FileName=saveToFile.cpp
+[Unit19]
+FileName=manageText.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -260,18 +240,28 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit22]
-FileName=saveToFile.h
+[Unit20]
+FileName=manageText.h
 CompileCpp=1
 Folder=
 Compile=1
 Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=TitorApps.dev
+CompileCpp=1
+Folder=
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=helper.cpp
+FileName=display.h
 CompileCpp=1
 Folder=
 Compile=1

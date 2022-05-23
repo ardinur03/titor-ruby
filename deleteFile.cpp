@@ -11,14 +11,19 @@ int destroyFile(char nama_file_temp[30]);
 void deleteFile(){
     char namaFile[30];
     bool statusFile;
-    printf("\t\tEnter the name of the file you want to delete: ");
+    gotoxy(25, 5);
+    showCursor();
+    printf("Enter the name of the file you want to delete: ");
     scanf("%s", namaFile);
     statusFile = destroyFile(namaFile);
+    gotoxy(25, 6);
     if (statusFile == true){
-        printf("File : %s successfully deleted\n", namaFile);
+        printf("File : %s successfully deleted", namaFile);
     } else  {
-        printf("File : %s failed to delete or the file is not in the directory\n", namaFile);
+        printf("File : %s failed to delete or the file is not in the directory", namaFile);
     }
+    getch();
+    system("cls");
 }
 
 int destroyFile(char nama_file_temp[30]) {
