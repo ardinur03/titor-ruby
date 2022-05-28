@@ -20,19 +20,23 @@
 
 int SetMenu1[] = {7, 7, 7, 7, 7}; 
 int SetMenu2[] = {7, 7, 7, 7, 7, 7}; 
+int SetMenu3[] = {7, 7}; 
 bool showWelcome = true;
 bool menuFile    = false;
 bool menuAbout   = false;
 bool menuHelp    = false;
+bool menuConfirm = false;
 
 void app()
 {
+	setTitleComandLine();
     index();
 }
 
 void index(){
     int counter1 = 1;
     int counter2 = 1;
+    int counter3 = 1;
     char key;
 
      for (int i = 0;;){
@@ -64,7 +68,6 @@ void index(){
                 menuFile = true;
                 menusBar(1, menuFile);
                 
-                int counter2 = 1;
                 for (int i = 0;;)
                 {
                     menuBarApp();
@@ -143,16 +146,50 @@ void index(){
                 printf("Contact");
             }
             if (counter1 == 5){
-                color(7);
-                exit(0);
-                break;
+                system("cls");
+                key =1;
+                for(int i;;){
+                    menuBarApp();
+                    vConfirmExit();
+                    key = getch();
+                    if(key == ARROW_LEFT && (counter3 >=2 && counter3 <= 3))
+                    {
+                        // system("cls");
+                        counter3--;
+                    }
+                    if(key == ARROW_RIGHT && (counter3 >=0 && counter3 <= 1))
+                    {
+                        // system("cls");
+                        counter3++;
+                    }
+
+                    if (key == '\r') // /r adalah carriage return
+                    {
+                        if (counter3 == 1)
+                        {
+                            color(7);
+                            exit(0);
+                        }
+                        if (counter3 == 2)
+                        {
+                            system("cls");
+                            break;
+                        }
+                    }
+                    
+                    // logika if ternary operator
+                    SetMenu3[0] = (counter3 == 1) ? 8 : 7;
+                    SetMenu3[1] = (counter3 == 2) ? 8 : 7;
+                }
+
+
             } 
         }
 
         SetMenu1[0] = (counter1 == 1) ? menuAbout = false, 8 : 7; 
         SetMenu1[1] = (counter1 == 2) ? menuHelp = false, 8 : 7; // menu About
         SetMenu1[2] = (counter1 == 3) ? menuAbout = false, 8 : 7; // menu Help
-        SetMenu1[3] = (counter1 == 4) ? menuHelp = false,  8 : 7; // menu Contact
+        SetMenu1[3] = (counter1 == 4) ? menuHelp = false, 8 : 7; // menu Contact
         SetMenu1[4] = (counter1 == 5) ? 8 : 7; // menu Exit
     }
 }
@@ -770,6 +807,119 @@ void vHelp(){
     gotoxy(20, 13);
     printf("6. Save berfungsi untuk menyimpan file");
     gotoxy(20, 14);
+}
+
+// prosedure confirm
+void vConfirmExit(){
+    for (int i = 9; i < 16; i++)
+    {
+        // garis vertical
+        color(7);
+        gotoxy(50, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+    }
+    
+    // vertical line confirm belakang
+    for (int i = 9; i < 16; i++)
+    {
+        // garis vertical
+        color(7);
+        gotoxy(79, i);
+        if(i == 2){
+            printf("%c", 204);
+        }else{
+            printf("%c", 186);
+        }
+    }
+    
+    // horizontal line confirm atas
+    for (int i = 50; i < 79; i++)
+    {
+        gotoxy(i, 9);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // horizontal line confirm bawah
+    for (int i = 50; i < 79; i++)
+    {
+        gotoxy(i, 16);
+        if(menuFile && i == 21){ // munculin garis ╤
+            printf("%c", 209);
+        } else if(menuFile && i == 19){ // munculin garis ╤
+            printf("%c", 209);
+        } else { 
+            printf("%c", 205); 
+        }
+    }
+    
+    // garis gabung confirm kiri atas
+	for (int i = 0; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 9);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 50){
+            printf("%c", 201);
+        }
+	}
+	
+	  // garis gabung confirm kanan atas
+	for (int i = 0; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 9);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 79){
+            printf("%c", 187);
+        }
+	}
+	
+	 // garis gabung confirm kiri bawah
+	for (int i = 0; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 16);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 50){
+            printf("%c", 200);
+        }
+	}
+	
+	// garis gabung confirm kanan bawah
+	for (int i = 0; i < 129; i++)
+    { 
+        // garis horizontal
+        color(7);
+        gotoxy(i, 16);
+        // garis gabung horizontal dengan garis vertical
+        if(i == 79){
+            printf("%c", 188);
+        }
+	}
+
+    gotoxy(55, 11);
+    printf("Do you want to exit");
+    gotoxy(55, 13);
+    printf("the application?");
+    gotoxy(69, 15);
+    color(SetMenu3[0]);
+    printf("YES");
+    color(SetMenu3[1]);
+    gotoxy(75, 15);
+    printf("NO");
 }
 
 void backMenuHome()

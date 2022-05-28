@@ -196,8 +196,11 @@ void DelFirst (List * L, address * P) {
 	}else{
 		*P = First(*L);
 		First(*L) = Next(First(*L));
-		Prev(First(*L)) = NIL;
+		if(First(*L) != NULL){
+			Prev(First(*L)) = NIL;	
+		}
 		Next(*P) = NIL;
+		
 	}
 }
 
@@ -305,16 +308,13 @@ void DeleteChar(List *L, address *current){
 		if(Next(*current) != NULL){ // jika cursor tidak berada di akhir
 			DelAfter(L, &P, *current);
  		} 
-		//  else if(Prev(*current) == NULL){ 
-			// if (Next(*current) == NULL){
-			// 	DelAfter(L, &P, *current);
-			// }
-			// DelAfter(L, &P, *current);
-		//  }
-			
+	} else if(*current == NULL){
+		DelFirst(L, &P);
 	}
-	system("cls"); // clear screen
-	PrintInfo(*L); // print text
+	// dealokasi elemen yang dihapus
+	DeAlocate(P);
+	system("cls");
+	PrintInfo(*L);
 }
 
 /**
@@ -464,16 +464,15 @@ int insertTextMode(List *textTemp){
 						posX = AmountOfChar(curRow);
 						posInARow = AmountOfChar(curRow);
 						posY--;
-			            AmountOfChar(curRow)++;
 					}else{
 						posX--;
 						posInARow--;
+			            AmountOfChar(curRow)--;
 					}
 					cursor = Prev(cursor);
 					DeleteChar(textTemp, &cursor);
 				}
             break;
-
             case QUITAPP: 
                 done = true;
                 system("cls");

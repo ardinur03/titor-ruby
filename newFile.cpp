@@ -31,4 +31,5 @@ void newFile()
             printf("Wrong Input!\n");
         }
     }
+    system("cls");
 }

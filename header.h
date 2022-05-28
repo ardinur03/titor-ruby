@@ -44,11 +44,12 @@ void renameFile();
 
 void vWelcome();
 /** vWelcome ini digunakan untuk menampilkan welcome screen */
-
 void vAbout();
 /** vAbout ini digunakan untuk menampilkan tentang aplikasi TiTOR */ 
 void vHelp();
 /** vHelp ini digunakan untuk menampilkan bantuan penggunaan aplikasi TiTOR */
+void vConfirmExit();
+/** vConfirmExit ini digunakan untuk menampilkan konfirmasi exit aplikasi TiTOR */
 
 
 /**
