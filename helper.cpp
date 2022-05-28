@@ -72,3 +72,25 @@ void showCursor(){
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cci);
 }
 /** menampilkan Cursor di dalam console */
+
+int setTitleComandLine(){
+	TCHAR szOldTitle[MAX_PATH];
+	TCHAR szNewTitle[MAX_PATH];
+
+	// Save current console title.
+	if( GetConsoleTitle(szOldTitle, MAX_PATH) )
+	{
+		// Build new console title string.
+
+		StringCchPrintf(szNewTitle, MAX_PATH, TEXT("Titor Apps"));
+
+	}
+
+	// Set console title to new title
+	if(SetConsoleTitle(szNewTitle) )
+	{
+		return 1;
+	}
+	return 0;
+}
+/** @details : mengubah title dari console */
