@@ -4,9 +4,8 @@
  * di edit oleh : Muhamad Ardi Nur Insan
 */
 
-#include <string.h>
 #include "helper.h"
-
+#include "LinkedList.h"
 
 void storeFile(char *filename, List text){
 	FILE *file;

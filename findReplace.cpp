@@ -45,7 +45,7 @@ void findAndReplaceFile(){
     }
     printf("\n");
 	/* print text sebelum */
-	printFromFile(path); 
+//	printFromFile(path); 
 
     printf("\n\nEnter word to replace: ");
     scanf("%s", oldWord);
@@ -77,7 +77,7 @@ void findAndReplaceFile(){
     rename("replace.txt", path);
 
     // print sesudah di find replace
-	printFromFile(path); 
+//	printFromFile(path); 
 
     printf("\nSuccessfully replaced all occurrences of '%s' with '%s'.\n", oldWord, newWord);
     system("Pause");
