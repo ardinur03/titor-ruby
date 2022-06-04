@@ -6,75 +6,66 @@
 
 #include <stdio.h>
 #include <cstring>
-#include "kelolaText.h"
 #include <windows.h>
 #include <conio.h>
-#include "saveToFIle.h"
+#include "manageText.h"
+#include "helper.h"
 
-void printFromFile(char path[50]){
-	char text[80];
-	FILE *read = fopen(path, "r");
+text readFromFile(char *filePath){
+	FILE *read;
+	text textFromFile;
+	char c;
 	
-	while (fgets(text, 80, read) != NULL) {
-        printf("%s", text);
-    }	
+	CreateList(&(textFromFile.charList));
+	CreateListOfRows(&(textFromFile.rowList));
+	InsertRow(&(textFromFile.rowList), NULL, 0); //Insert baris pertama
 	
-    fclose(read);
+	read=fopen(filePath, "r");
+	while((c=fgetc(read))!=EOF){			
+		Insert(&(textFromFile.charList), c);
+		if(c == '\n'){
+			/*Param posX diisi dengan AmounOfChar(Current(rows)) agar selalu insert last*/				
+			InsertRow(&(textFromFile.rowList), Current(textFromFile.charList), AmountOfChar(Current(textFromFile.rowList)));
+		}else{
+			AmountOfChar(Current(textFromFile.rowList))++;
+		}	
+	}
+	
+	fclose(read);
+	system("cls");
+	PrintList(textFromFile.charList);
+	return textFromFile;
 }
 
-void openFileTwoDimensi(){
+void openFromFile(){
     char choice;
-    system("cls");
+	text textFromFile;
     char *fileName;
-    char text[MAXBARIS][MAXKOLOMARR];
-    setArr(text);
-    printf("TitorApps\n");
+
+	system("cls");
+	showCursor();
     printf("Enter file name: ");
     fileName=(char*) malloc(20* sizeof(char)); 
     scanf("%s", fileName);
-    
-    FILE *file = fopen(fileName, "r");
-    if (!file) {
-        printf("File not found!\n");
-        printf("Press enter to go back ...");
-        getch();
-    } else {
-        system("cls");
+	textFromFile = readFromFile(fileName); 
+	insertTextMode(&(textFromFile.charList),  &(textFromFile.rowList));
 
-        int i = 0;
-        int jmlBaris;
-        while (fgets(text[i], MAXKOLOMARR, file) != NULL) {
-            i++;
-        }
-        fclose(file);
-        
-        // text, start, end
-        print2DArr(text, 0, i);
-
-        // insert mode
-        jmlBaris = insertMode(text, i);
-
-        // update file fileName
-        while (1)
+    while (1)
+    {
+        printf("Do you want to update the file? (y/n) : ");
+        choice = getch();
+        if (choice == 'y')
         {
-            printf("Do you want to update the file? (y/n) : ");
-            choice = getch();
-            if (choice == 'y')
-            {
-                // updateFile(fileName, jmlBaris, text);
-                break;
-            } else if (choice == 'n') {
-                printf("\nYour file is not updated!");
-                getch();
-                break;
-            } else {
-                printf("\n");
-                printf("Wrong Input!\n");
-            }
-            
+            // updateFile(fileName, jmlBaris, text);
+            break;
+        } else if (choice == 'n') {
+            printf("\nYour file is not updated!");
+            getch();
+            break;
+        } else {
+            printf("\n");
+            printf("Wrong Input!\n");
         }
-
     }
-
 }
 

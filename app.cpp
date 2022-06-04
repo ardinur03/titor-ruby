@@ -16,7 +16,7 @@
 
 #include "helper.h"
 #include "header.h"
-#include "kelolaText.h"
+#include "openFile.h"
 
 int SetMenu1[] = {7, 7, 7, 7, 7};  // set menu bar File About Help Exit
 int SetMenu2[] = {7, 7, 7, 7, 7, 7}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
@@ -93,7 +93,7 @@ void index(){
                         if (counter2 == 2)
                         {
                             gotoxy(25, 5);
-                            printf("Open File");
+                            openFromFile();
                         }
                         if (counter2 == 3)
                         {

@@ -6,16 +6,20 @@ void newFile()
 {
     system("cls");
     List textNow;
+    RowsList rows;
     char choice;
+    
 	showCursor();
-    int jmlBaris = insertTextMode(&textNow);
+	CreateList(&textNow);
+	CreateListOfRows(&rows);
+    insertTextMode(&textNow, &rows);
     while (1)
     {
         printf("Do you want to save the file? (y/n) : ");
         choice = getch();
         if (choice == 'y')
         {
-            saveFile(jmlBaris, textNow);
+            saveFile(textNow);
             break;
         }
         else if (choice == 'n')

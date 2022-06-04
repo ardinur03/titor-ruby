@@ -6,7 +6,7 @@
 Source: https://solarianprogrammer.com/2019/04/08/c-programming-ansi-escape-codes-windows-macos-linux-terminals/
 		https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
 */
-
+#include "stdio.h"
 enum clearScreenCodes{ //Kode untuk clear screen
 	CLEAR_FROM_CURSOR_TO_END,
 	CLEAR_FROM_CURSOR_TO_BEGIN,
