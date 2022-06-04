@@ -6,7 +6,7 @@
 void Insert(List *L, infotype X);
 void InsertRow(RowsList *L, address X, int posX);
 void insertTextMode(List *text, RowsList *rows);
-void CursorHandle(List *text, RowsList *rows, int *posX, int *posY);
+void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY);
 void DeleteChar(List *L, address *current);
 /*  IS : 
     L sembarang  

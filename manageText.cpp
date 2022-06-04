@@ -33,7 +33,7 @@ void insertTextMode(List *text, RowsList *rows){
 
 		switch(buffer){
 			case -32:
-				CursorHandle(text, rows, &posX, &posY);
+				SpecialKeyHandle(text, rows, &posX, &posY);
 				break;
 			case ENTER:
 				Insert(text, '\n');
@@ -151,7 +151,7 @@ void DeleteChar(List *L, address *current){
  */
 
 
-void CursorHandle(List *text, RowsList *rows, int *posX, int *posY){
+void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 	switch(getch()){
 		case ARROW_UP:
 			if(Prev(Current(*rows)) != NULL){
@@ -222,6 +222,24 @@ void CursorHandle(List *text, RowsList *rows, int *posX, int *posY){
 				Current(*text) = Prev(Current(*text));
 			}
 			return;
+		case HOME:
+			Current(*text) = Info(Current(*rows));
+			*posX = 0;
+			return;
+		case END:
+			if(Current(*text) == NULL){
+				Current(*text) = First(*text);
+			}
+			while(Next(Current(*text)) != NULL){
+				if(Info(Next(Current(*text))) == '\n'){
+					break;
+				}else{
+					Current(*text) = Next(Current(*text));
+				}
+			}
+			*posX = AmountOfChar(Current(*rows));
+			return;
 	}
 }
+
 
