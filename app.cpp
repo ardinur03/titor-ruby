@@ -49,15 +49,15 @@ void index(){
 
         if (key == ARROW_LEFT && (counter1 >= 2 && counter1 <= 5))
         {
-            system("cls");
             showWelcome = true;
+            clearScreenToBottom();
             counter1--;
         }
 
         if (key == ARROW_RIGHT && (counter1 >= 1 && counter1 <= 4))
         {
-            system("cls");
             showWelcome = true;
+            clearScreenToBottom();
             counter1++;
         }
         if (key == '\r') // /r adalah carriage return
@@ -92,8 +92,13 @@ void index(){
                         }
                         if (counter2 == 2)
                         {
+                            menuFile = false;
+                        	system("cls");
+                        	showCursor();
+                        	menuBarApp();
                             gotoxy(25, 5);
                             openFromFile();
+                            menuFile = true;
                         }
                         if (counter2 == 3)
                         {

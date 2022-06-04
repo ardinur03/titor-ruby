@@ -14,7 +14,4 @@ void DeleteChar(List *L, address *current);
 */
 /* FS : Jika ada elemen list, maka elemen terakhir dihapus */
 
-
-
-
 #endif

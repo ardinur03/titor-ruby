@@ -95,3 +95,18 @@ int setTitleComandLine(){
 	return 0;
 }
 /** @details : mengubah title dari console */
+
+/**
+ *  @details description : get last 3 char from string
+ *  @param by address str
+ */
+boolean getLast4Char(char *str)
+{
+	// find the length of the string
+	int len = strlen(str);
+	boolean status;
+	// if in string ada 4 char terakhir dengan char .exe
+	(str[len - 4] == '.' && str[len - 3] == 'e' && str[len - 2] == 'x' && str[len - 1] == 'e') ? status = true : status = false;
+
+	return status;
+}

@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
+#include "ansiEscapes.h"
+
 /*Keybind*/
 #define BACKSPACE 8 //Menghapus character
 #define ENTER 13 //Menambah baris baru
@@ -59,6 +61,6 @@ void menuBarApp(); // fungsi yang digunakan untuk menampilkan menu bar app
 void index(); // base index untuk menampilkan keseluruhan modul yang di gunakan dari menu bar, pulldown
 void showCursor(); // fungsi yang digunakan untuk menampilkan cursor
 void clearPage(); // fungsi yang digunakan untuk menghapus layar
-
 int setTitleComandLine(); // fungsi yang digunakan untuk mengubah title bar
+boolean getLast4Char(char *str); // fungsi yang digunakan untuk mengambil 4 karakter terakhir dari nama file
 #endif

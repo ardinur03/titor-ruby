@@ -4,24 +4,22 @@
  * di edit oleh : Muhamad Ardi Nur Insan
 */
 
-#include <stdio.h>
-#include <cstring>
-#include <windows.h>
-#include <conio.h>
-#include "manageText.h"
 #include "helper.h"
+#include "manageText.h"
+#include "saveToFile.h"
+#include <cstring>
 
-text readFromFile(char *filePath){
-	FILE *read;
+void openFromFile();
+
+text readFromFile(FILE *filePath){
 	text textFromFile;
 	char c;
 	
 	CreateList(&(textFromFile.charList));
 	CreateListOfRows(&(textFromFile.rowList));
 	InsertRow(&(textFromFile.rowList), NULL, 0); //Insert baris pertama
-	
-	read=fopen(filePath, "r");
-	while((c=fgetc(read))!=EOF){			
+
+	while((c=fgetc(filePath))!=EOF){			
 		Insert(&(textFromFile.charList), c);
 		if(c == '\n'){
 			/*Param posX diisi dengan AmounOfChar(Current(rows)) agar selalu insert last*/				
@@ -31,41 +29,86 @@ text readFromFile(char *filePath){
 		}	
 	}
 	
-	fclose(read);
 	system("cls");
 	PrintList(textFromFile.charList);
 	return textFromFile;
 }
 
 void openFromFile(){
+	FILE *read;
     char choice;
 	text textFromFile;
     char *fileName;
+	boolean isExtensionValid;
 
-	system("cls");
 	showCursor();
-    printf("Enter file name: ");
-    fileName=(char*) malloc(20* sizeof(char)); 
-    scanf("%s", fileName);
-	textFromFile = readFromFile(fileName); 
+	
+	do{
+		gotoxy(5, 5);	
+		printf("Enter file name: ");
+		fileName=(char*) malloc(20* sizeof(char)); 
+		scanf("%s", fileName);
+		isExtensionValid = getLast4Char(fileName);
+		read = fopen(fileName, "r");
+
+		if(read == NULL)
+		{
+			gotoxy(5, 6);
+			printf("WARNING : %s not found", fileName);
+			gotoxy(5, 7);
+			system("pause");
+			gotoxy(5, 6);
+			printf("                                                                 ");
+			gotoxy(5, 7); 
+			printf("                                    ");
+		} else if(read != NULL && isExtensionValid){
+			gotoxy(5, 6);
+			printf("WARNING : extension cannot be .exe");
+			gotoxy(5, 7);
+			system("pause");
+			gotoxy(5, 6);
+			printf("                                    ");
+			gotoxy(5, 7);
+			printf("                                    ");
+		}
+		gotoxy(5, 5);
+		printf("                                                      ");
+	}while(read == NULL || isExtensionValid == true);
+
+	textFromFile = readFromFile(read); 
 	insertTextMode(&(textFromFile.charList),  &(textFromFile.rowList));
 
     while (1)
     {
-        printf("Do you want to update the file? (y/n) : ");
+		system("cls");
+		gotoxy(5, 2);
+		printf("Do you want to save the file? (y/n) : ");
         choice = getch();
         if (choice == 'y' || choice == 'Y')
         {
-            // updateFile(fileName, jmlBaris, text);
+            updateFile(fileName, textFromFile.charList);
+			gotoxy(5, 3);
+			printf("File saved successfully");
+			gotoxy(5, 4);
+			system("pause");
+			system("cls");
             break;
         } else if (choice == 'n' || choice == 'N') {
-            printf("\nYour file is not updated!");
-            getch();
+			gotoxy(5, 3);
+            printf("WARNING : Your file is not save !");
+			gotoxy(5, 4);
+			system("pause");
+			system("cls");
             break;
         } else {
-            printf("\n");
-            printf("Wrong Input!\n");
+			gotoxy(5, 3);
+            printf("WARNING : Wrong Input !");
+			system("pause");
+			system("cls");
         }
     }
+
+	fclose(read);
+
 }
 

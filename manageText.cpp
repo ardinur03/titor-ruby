@@ -7,7 +7,6 @@
 void insertTextMode(List *text, RowsList *rows){
     char buffer;
 	int posX=0, posY=0;
-    bool done = false;
     
 	if(ListOfRowsEmpty(*rows)){ //Jika file baru/ text kosong
 		InsertRow(rows, NULL, posX);
@@ -238,7 +237,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 				}
 			}
 			*posX = AmountOfChar(Current(*rows));
-			return;
+		return;
 	}
 }
 

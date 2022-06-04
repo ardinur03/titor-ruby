@@ -23,8 +23,8 @@ void saveFile(List text);
  * modul updateFile digunakan untuk mengupdate file degan dilakukan perulangan berdaarkan jumlah baris 
  *        dan mencetak kedalam file
  * @param filename 
- * @param jmlBaris 
  * @param text 
 */
-void updateFile(char *filename, int jmlBaris, List text);
+void updateFile(char *filename, List text);
+
 #endif

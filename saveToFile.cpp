@@ -80,12 +80,17 @@ void saveFile(List text){
 	getch();
 }
 
-void updateFile(char *filename, int jmlBaris, List text){
+void updateFile(char *filename, List text){
 	FILE *file;
 	file = fopen(filename, "w");
-	for(int i=0; i<jmlBaris; i++){
-		fprintf(file, "%s\n", text.First[i]);
+	address tempList;
+
+	tempList = First(text);
+	while(tempList != NIL){
+		fprintf(file, "%c", Info(tempList));	
+		tempList = Next(tempList);
 	}
+
 	fclose(file);
 }
 

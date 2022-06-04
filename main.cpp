@@ -14,14 +14,12 @@
  * 
 */
 
+
 #include "header.h"
-#include "ansiEscapes.h"
 
 int main() {
 	system("mode con cols=130");
-	// loading_screen();
-//	setupConsole();
+	loading_screen();
 	app();
-//	restoreConsole();
 	return 0;
 }
