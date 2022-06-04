@@ -15,10 +15,13 @@
 */
 
 #include "header.h"
+#include "ansiEscapes.h"
 
 int main() {
 	system("mode con cols=130");
 	// loading_screen();
+//	setupConsole();
 	app();
+//	restoreConsole();
 	return 0;
 }
