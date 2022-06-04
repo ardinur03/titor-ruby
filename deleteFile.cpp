@@ -9,18 +9,18 @@
 int destroyFile(char nama_file_temp[30]);
 
 void deleteFile(){
-    char namaFile[30];
+    char *fileName = (char*) malloc(20* sizeof(char));
     bool statusFile;
     gotoxy(25, 5);
     showCursor();
     printf("Enter the name of the file you want to delete: ");
-    scanf("%s", namaFile);
-    statusFile = destroyFile(namaFile);
+    scanf("%s", fileName);
+    statusFile = destroyFile(fileName);
     gotoxy(25, 6);
-    if (statusFile == true){
-        printf("File : %s successfully deleted", namaFile);
+    if (statusFile){
+        printf("File : %s successfully deleted", fileName);
     } else  {
-        printf("File : %s failed to delete or the file is not in the directory", namaFile);
+        printf("File : %s failed to delete or the file is not in the directory", fileName);
     }
 
     gotoxy(25, 7);
