@@ -18,9 +18,9 @@
 #include "header.h"
 #include "kelolaText.h"
 
-int SetMenu1[] = {7, 7, 7, 7, 7}; 
-int SetMenu2[] = {7, 7, 7, 7, 7, 7}; 
-int SetMenu3[] = {7, 7}; 
+int SetMenu1[] = {7, 7, 7, 7, 7};  // set menu bar File About Help Exit
+int SetMenu2[] = {7, 7, 7, 7, 7, 7}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
+int SetMenu3[] = {7, 7}; // set menu confirm
 bool showWelcome = true;
 bool menuFile    = false;
 bool menuAbout   = false;
@@ -39,7 +39,7 @@ void index(){
     int counter3 = 1;
     char key;
 
-     for (int i = 0;;){
+    for (int i = 0;;){
         menuBarApp();
         hideCursor();
 
@@ -102,8 +102,13 @@ void index(){
                         }
                         if (counter2 == 4)
                         {
+                        	menuFile = false;
+                        	system("cls");
+                        	showCursor();
+                        	menuBarApp();
                             gotoxy(25, 5);
                             deleteFile();
+                            menuFile = true;
                         }
                         if (counter2 == 5)
                         {
@@ -181,7 +186,6 @@ void index(){
                     SetMenu3[0] = (counter3 == 1) ? 8 : 7;
                     SetMenu3[1] = (counter3 == 2) ? 8 : 7;
                 }
-
 
             } 
         }
