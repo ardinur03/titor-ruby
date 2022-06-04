@@ -22,7 +22,9 @@ void deleteFile(){
     } else  {
         printf("File : %s failed to delete or the file is not in the directory", namaFile);
     }
-    getch();
+
+    gotoxy(25, 7);
+    system("pause");
     system("cls");
 }
 

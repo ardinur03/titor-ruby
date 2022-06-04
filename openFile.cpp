@@ -54,11 +54,11 @@ void openFromFile(){
     {
         printf("Do you want to update the file? (y/n) : ");
         choice = getch();
-        if (choice == 'y')
+        if (choice == 'y' || choice == 'Y')
         {
             // updateFile(fileName, jmlBaris, text);
             break;
-        } else if (choice == 'n') {
+        } else if (choice == 'n' || choice == 'N') {
             printf("\nYour file is not updated!");
             getch();
             break;
