@@ -67,24 +67,24 @@ void Insert (List *L, infotype X){
 	address P;
 	P = Alocate(X);
 	if(P != NIL){
-		if(Current(*L) == NULL){ /* Jika cursor berada di awal*/
+		if(Current(*L) == NULL){ /* Jika cursor menunjuk ke null*/
 			InsertFirst(L, P);
 			Current(*L) = First(*L);
 			if(X =='\n'){
-				clearLineToRight();
+				clearScreenToBottom();
 				PrintToNULL(Current(*L));
 			}else{
 				PrintToEOL(Current(*L));
 			}
-		}else if(Next(Current(*L))==NULL){ /*Jika cursor berada di akhir*/
+		}else if(Next(Current(*L))==NULL){ /*Jika cursor berada di akhir list*/
 			InsertLast(L, P);
 			Current(*L) = Next(Current(*L));
 			printf("%c", X);
-		}else{ /*Jika cursor berada di tengah*/
+		}else{ /*Jika cursor berada di tengah list*/
 			InsertAfter(L, P);
 			Current(*L) = Next(Current(*L));
 			if(X == '\n'){
-				clearLineToRight();
+				clearScreenToBottom();
 				PrintToNULL(Current(*L));
 			}else{
 				PrintToEOL(Current(*L));
@@ -168,7 +168,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 					}
 				}
 				if((AmountOfChar(Current(*rows))) == 0){
-					*posX = AmountOfChar(Current(*rows));//tab belum di Handle
+					*posX = AmountOfChar(Current(*rows));
 				}
 				(*posY)--;
 			}
