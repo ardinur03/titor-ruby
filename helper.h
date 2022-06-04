@@ -6,8 +6,6 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
-#include <strsafe.h> // modul untuk string
-#include "manageText.h"
 /*Keybind*/
 #define BACKSPACE 8 //Menghapus character
 #define ENTER 13 //Menambah baris baru
@@ -40,6 +38,8 @@
 #define ARROW_DOWN 80 // arrow down
 #define ARROW_LEFT 75 // arrow left
 #define ARROW_RIGHT 77 // arrow right
+#define HOME 71
+#define END 79
 
 
 // prototype
@@ -47,10 +47,6 @@ int validateChar(char ektensiFileTemp);
 void SetCursorPosition(int x, int y);
 void gotoxy(int X, int y); //fungsi yang digunakan untuk memindahkan, di layar ke posisi yang diinginkan
 
-/**
- * @include {modul} manageText.cpp
-*/
-int insertTextMode(List *textTemp);
 
 /**
  * @include {modul} app.cpp

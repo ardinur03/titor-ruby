@@ -3,6 +3,7 @@
 /* Dimodifikasi oleh : Muhamad Ardi Nur Insan 211511022 */
 
 #include "helper.h"
+#include <strsafe.h>
 
 // validasi jangan input karakter \ / : * ? " < > |
 int validateChar(char ektensiFileTemp)

@@ -4,9 +4,11 @@
  * di edit oleh : Muhamad Ardi Nur Insan
 */
 
+#include <string.h>
 #include "helper.h"
 
-void storeFile(char *filename, int jmlBaris, List text){
+
+void storeFile(char *filename, List text){
 	FILE *file;
 	address tempList;
 	
@@ -21,7 +23,7 @@ void storeFile(char *filename, int jmlBaris, List text){
 	fclose(file);
 }
 
-void saveFile(int jmlBaris, List text){
+void saveFile(List text){
 	char *namaFile, *ektensiFile, *namaFileTemp;
 	system("cls");
 	backAgainNameFile:
@@ -73,7 +75,7 @@ void saveFile(int jmlBaris, List text){
 		goto backAgainNameFile;
 	}
 
-	storeFile(namaFileTemp, jmlBaris, text);
+	storeFile(namaFileTemp, text);
 	printf("File has been saved successfully\n");
 	printf("Press any button to go back");
 	getch();
