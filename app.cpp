@@ -129,12 +129,12 @@ void index(){
                         }
                         if (counter2 == 6)
                         {
-                            menuFile = false;
-                            system("cls");
-                            showCursor();
-                            menuBarApp();
+                           menuFile = false;
+                        	system("cls");
+                        	showCursor();
+                        	menuBarApp();
                             gotoxy(25, 5);
-                            system("pause");
+                            findAndReplaceFile();
                             menuFile = true;
                         }
                         if (counter2 == 7)
