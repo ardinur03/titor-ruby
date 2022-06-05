@@ -26,7 +26,7 @@ void insertTextMode(List *text, RowsList *rows){
 	    printf("Pointer row: %p\n", Current(*rows));
 	    printf("Pointer in a row: %p", Info(Current(*rows)));
     	
-	SetCursorPosition(posX, posY);
+		SetCursorPosition(posX, posY);
 		buffer = getch();
 
 		if(buffer == QUITAPP){
@@ -53,7 +53,6 @@ void insertTextMode(List *text, RowsList *rows){
 						AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharTemp;
 
 						/*Delete node di list rows*/
-						Current(*rows) = Prev(Current(*rows));
 						DeleteRow(rows, &Current(*rows));
 					}else{
 						posX--;
@@ -63,6 +62,13 @@ void insertTextMode(List *text, RowsList *rows){
 					DeleteChar(text, &Current(*text));
 				}
 				break;
+			case 'p':
+				printf("\n\n");
+				PrintList(*text);
+				break;
+			case 'l':
+				printf("\n\n\n");
+				printf("%c", Info(Prev(Current(*text))));
 			default:
 				Insert(text, buffer);
 	       		posX++;
@@ -148,13 +154,14 @@ void InsertRow (RowsList *L, address X, int posX){
 
 void DeleteRow(RowsList *L, rowAddr *current){
 	rowAddr P;
-	if(*current != NULL){
-		if(Next(*current) != NULL){ 
-			DelRowAfter(L, &P, *current);
- 		} 
-	}else if(*current == NULL){
-		DelRowFirst(L, &P);
+	
+	if(Next(Next(*current))==NULL){
+		*current = Next(*current);
+		DelRowLast(L, &P);
+		*current = Prev(*current);
+		return;
 	}
+	DelRowAfter(L, &P, *current);
 
 	// dealokasi elemen yang dihapus
 	DeAlocateRow(P);
