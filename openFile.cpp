@@ -14,23 +14,36 @@ void openFromFile();
 text readFromFile(FILE *filePath){
 	text textFromFile;
 	char c;
-	
+
+	/*Buat list of char dan list baris*/
 	CreateList(&(textFromFile.charList));
 	CreateListOfRows(&(textFromFile.rowList));
-	InsertRow(&(textFromFile.rowList), NULL, 0); //Insert baris pertama
 
-	while((c=fgetc(filePath))!=EOF){			
+	/*Insert node pertama pada list baris*/
+	InsertRow(&(textFromFile.rowList), NULL, 0); 
+
+	/*Baca setiap char pada file hingga EOF kemudian masukan ke linked list*/
+	while((c=fgetc(filePath))!=EOF){		
+		/*Insert char ke list of char*/
 		Insert(&(textFromFile.charList), c);
-		if(c == '\n'){
+
+		/*Check jika c adalah baris baru*/
+		if(c != '\n'){
+			/*Tambah jml huruf pada current node di list baris*/
+			AmountOfChar(Current(textFromFile.rowList))++;
+		}else{
+			/*Tambah node baru pada list baris*/
 			/*Param posX diisi dengan AmounOfChar(Current(rows)) agar selalu insert last*/				
 			InsertRow(&(textFromFile.rowList), Current(textFromFile.charList), AmountOfChar(Current(textFromFile.rowList)));
-		}else{
-			AmountOfChar(Current(textFromFile.rowList))++;
-		}	
+		}
+
 	}
-	
+
+	/*Tampilkan list of char ke layar*/
 	system("cls");
 	PrintList(textFromFile.charList);
+
+	/*Kembalikan list*/
 	return textFromFile;
 }
 

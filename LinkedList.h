@@ -92,20 +92,12 @@ void InsertRowLast(RowsList *L, rowAddr P);
 /* IS : L sembarang, P sudah dialokasi */
 /* FS : P ditambahkan sebagai elemen terakhir yang baru */
 
-void InsertRowBefore(RowsList *L, rowAddr P);
 /**** Penghapusan sebuah elemen ****/
 void DelFirst(List *L, address *P);
 /* IS : L TIDAK kosong */
 /* FS : P adalah alamat elemen pertama list sebelum penghapusan */
 /*	elemen list berkurang satu (mungkin menjadi kosong) */
 /* First elemen yang baru adalah suksessor elemen pertama yang lama */
-
-void DelVMid(List *L, infotype X);
-/* IS : L sembarang */
-/* FS : Jika ada elemen list beraddress P, dengan Info(P) = X */
-/* 	Maka P dihapus dari list dan di dealokasi */
-/* Jika tidak ada elemen list dengan Info(P) = X, maka list tetap */
-/* List mungkin menjadi kosong karena penghapusan */
 
 void DelLast(List *L, address *P);
 /* IS : L TIDAK kosong */
@@ -122,7 +114,13 @@ void PrintList(List L);
 /* IS : L mungkin kosong */
 /* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
 /*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
+
 void PrintToEOL(address start);
+/* IS: start berisi address dari node pertama yang akan di print*/
+/* FS: Menampilkan info dari node beralamat start hingga node terakhir di baris*/
+
 void PrintToNULL(address start);
+/* IS: start berisi address dari node pertama yang akan di print*/
+/* FS: Menampilkan info dari node beralamat start hingga node terakhir di list*/
 
 #endif
