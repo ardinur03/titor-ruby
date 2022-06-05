@@ -7,13 +7,15 @@
 void insertTextMode(List *text, RowsList *rows){
     char buffer;
 	int posX=0, posY=0;
-    bool done = false;
     
 	if(ListOfRowsEmpty(*rows)){ //Jika file baru/ text kosong
 		InsertRow(rows, NULL, posX);
 	}
+
+	/*Set cursor*/
 	Current(*text) = NULL;
 	Current(*rows) = First(*rows);
+
     do{
     	// Debugging
 		SetCursorPosition(0, 15);
@@ -66,59 +68,75 @@ void insertTextMode(List *text, RowsList *rows){
 void Insert (List *L, infotype X){
 	address P;
 	P = Alocate(X);
-	if(P != NIL){
-		if(Current(*L) == NULL){ /* Jika cursor menunjuk ke null*/
-			InsertFirst(L, P);
-			Current(*L) = First(*L);
-			if(X =='\n'){
-				clearScreenToBottom();
-				PrintToNULL(Current(*L));
-			}else{
-				PrintToEOL(Current(*L));
-			}
-		}else if(Next(Current(*L))==NULL){ /*Jika cursor berada di akhir list*/
-			InsertLast(L, P);
-			Current(*L) = Next(Current(*L));
-			printf("%c", X);
-		}else{ /*Jika cursor berada di tengah list*/
-			InsertAfter(L, P);
-			Current(*L) = Next(Current(*L));
-			if(X == '\n'){
-				clearScreenToBottom();
-				PrintToNULL(Current(*L));
-			}else{
-				PrintToEOL(Current(*L));
-			}
+
+	/*Check jika alokasi gagal*/
+	if(P == NIL){
+		printf("Gagal mengalokasi node");
+		return;
+	}
+	
+	/*Insert node ke list*/
+	if(Current(*L) == NULL){ /* Jika cursor menunjuk ke null*/
+		InsertFirst(L, P);
+		Current(*L) = First(*L);
+		if(X =='\n'){ /*Jika menambah baris baru*/
+			clearScreenToBottom(); /*Clear layar dari pos cursor ke bawah*/
+			PrintToNULL(Current(*L));
+			return;
 		}
+		PrintToEOL(Current(*L));
+	}else if(Next(Current(*L))==NULL){ /*Jika cursor berada di akhir list*/
+		InsertLast(L, P);
+		Current(*L) = Next(Current(*L));
+		printf("%c", X);
+	}else{ /*Jika cursor berada di tengah list*/
+		InsertAfter(L, P);
+		Current(*L) = Next(Current(*L));
+		if(X == '\n'){ /*Jika menambah baris baru*/
+			clearScreenToBottom(); /*Clear layar dari pos cursor ke bawah*/
+			PrintToNULL(Current(*L));
+			return;
+		}
+		PrintToEOL(Current(*L));
 	}
 }
 
 void InsertRow (RowsList *L, address X, int posX){
-	int temp;
 	rowAddr P;
 	P = AlocateRow(X);
-	if(P != NIL){
-		if(!ListOfRowsEmpty(*L)){ /*Jika list tidak kosong*/
-			if(posX == 0){ /* Jika cursor berada di awal*/
-					InsertRowAfter(L, P); 
-					Current(*L) = Next(Current(*L));
-					/*Swap Amount of char new line yang baru dengan yang lama*/
-					temp = AmountOfChar(Current(*L));
-					AmountOfChar(Current(*L)) = AmountOfChar(Prev(Current(*L)));
-					AmountOfChar(Prev(Current(*L))) = temp;					
-			}else if(posX == AmountOfChar(Current(*L))){ /*Jika cursor berada di akhir*/
-				InsertRowLast(L, P);
-				Current(*L) = Next(Current(*L));
-			}else{ /*Jika cursor berada di tengah*/
-				InsertRowAfter(L, P);
-				Current(*L) = Next(Current(*L));
-				AmountOfChar(Current(*L)) = AmountOfChar(Prev(Current(*L))) - posX;
-				AmountOfChar(Prev(Current(*L))) = posX;
-			}
-		}else{
-			InsertRowFirst(L, P);
-			Current(*L) = First(*L);
-		}
+	
+	/*Check jika alokasi gagal*/
+	if(P == NIL){
+		printf("Gagal mengalokasi node");
+		return;
+	}
+
+	/**Insert node ke list**/
+	/*Jika list kosong*/
+	if(ListOfRowsEmpty(*L)){
+		InsertRowFirst(L, P);
+		Current(*L) = First(*L);
+		return;
+	}
+
+	if(posX == 0){ /* Jika cursor berada di awal*/
+		InsertRowAfter(L, P); 
+		Current(*L) = Next(Current(*L));
+		/*Isi jumlah huruf baris baru dengan baris yg lama, isi yg lama dengan 0*/
+		AmountOfChar(Current(*L)) = AmountOfChar(Prev(Current(*L)));
+		AmountOfChar(Prev(Current(*L))) = 0;					
+	}else if(posX == AmountOfChar(Current(*L))){ /*Jika cursor berada di akhir*/
+		InsertRowLast(L, P);
+		Current(*L) = Next(Current(*L));
+	}else{ /*Jika cursor berada di tengah*/
+		InsertRowAfter(L, P);
+		Current(*L) = Next(Current(*L));
+
+		/**Hitung jumlah huruf pada baris**/
+		/*Jumlah huruf baris baru = jumlah huruf baris lama - posisi cusor*/
+		AmountOfChar(Current(*L)) = AmountOfChar(Prev(Current(*L))) - posX;
+		/*Jumlah huruf baris lama = posisi cursor*/
+		AmountOfChar(Prev(Current(*L))) = posX;
 	}
 }
 
@@ -144,44 +162,43 @@ void DeleteChar(List *L, address *current){
 	DeAlocate(P);
 }
 
-/**
- * @note insertTextMode untuk mengeloka char yang akan diketik
- * @param textTemp 
- * @return int 
- */
-
-
 void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 	switch(getch()){
 		case ARROW_UP:
-			if(Prev(Current(*rows)) != NULL){
-	        	Current(*rows) = Prev(Current(*rows));
+			if(Prev(Current(*rows)) != NULL){ /*Check jika ada baris di atas*/
+	        	/*Pindahkan cursor ke node pertama di baris bawah*/
+				Current(*rows) = Prev(Current(*rows));
 	        	Current(*text) = Info(Current(*rows));
-	        	for(int i=0; i < *posX && AmountOfChar(Current(*rows)) != 0; i++){
-	        		if(Current(*text) == NULL){
-	        			Current(*text) = First(*text);	
-					}else if(Info(Next(Current(*text))) == '\n'){
-						*posX = AmountOfChar(Current(*rows));
-						break;
+				
+				/*Bandingkan posisi cursor sebelumnya dengan banyak huruf di baris atas*/
+				if(AmountOfChar(Current(*rows)) < *posX){ 
+					*posX = AmountOfChar(Current(*rows));
+				}
+
+				/*Traverse hingga posX sebelumnya atau ke akhir baris*/
+	        	for(int i=0; i < *posX; i++){
+	        		if(Current(*text) == NULL){ /*Handle jika cursor menunjuk null*/
+	        			Current(*text) = First(*text);
 					}else{
 						Current(*text) = Next(Current(*text));
 					}
-				}
-				if((AmountOfChar(Current(*rows))) == 0){
-					*posX = AmountOfChar(Current(*rows));
 				}
 				(*posY)--;
 			}
 			return;
 		case ARROW_DOWN:
-	        if(Next(Current(*rows)) != NULL){
+	        if(Next(Current(*rows)) != NULL){ /*Check jika ada baris di bawah*/
+				/*Pindahkan cursor ke node pertama di baris bawah*/
 	        	Current(*rows) = Next(Current(*rows));
 	        	Current(*text) = Info(Current(*rows));
-	        	for(int i=0; i<*posX;i++){
-	        		if(AmountOfChar(Current(*rows))==0 || Next(Current(*text))==NULL || Info(Next(Current(*text)))=='\n'){
-	        			*posX = AmountOfChar(Current(*rows));
-						break;
-					}
+				
+				/*Bandingkan posisi cursor sebelumnya dengan banyak huruf di baris bawah*/
+				if(AmountOfChar(Current(*rows)) < *posX){ 
+					*posX = AmountOfChar(Current(*rows));
+				}
+
+				/*Traverse hingga posisi posX sebelumnya atau hingga akhir baris*/
+	        	for(int i=0; i< *posX; i++){
 					Current(*text) = Next(Current(*text));
 				}
 				(*posY)++;

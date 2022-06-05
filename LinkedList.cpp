@@ -96,17 +96,6 @@ void InsertRowAfter (RowsList *L, rowAddr P) {
 	}
 }
 
-void InsertRowBefore (RowsList *L, rowAddr P) {
-	if(Prev(Current(*L))==NULL){
-		InsertRowFirst(L, P);
-	}else{
-		Next(P) = Current(*L);
-		Prev(P) = Prev(Current(*L));
-		Next(Prev(Current(*L))) = P;
-		Prev(Current(*L)) = P;
-	}
-}
-
 void InsertLast (List * L, address P) {
 	Next(Current(*L)) = P;
 	Prev(P) = Current(*L);

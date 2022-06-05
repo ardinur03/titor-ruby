@@ -4,9 +4,24 @@
 #include "LinkedList.h"
 
 void Insert(List *L, infotype X);
+/*Insert char ke linked list of char*/
+/*IS: L mungkin kosong*/
+/*FS: Melakukan alokasi sebuah elemen dan menambahkan elemen 
+dengan nilai X pada list apabila alokasi berhasil*/
+
 void InsertRow(RowsList *L, address X, int posX);
+/*Insert address dari node char ke list baris*/
+/*IS: L mungking kosong dan posX >= 0*/
+/*FS: Melakukan alokasi sebuah elemen dan menambahkan elemen dengan
+      nilai X pada list apabila alokasi berhasil, 
+      posisi dari elemen pada list bergantung nilai posX*/
+
 void insertTextMode(List *text, RowsList *rows);
+/* Mode insert pada text editor*/
+
 void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY);
+/* Handle apabila input merupakan special key*/
+
 void DeleteChar(List *L, address *current);
 /*  IS : 
     L sembarang  
