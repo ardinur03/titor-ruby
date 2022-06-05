@@ -99,8 +99,13 @@ void index(){
                         }
                         if (counter2 == 3)
                         {
+                            menuFile = false;
+                        	system("cls");
+                        	showCursor();
+                        	menuBarApp();
                             gotoxy(25, 5);
-                            printf("Rename File");
+                            renameFile();
+                            menuFile = true;
                         }
                         if (counter2 == 4)
                         {
@@ -114,8 +119,13 @@ void index(){
                         }
                         if (counter2 == 5)
                         {
+                            menuFile = false;
+                        	system("cls");
+                        	showCursor();
+                        	menuBarApp();
                             gotoxy(25, 5);
                             duplicateFile();
+                            menuFile = true;
                         }
                         if (counter2 == 6)
                         {
