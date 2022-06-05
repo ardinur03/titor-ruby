@@ -19,7 +19,7 @@
 #include "openFile.h"
 
 int SetMenu1[] = {7, 7, 7, 7, 7};  // set menu bar File About Help Exit
-int SetMenu2[] = {7, 7, 7, 7, 7, 7}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
+int SetMenu2[] = {7, 7, 7, 7, 7, 7, 7}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
 int SetMenu3[] = {7, 7}; // set menu confirm
 bool showWelcome = true;
 bool menuFile    = false;
@@ -34,9 +34,9 @@ void app()
 }
 
 void index(){
-    int counter1 = 1;
-    int counter2 = 1;
-    int counter3 = 1;
+    int counter1 = 0; // counter untuk menu bar
+    int counter2 = 0; // counter untuk menu dropdown
+    int counter3 = 1; // counter untuk menu confirm
     char key;
 
     for (int i = 0;;){
@@ -46,15 +46,13 @@ void index(){
         if(showWelcome) vWelcome();
 
         key = getch();
-
         if (key == ARROW_LEFT && (counter1 >= 2 && counter1 <= 5))
         {
             showWelcome = true;
             clearScreenToBottom();
             counter1--;
         }
-
-        if (key == ARROW_RIGHT && (counter1 >= 1 && counter1 <= 4))
+        if (key == ARROW_RIGHT && (counter1 >= 0 && counter1 <= 4))
         {
             showWelcome = true;
             clearScreenToBottom();
@@ -67,18 +65,17 @@ void index(){
             {
                 menuFile = true;
                 menusBar(1, menuFile);
-                
                 for (int i = 0;;)
                 {
                     menuBarApp();
                     hideCursor();
                     menusBar(1, menuFile);
                     key = getch();
-                    if(key == ARROW_UP && (counter2 >=2 && counter2 <= 6))
+                    if(key == ARROW_UP && (counter2 >=2 && counter2 <= 7))
                     {
                         counter2--;
                     }
-                    if(key == ARROW_DOWN && (counter2 >=1 && counter2 <= 5))
+                    if(key == ARROW_DOWN && (counter2 >=0 && counter2 <= 6))
                     {
                         counter2++;
                     }
@@ -122,6 +119,16 @@ void index(){
                         }
                         if (counter2 == 6)
                         {
+                            menuFile = false;
+                            system("cls");
+                            showCursor();
+                            menuBarApp();
+                            gotoxy(25, 5);
+                            system("pause");
+                            menuFile = true;
+                        }
+                        if (counter2 == 7)
+                        {
                             system("cls");
                             menuFile = false;
                             break;
@@ -135,6 +142,7 @@ void index(){
                     SetMenu2[3] = (counter2 == 4) ? 8 : 7;
                     SetMenu2[4] = (counter2 == 5) ? 8 : 7;
                     SetMenu2[5] = (counter2 == 6) ? 8 : 7;
+                    SetMenu2[6] = (counter2 == 7) ? 8 : 7;
                 }
             }
             if (counter1 == 2){
@@ -211,8 +219,8 @@ void index(){
 void menusBar(int menuKe, bool hilangMenu){
     // MENU 1 => FILE & kotak ascii
     if(menuKe == 1 && hilangMenu){
-        for (int i = 3; i <20; i++) {
-            if(i <  10){ // 2 garis vertical 
+        for (int i = 3; i <22; i++) {
+            if(i <  11){ // 2 garis vertical 
                 gotoxy(3, i);
                 if (i == 2){
                     printf("%c", 218);
@@ -222,8 +230,9 @@ void menusBar(int menuKe, bool hilangMenu){
                 gotoxy(19, i);
                 printf("%c", 179);
             }
-            gotoxy(i, 10);// garis horizontal dropdown 
-            if (i == 3){
+            gotoxy(i, 11);// garis horizontal dropdown 
+            if (i == 3)
+            {
                 printf("%c", 192);
             } else if (i == 19) {
                 printf("%c", 217);
@@ -234,22 +243,25 @@ void menusBar(int menuKe, bool hilangMenu){
         // submenu di dalam kotak
         gotoxy(4, 3);
         color(SetMenu2[0]);
-        printf("New File\n");
+        printf("New File");
         gotoxy(4, 4);
         color(SetMenu2[1]);
-        printf("Open File\n");
+        printf("Open File");
         gotoxy(4, 5);
         color(SetMenu2[2]);
-        printf("Rename File\n");
+        printf("Rename File");
         gotoxy(4, 6);
         color(SetMenu2[3]);
-        printf("Delete File\n");
+        printf("Delete File");
         gotoxy(4, 7);
         color(SetMenu2[4]);
-        printf("Duplicate File\n");
-        gotoxy(4, 9);
+        printf("Duplicate File");
+        gotoxy(4, 8);
         color(SetMenu2[5]);
-        printf("Back To MenuBar\n");
+        printf("Find & Replace");
+        gotoxy(4, 10);
+        color(SetMenu2[6]);
+        printf("Back To MenuBar");
     } else if (menuKe == 1 && !hilangMenu){
        // clear menu ke 1 
         for (int i = 3; i <20; i++) {

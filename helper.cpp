@@ -5,7 +5,12 @@
 #include "helper.h"
 #include <strsafe.h>
 
-// validasi jangan input karakter \ / : * ? " < > |
+/**
+ * @details pengecekan validasi jangan input karakter \ / : * ? " < > |
+ * 
+ * @param ektensiFileTemp 
+ * @return int 
+ */
 int validateChar(char ektensiFileTemp)
 {
 	if (ektensiFileTemp == '\\' || ektensiFileTemp == '/' || ektensiFileTemp == ':' || ektensiFileTemp == '*' || ektensiFileTemp == '?' || ektensiFileTemp == '"' || ektensiFileTemp == '<' || ektensiFileTemp == '>' || ektensiFileTemp == '|')
@@ -18,6 +23,11 @@ int validateChar(char ektensiFileTemp)
 	}
 }
 
+/**
+ * @details Set the Cursor Position object
+ * @param x 
+ * @param y 
+ */
 void SetCursorPosition(int x, int y)
 {
 	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE); /*Obtain a handle to the consle screen*/
@@ -25,6 +35,11 @@ void SetCursorPosition(int x, int y)
 	SetConsoleCursorPosition(output, pos);
 }
 
+/**
+ * @details set posisisi kordinat kursor
+ * @param X 
+ * @param y 
+*/
 void gotoxy(int X, int y)
 {
 	COORD coord; // struct yang berisikan dua variabel bertipe SHORT, yaitu X dan Y
@@ -45,18 +60,18 @@ void loading_screen()
 		printf("%c", 177);
 	}
 	printf("\n\n");
-	// system("pause");
 	system("cls");
 }
+/* @details description : modul animasi loading */
 
 /**
  * @details description : modul untuk ascii full down text editor titor apps
+ * @param color : warna yang akan di se
 */
 void color(int color)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
-/** @param color : warna yang akan di set  */
 
 void hideCursor(){
     CONSOLE_CURSOR_INFO cci;
@@ -94,12 +109,12 @@ int setTitleComandLine(){
 	}
 	return 0;
 }
-/** @details : mengubah title dari console */
+/** @details : mengubah default title console menjadi title custom */
 
 /**
- *  @details description : get last 3 char from string
- *  @param by address str
- */
+ *  @details description : get last 4 char from string
+ *  @param by address char str
+*/
 boolean getLast4Char(char *str)
 {
 	// find the length of the string

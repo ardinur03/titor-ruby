@@ -19,7 +19,7 @@
 
 int main() {
 	system("mode con cols=130");
-	loading_screen();
+//	loading_screen();
 	app();
 	return 0;
 }
