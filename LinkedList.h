@@ -21,7 +21,7 @@ typedef struct tElmtList
 typedef struct tRow *rowAddr;
 typedef struct tRow
 {
-    address info; // pointer to first char in a row "\n"
+    address info; // pointer to first node in a row "\n"
     rowAddr next;
     rowAddr prev;
     int amountOfChar;
@@ -94,6 +94,7 @@ void InsertRowLast(RowsList *L, rowAddr P);
 
 /**** Penghapusan sebuah elemen ****/
 void DelFirst(List *L, address *P);
+void DelRowFirst (RowsList * L, rowAddr * P);
 /* IS : L TIDAK kosong */
 /* FS : P adalah alamat elemen pertama list sebelum penghapusan */
 /*	elemen list berkurang satu (mungkin menjadi kosong) */
@@ -106,6 +107,7 @@ void DelLast(List *L, address *P);
 /* Last elemen baru adalah predesessor elemen terakhir yang lama, jika ada */
 
 void DelAfter (List * L, address * Pdel, address Prec);
+void DelRowAfter (RowsList *L, rowAddr * Pdel, rowAddr Prec);
 /* IS : L TIDAK Kosong, Prec adalah anggota List */
 /* FS : menghapus Next(Prec): Pdel adalah alamat elemen list yang dihapus */
 

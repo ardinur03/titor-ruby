@@ -29,4 +29,6 @@ void DeleteChar(List *L, address *current);
 */
 /* FS : Jika ada elemen list, maka elemen terakhir dihapus */
 
+// void void DeleteRow(RowsList *L, rowAddr *current);
+
 #endif

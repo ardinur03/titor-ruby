@@ -108,22 +108,26 @@ void InsertRowLast (RowsList *L, rowAddr P) {
 
 /**** Penghapusan sebuah address ****/
 void DelFirst (List * L, address * P) {
-	if(First(*L)==NIL){
-		printf("List kosong.\n");
-	}else{
-		*P = First(*L);
-		First(*L) = Next(First(*L));
-		if(First(*L) != NULL){
-			Prev(First(*L)) = NIL;	
-		}
-		Next(*P) = NIL;
+	*P = First(*L);
+	First(*L) = Next(First(*L));
+	if(First(*L) != NULL){
+		Prev(First(*L)) = NIL;	
 	}
+	Next(*P) = NIL;
+	
+}
+
+void DelRowFirst (RowsList * L, rowAddr * P) {
+	*P = First(*L);
+	First(*L) = Next(First(*L));
+	if(First(*L) != NULL){
+		Prev(First(*L)) = NIL;	
+	}
+	Next(*P) = NIL;
 }
 
 void DelLast (List * L, address * P) {
-	if(First(*L) == NIL){
-		printf("Linked list kosong\n");
-	}else if(Next(First(*L)) == NIL){
+	if(Next(First(*L)) == NIL){
 		DelFirst(L, P);
 	}else{
 		*P = First(*L);
@@ -135,6 +139,11 @@ void DelLast (List * L, address * P) {
 }
 
 void DelAfter (List * L, address * Pdel, address Prec) {
+	*Pdel = Next(Prec);
+	Next(Prec) = Next(Next(Prec));
+}
+
+void DelRowAfter (RowsList *L, rowAddr * Pdel, rowAddr Prec) {
 	*Pdel = Next(Prec);
 	Next(Prec) = Next(Next(Prec));
 }

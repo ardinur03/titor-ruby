@@ -51,6 +51,10 @@ void insertTextMode(List *text, RowsList *rows){
 						posX = AmountOfChar(Current(*rows));
 						posY--;
 						AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharTemp;
+
+						/*Delete node di list rows*/
+						Current(*rows) = Prev(Current(*rows));
+						DeleteRow(rows, &Current(*rows));
 					}else{
 						posX--;
 						AmountOfChar(Current(*rows))--;
@@ -142,6 +146,21 @@ void InsertRow (RowsList *L, address X, int posX){
 	}
 }
 
+void DeleteRow(RowsList *L, rowAddr *current){
+	rowAddr P;
+	if(*current != NULL){
+		if(Next(*current) != NULL){ 
+			DelRowAfter(L, &P, *current);
+ 		} 
+	}else if(*current == NULL){
+		DelRowFirst(L, &P);
+	}
+
+	// dealokasi elemen yang dihapus
+	DeAlocateRow(P);
+}
+
+
 void DeleteChar(List *L, address *current){
 	address P;
 	if(*current != NULL){
@@ -153,7 +172,7 @@ void DeleteChar(List *L, address *current){
 	}
 
 	system("cls");
-	PrintList(*L);	
+	PrintList(*L);
 
 	// dealokasi elemen yang dihapus
 	DeAlocate(P);
