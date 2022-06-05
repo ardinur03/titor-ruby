@@ -40,8 +40,9 @@
 #define ARROW_DOWN 80 // arrow down
 #define ARROW_LEFT 75 // arrow left
 #define ARROW_RIGHT 77 // arrow right
-#define HOME 71
-#define END 79
+#define HOME 71 // home key on keyboard
+#define END 79 // end button on keyboard 
+#define DELETE_BUTTON 83 // delete button on keyboard 
 
 
 // prototype
@@ -63,4 +64,5 @@ void showCursor(); // fungsi yang digunakan untuk menampilkan cursor
 void clearPage(); // fungsi yang digunakan untuk menghapus layar
 int setTitleComandLine(); // fungsi yang digunakan untuk mengubah title bar
 boolean getLast4Char(char *str); // fungsi yang digunakan untuk mengambil 4 karakter terakhir dari nama file
+void setBgColor(int bgCodeTemp, int textCodeTemp);
 #endif

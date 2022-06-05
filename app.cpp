@@ -19,7 +19,7 @@
 #include "openFile.h"
 
 int SetMenu1[] = {7, 7, 7, 7, 7};  // set menu bar File About Help Exit
-int SetMenu2[] = {7, 7, 7, 7, 7, 7, 7}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
+int SetMenu2[] = {15, 15, 15, 15, 15, 15, 15}; // set menu dropdown : New File, Open File, Rename File, Delete File, Duplicate File, Back to Menu Bar
 int SetMenu3[] = {7, 7}; // set menu confirm
 bool showWelcome = true;
 bool menuFile    = false;
@@ -136,13 +136,13 @@ void index(){
                     }
 
                     // logika if ternary operator
-                    SetMenu2[0] = (counter2 == 1) ? 8 : 7;
-                    SetMenu2[1] = (counter2 == 2) ? 8 : 7;
-                    SetMenu2[2] = (counter2 == 3) ? 8 : 7;
-                    SetMenu2[3] = (counter2 == 4) ? 8 : 7;
-                    SetMenu2[4] = (counter2 == 5) ? 8 : 7;
-                    SetMenu2[5] = (counter2 == 6) ? 8 : 7;
-                    SetMenu2[6] = (counter2 == 7) ? 8 : 7;
+                    SetMenu2[0] = (counter2 == 1) ? 0 : 15;
+                    SetMenu2[1] = (counter2 == 2) ? 0 : 15;
+                    SetMenu2[2] = (counter2 == 3) ? 0 : 15;
+                    SetMenu2[3] = (counter2 == 4) ? 0 : 15;
+                    SetMenu2[4] = (counter2 == 5) ? 0 : 15;
+                    SetMenu2[5] = (counter2 == 6) ? 0 : 15;
+                    SetMenu2[6] = (counter2 == 7) ? 0 : 15;
                 }
             }
             if (counter1 == 2){
@@ -161,7 +161,11 @@ void index(){
                 vHelp();
             }
             if (counter1 == 4){
-                printf("Contact");
+                showWelcome = false;
+                menuHelp = false;
+                system("cls");
+                menuBarApp();
+                vContact();
             }
             if (counter1 == 5){
                 system("cls");
@@ -242,26 +246,30 @@ void menusBar(int menuKe, bool hilangMenu){
         }
         // submenu di dalam kotak
         gotoxy(4, 3);
-        color(SetMenu2[0]);
-        printf("New File");
+        setBgColor(8, SetMenu2[0]);
+        printf("New File       ");
         gotoxy(4, 4);
-        color(SetMenu2[1]);
-        printf("Open File");
+        setBgColor(8, SetMenu2[1]);
+        printf("Open File      ");
         gotoxy(4, 5);
-        color(SetMenu2[2]);
-        printf("Rename File");
+        setBgColor(8, SetMenu2[2]);
+        printf("Rename File    ");
         gotoxy(4, 6);
-        color(SetMenu2[3]);
-        printf("Delete File");
+        setBgColor(8, SetMenu2[3]);
+        printf("Delete File    ");
         gotoxy(4, 7);
-        color(SetMenu2[4]);
-        printf("Duplicate File");
+        setBgColor(8, SetMenu2[4]);
+        printf("Duplicate File ");
         gotoxy(4, 8);
-        color(SetMenu2[5]);
-        printf("Find & Replace");
+        setBgColor(8, SetMenu2[5]);
+        printf("Find & Replace ");
+        gotoxy(4, 9);
+        setBgColor(8, SetMenu2[5]);
+        printf("               ");
         gotoxy(4, 10);
-        color(SetMenu2[6]);
+        setBgColor(8, SetMenu2[6]);
         printf("Back To MenuBar");
+        SetConsoleTextAttribute (GetStdHandle(STD_OUTPUT_HANDLE), 0x07);
     } else if (menuKe == 1 && !hilangMenu){
        // clear menu ke 1 
         for (int i = 3; i <20; i++) {
@@ -829,6 +837,625 @@ void vHelp(){
     printf("6. Save berfungsi untuk menyimpan file");
     gotoxy(20, 14);
 }
+
+// prosedure contact
+void vContact(){
+	//Contact
+	// vertical line contact kiri
+	for (int i = 2; i < 21; i++){
+        color(7);
+        gotoxy(21, i);
+        if(i == 2){
+            printf("%c", 203);
+        }
+        else if(i == 20){
+        	printf("%c", 200);
+		}
+        else{
+            printf("%c", 186);
+        }
+    }
+	// horizontal line contact bawah
+    for (int i = 22; i < 122; i++)
+    {
+        gotoxy(i, 20);
+            printf("%c", 205); 
+    }
+    // vertical line contact kanan
+    for (int i = 4; i < 21; i++){
+        color(7);
+        gotoxy(122, i);
+        if(i == 4){
+            printf("%c", 187);
+        }
+        else if(i == 20){
+            printf("%c", 188);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+    // horizontal line contact atas
+	  for (int i = 30; i < 122; i++)
+    {
+        gotoxy(i, 4);
+            printf("%c", 205); 
+    }
+    // vertical line about pendek
+	for (int i = 2; i < 5; i++){
+        gotoxy(29, i);
+        if(i == 2){
+            printf("%c", 203);
+        }
+        else if(i == 4){
+            printf("%c", 200);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+
+// Kotak username
+        // garis vertical kiri
+    for (int i = 6; i < 19; i++){
+        gotoxy(24, i);
+        if(i == 6){
+            printf("%c", 201);
+        }
+        else if(i == 18){
+            printf("%c", 200);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+        //vertical kanan
+    for (int i = 6; i < 19; i++){
+        color(7);
+        gotoxy(54, i);
+        if(i == 6){
+            printf("%c", 187);
+        }
+        else if(i == 18){
+            printf("%c", 188);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+        // horizontal line bawah
+    for (int i = 25; i < 54; i++)
+    {
+        gotoxy(i, 18);
+            printf("%c", 205); 
+    }
+        // horizontal line atas
+    for (int i = 25; i < 54; i++)
+    {
+        gotoxy(i, 6);
+            printf("%c", 205); 
+    }
+    	//tanda samping nama
+	for (int i = 11; i < 16; i++){
+        gotoxy(31, i);
+            printf("%c", 175);
+        }
+    gotoxy(36, 8);
+    printf("GitHub");
+    gotoxy(33, 9);
+    printf("Contributors");
+	gotoxy(33,11);
+    printf("/LollaMariah");
+    gotoxy(33,12);
+    printf("/LuthfieY");
+    gotoxy(33,13);
+    printf("/ardinurinsan");
+    gotoxy(33,14);
+    printf("/NaufalSalman");
+    gotoxy(33,15);
+    printf("/shofiyah1");
+    
+// Kotak Polban
+        // garis vertical kiri
+    for (int i = 6; i < 19; i++){
+        gotoxy(56, i);
+        if(i == 6){
+            printf("%c", 201);
+        }
+        else if(i == 18){
+            printf("%c", 200);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+        //vertical kanan
+    for (int i = 6; i < 19; i++){
+        color(7);
+        gotoxy(119, i);
+        if(i == 6){
+            printf("%c", 187);
+        }
+        else if(i == 18){
+            printf("%c", 188);
+        }
+        else{
+            printf("%c", 186);
+        }
+    }
+        // horizontal line bawah
+    for (int i = 57; i < 119; i++)
+    {
+        gotoxy(i, 18);
+            printf("%c", 205); 
+    }
+        // horizontal line atas
+    for (int i = 57; i < 119; i++)
+    {
+        gotoxy(i, 6);
+            printf("%c", 205); 
+    }
+    
+    //LOGO
+   for (int i =60; i < 109; i++){
+        gotoxy(i, 8);
+        if (i == 66){
+        	printf("%c", 187);
+		}
+		else if (i == 74) {
+        	printf("%c", 187);
+		}
+		else if (i == 67) {
+        	printf("%c", 176);
+		}
+		else if (i == 68) {
+        	printf("%c", 176);
+		}
+		else if (i == 75) {
+        	printf("%c", 176);
+		}
+		else if (i == 78) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 79) {
+        	printf("%c", 176);
+		}
+		else if (i == 80) {
+        	printf("%c", 176);
+		}
+		else if (i == 81) {
+        	printf("%c", 176);
+		}
+		else if (i == 82) {
+        	printf("%c", 176);
+		}
+		else if (i == 83) {
+        	printf("%c", 176);
+		}
+		else if (i == 90) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 91) {
+        	printf("%c", 176);
+		}
+		else if (i == 92) {
+        	printf("%c", 176);
+		}
+		else if (i == 98) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 99) {
+        	printf("%c", 176);
+		}
+		else if (i == 103) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 104) {
+        	printf("%c", 176);
+		}
+		else if (i == 105) {
+        	printf("%c", 176);
+		}
+		else if (i == 108) {
+        	printf("%c", 187);
+    	}
+        else {
+        	printf("%c", 219);
+		}
+	}
+for (int i =60; i < 109; i++){
+        gotoxy(i, 9);
+        if (i == 62){
+        	printf("%c", 201);
+		}
+		else if (i == 63) {
+        	printf("%c", 205);
+		}
+		else if (i == 64) {
+        	printf("%c", 205);
+		}
+		else if (i == 67) {
+        	printf("%c", 187);
+		}
+		else if (i == 70){
+        	printf("%c", 201);
+		}
+		else if (i == 71) {
+        	printf("%c", 205);
+		}
+		else if (i == 72) {
+        	printf("%c", 205);
+		}
+		else if (i == 75) {
+        	printf("%c", 187);
+		}
+		else if (i == 78) {
+        	printf("%c", 186);
+    	}
+    	else if (i == 79) {
+        	printf("%c", 176);
+		}
+		else if (i == 80) {
+        	printf("%c", 176);
+		}
+		else if (i == 81) {
+        	printf("%c", 176);
+		}
+		else if (i == 82) {
+        	printf("%c", 176);
+		}
+		else if (i == 83) {
+        	printf("%c", 176);
+		}
+		else if (i == 86){
+        	printf("%c", 201);
+		}
+		else if (i == 87) {
+        	printf("%c", 205);
+		}
+		else if (i == 88) {
+        	printf("%c", 205);
+        }
+		else if (i == 91) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 94){
+        	printf("%c", 201);
+		}
+		else if (i == 95) {
+        	printf("%c", 205);
+		}
+		else if (i == 96) {
+        	printf("%c", 205);
+        }
+		else if (i == 99) {
+        	printf("%c", 187);
+    	}
+		else if (i == 104) {
+        	printf("%c", 187);
+    	}
+		else if (i == 105) {
+        	printf("%c", 176);
+		}
+		else if (i == 108) {
+        	printf("%c", 186);
+    	}
+        else {
+        	printf("%c", 219);
+		}
+	}
+for (int i =60; i < 109; i++){
+        gotoxy(i, 10);
+        if (i == 66){
+        	printf("%c", 201);
+		}
+		else if (i == 67) {
+        	printf("%c", 188);
+		}
+		else if (i == 67) {
+        	printf("%c", 176);
+		}
+		else if (i == 70) {
+        	printf("%c", 186);
+		}
+		else if (i == 71) {
+        	printf("%c", 176);
+		}
+		else if (i == 72) {
+        	printf("%c", 176);
+    	}
+    	else if (i == 75) {
+        	printf("%c", 186);
+		}
+    	else if (i == 78) {
+        	printf("%c", 186);
+		}
+		else if (i == 79) {
+        	printf("%c", 176);
+		}
+		else if (i == 80) {
+        	printf("%c", 176);
+		}
+		else if (i == 81) {
+        	printf("%c", 176);
+		}
+		else if (i == 82) {
+        	printf("%c", 176);
+		}
+		else if (i == 83) {
+        	printf("%c", 176);
+		}
+		else if (i == 90) {
+        	printf("%c", 203);
+    	}
+    	else if (i == 91) {
+        	printf("%c", 188);
+		}
+		else if (i == 99) {
+        	printf("%c", 186);
+		}
+		else if (i == 102) {
+        	printf("%c", 201);
+    	}
+		else if (i == 105) {
+        	printf("%c", 187);
+    	}
+		else if (i == 108) {
+        	printf("%c", 186);
+    	}
+        else {
+        	printf("%c", 219);
+		}
+	}
+for (int i =60; i < 109; i++){
+        gotoxy(i, 11);
+        if (i == 62){
+        	printf("%c", 201);
+		}
+		else if (i == 63) {
+        	printf("%c", 205);
+		}
+		else if (i == 64) {
+        	printf("%c", 205);
+		}
+		else if (i == 65) {
+        	printf("%c", 205);
+		}
+		else if (i == 66) {
+        	printf("%c", 188);
+		}
+		else if (i == 67) {
+        	printf("%c", 176);
+		}
+		else if (i == 70){
+        	printf("%c", 186);
+		}
+		else if (i == 71) {
+        	printf("%c", 176);
+		}
+		else if (i == 72) {
+        	printf("%c", 176);
+		}
+		else if (i == 75) {
+        	printf("%c", 186);
+		}
+		else if (i == 78) {
+        	printf("%c", 186);
+    	}
+    	else if (i == 79) {
+        	printf("%c", 176);
+		}
+		else if (i == 80) {
+        	printf("%c", 176);
+		}
+		else if (i == 81) {
+        	printf("%c", 176);
+		}
+		else if (i == 82) {
+        	printf("%c", 176);
+		}
+		else if (i == 83) {
+        	printf("%c", 176);
+		}
+		else if (i == 86){
+        	printf("%c", 201);
+		}
+		else if (i == 87) {
+        	printf("%c", 205);
+		}
+		else if (i == 88) {
+        	printf("%c", 205);
+        }
+		else if (i == 91) {
+        	printf("%c", 187);
+    	}
+    	else if (i == 94){
+        	printf("%c", 201);
+		}
+		else if (i == 95) {
+        	printf("%c", 205);
+		}
+		else if (i == 96) {
+        	printf("%c", 205);
+        }
+		else if (i == 99) {
+        	printf("%c", 186);
+    	}
+		else if (i == 102) {
+        	printf("%c", 186);
+    	}
+		else if (i == 103) {
+        	printf("%c", 200);
+		}
+		else if (i == 108) {
+        	printf("%c", 186);
+    	}
+        else {
+        	printf("%c", 219);
+		}
+	}	
+for (int i =60; i < 109; i++){
+        gotoxy(i, 12);
+        if (i == 68){
+        	printf("%c", 200);
+		}
+		else if (i == 62) {
+        	printf("%c", 186);
+		}
+		else if (i == 63) {
+        	printf("%c", 176);
+		}
+		else if (i == 64) {
+        	printf("%c", 176);
+    	}
+    	else if (i == 65) {
+        	printf("%c", 176);
+    	}
+    	else if (i == 66) {
+        	printf("%c", 176);
+    	}
+		else if (i == 67) {
+        	printf("%c", 176);
+		}
+		else if (i == 74) {
+        	printf("%c", 201);
+		}
+    	else if (i == 75) {
+        	printf("%c", 188);
+		}
+		else if (i == 83) {
+        	printf("%c", 187);
+		}
+		else if (i == 90) {
+        	printf("%c", 203);
+    	}
+    	else if (i == 91) {
+        	printf("%c", 188);
+		}
+		else if (i == 94) {
+        	printf("%c", 186);
+		}
+		else if (i == 95) {
+        	printf("%c", 176);
+		}
+		else if (i == 96) {
+        	printf("%c", 176);
+		}
+		else if (i == 99) {
+        	printf("%c", 186);
+		}
+		else if (i == 102) {
+        	printf("%c", 186);
+    	}
+    	else if (i == 103) {
+        	printf("%c", 176);
+    	}
+		else if (i == 104) {
+        	printf("%c", 200);
+    	}
+		else if (i == 108) {
+        	printf("%c", 186);
+    	}
+        else {
+        	printf("%c", 219);
+		}
+	}	
+for (int i =60; i < 109; i++){
+        gotoxy(i, 13);
+        if (i == 60){
+        	printf("%c", 200);
+		}
+		else if (i == 62) {
+        	printf("%c", 188);
+		}
+		else if (i == 63) {
+        	printf("%c", 176);
+		}
+		else if (i == 64) {
+        	printf("%c", 176);
+    	}
+    	else if (i == 65) {
+        	printf("%c", 176);
+    	}
+    	else if (i == 66) {
+        	printf("%c", 176);
+    	}
+		else if (i == 67) {
+        	printf("%c", 176);
+		}
+		else if (i == 68) {
+        	printf("%c", 176);
+		}
+		else if (i == 69) {
+        	printf("%c", 200);
+		}
+    	else if (i == 74) {
+        	printf("%c", 188);
+		}
+		else if (i == 75) {
+        	printf("%c", 176);
+		}
+		else if (i == 76) {
+        	printf("%c", 200);
+		}
+		else if (i == 83) {
+        	printf("%c", 188);
+    	}
+    	else if (i == 84) {
+        	printf("%c", 200);
+		}
+		else if (i == 90) {
+        	printf("%c", 188);
+		}
+		else if (i == 91) {
+        	printf("%c", 176);
+		}
+		else if (i == 92) {
+        	printf("%c", 200);
+		}
+		else if (i == 94) {
+        	printf("%c", 188);
+		}
+		else if (i == 95) {
+        	printf("%c", 176);
+		}
+		else if (i == 96) {
+        	printf("%c", 176);
+		}
+		else if (i == 97) {
+        	printf("%c", 200);
+		}
+		else if (i == 99) {
+        	printf("%c", 188);
+		}
+		else if (i == 100) {
+        	printf("%c", 200);
+		}
+		else if (i == 102) {
+        	printf("%c", 188);
+		}
+		else if (i == 103) {
+        	printf("%c", 176);
+		}
+		else if (i == 104) {
+        	printf("%c", 176);
+		}
+		else if (i == 105) {
+        	printf("%c", 200);
+		}
+		else if (i == 108) {
+        	printf("%c", 188);
+		}
+        else {
+        	printf("%c", 205);
+		}
+	}
+	gotoxy(60, 15);
+    printf("Jl. Gegerkalong Hilir, Ciwaruga, Kec. Parongpong,");
+    gotoxy(60, 16);
+    printf("Kabupaten Bandung Barat, Jawa Barat 40559");
+}
+
 
 // prosedure confirm
 void vConfirmExit(){

@@ -6,7 +6,7 @@
 
 void insertTextMode(List *text, RowsList *rows){
     char buffer;
-	int posX=0, posY=0;
+	int posX=0, posY=0, CharTemp;
     
 	if(ListOfRowsEmpty(*rows)){ //Jika file baru/ text kosong
 		InsertRow(rows, NULL, posX);
@@ -26,7 +26,7 @@ void insertTextMode(List *text, RowsList *rows){
 	    printf("Pointer row: %p\n", Current(*rows));
 	    printf("Pointer in a row: %p", Info(Current(*rows)));
     	
-		SetCursorPosition(posX, posY);
+	SetCursorPosition(posX, posY);
 		buffer = getch();
 
 		if(buffer == QUITAPP){
@@ -45,10 +45,12 @@ void insertTextMode(List *text, RowsList *rows){
 				break;
 			case BACKSPACE:
 				if(posX != 0 || posY != 0){
+					CharTemp = AmountOfChar(Current(*rows));
 					if(Info(Current(*text)) == '\n'){
 						Current(*rows) = Prev(Current(*rows));
 						posX = AmountOfChar(Current(*rows));
 						posY--;
+						AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharTemp;
 					}else{
 						posX--;
 						AmountOfChar(Current(*rows))--;
@@ -140,11 +142,6 @@ void InsertRow (RowsList *L, address X, int posX){
 	}
 }
 
-/** 
- * Dibuat oleh Muhamad Ardi Nur Insan 211511022
- * module local : DeleteChar
-*/ 
-
 void DeleteChar(List *L, address *current){
 	address P;
 	if(*current != NULL){
@@ -163,6 +160,7 @@ void DeleteChar(List *L, address *current){
 }
 
 void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
+	int CharCountTemp;
 	switch(getch()){
 		case ARROW_UP:
 			if(Prev(Current(*rows)) != NULL){ /*Check jika ada baris di atas*/
@@ -185,7 +183,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 				}
 				(*posY)--;
 			}
-			return;
+			break;
 		case ARROW_DOWN:
 	        if(Next(Current(*rows)) != NULL){ /*Check jika ada baris di bawah*/
 				/*Pindahkan cursor ke node pertama di baris bawah*/
@@ -203,7 +201,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 				}
 				(*posY)++;
 			}
-			return;
+			break;
 		case ARROW_RIGHT:
 	        if(!ListEmpty(*text)){
 	        	if(Current(*text) == NULL){ //Handle jika cursor berada di awal teks
@@ -226,7 +224,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 					}
 				}
 			}
-			return;
+			break;
 		case ARROW_LEFT:
 	        if(Current(*text) != NULL){
 	        	if(Info(Current(*text)) == '\n'){
@@ -238,12 +236,15 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 				}
 				Current(*text) = Prev(Current(*text));
 			}
-			return;
+			break;
 		case HOME:
 			Current(*text) = Info(Current(*rows));
 			*posX = 0;
-			return;
+			break;
 		case END:
+			if(ListEmpty(*text)){
+				break;
+			}
 			if(Current(*text) == NULL){
 				Current(*text) = First(*text);
 			}
@@ -255,7 +256,23 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 				}
 			}
 			*posX = AmountOfChar(Current(*rows));
-		return;
+		break;
+		case DELETE_BUTTON:
+			if(posX != 0 || posY != 0){
+				CharCountTemp = AmountOfChar(Current(*rows));
+				if(Info(Next(Current(*text))) == '\n'){
+					Current(*rows) = Next(Current(*rows));
+					*posX = AmountOfChar(Current(*rows));
+					posY--;
+					AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharCountTemp;
+				}
+				else{
+					posX--;
+					AmountOfChar(Current(*rows))--;
+				}
+				DeleteChar(text, &Current(*text));
+			}
+		break;
 	}
 }
 

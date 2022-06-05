@@ -50,6 +50,9 @@ void vHelp();
 /** vHelp ini digunakan untuk menampilkan bantuan penggunaan aplikasi TiTOR */
 void vConfirmExit();
 /** vConfirmExit ini digunakan untuk menampilkan konfirmasi exit aplikasi TiTOR */
+void vContact();
+/** vContact ini digunakan untuk menampilkan kontak aplikasi TiTOR */
+
 /**
  * @include {modul} app.cpp  End
 */

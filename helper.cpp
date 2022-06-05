@@ -125,3 +125,12 @@ boolean getLast4Char(char *str)
 
 	return status;
 }
+
+/**
+ * @details description : setBgColor
+ * 
+ */
+void setBgColor(int bgCodeTemp, int textCodeTemp){
+	SetConsoleTextAttribute (GetStdHandle(STD_OUTPUT_HANDLE), bgCodeTemp<<4 | textCodeTemp);
+
+}
