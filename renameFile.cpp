@@ -12,38 +12,42 @@ void renameFile()
     char oldName[100], newName[100];
 
     // Input nama file lama dan baru
-    system ("cls");
+
     backAgainOldName:
+    gotoxy(5, 5);
     printf("Enter the name of the file you want to change: ");
     scanf("%s", oldName);
 
 	for(int i=0; i<strlen(oldName); i++){
 		if(validateChar(oldName[i])){
-			printf("Name File can't have %c \n", oldName[i]);
+			gotoxy(5, 6);
+			printf("Name File can't have %c", oldName[i]);
 			goto backAgainOldName;
 		}
 	}
 	
     backAgainNewName:
+    gotoxy(5, 6);
     printf("enter new file name: ");
     scanf("%s", newName);
     
     for(int i=0; i<strlen(newName); i++){
 		if(validateChar(newName[i])){
-			printf("Name File can't have %c \n", newName[i]);
+			gotoxy(5, 6);
+			printf("Name File can't have %c", newName[i]);
 			goto backAgainNewName;
 		}
 	}
     // Validasi jika ektensi .exe 
 	if(strcmp(newName, "exe")==0){
-		printf("\nInvalid file extension name.\n");
+		gotoxy(5, 7);
+		printf("Invalid file extension name.");
 		getch();
 		system("cls");
 		goto backAgainNewName;
 	}else if(fopen(newName, "r") != NULL){
-		printf("File already exists.\n");
-		printf("Press any key to continue...\n");
-		getch();
+		gotoxy(5, 7);
+		printf("File already exists.");
 		system("cls");
 		goto backAgainNewName;
 	}
@@ -51,11 +55,16 @@ void renameFile()
     // Ganti nama file lama dengan nama baru
     if (rename(oldName, newName) == 0)
     {
-        printf("The file was renamed successfully.\n");
+    	gotoxy(5, 8);
+        printf("The file was renamed successfully.");
     }
     else
     {
-        printf("Unable to rename file. Please check the file exists and you have permission to modify the file.\n");
+    	gotoxy(5, 8);
+        printf("Unable to rename file. Please check the file exists and you have permission to modify the file.");
     }
-
+	
+	gotoxy(5, 9);
+    system("pause");
+    system("cls");
 }

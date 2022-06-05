@@ -6,12 +6,10 @@
 
 #include "header.h"
 #include "helper.h"
-
 #define BUFFER_SIZE 100
 
 /* Deklarasi Fungsi */
 void findAndReplaceFile(){
-	system("cls");
     /* Buka semua file yang dibutuhkan */
     FILE * fPtr;
     FILE * fTemp;
@@ -20,13 +18,14 @@ void findAndReplaceFile(){
     char buffer[BUFFER_SIZE];
     char oldWord[100], newWord[100];
 	backAgainPath:
-		
+	gotoxy(5, 5);	
     printf("Enter path of source file: ");
     scanf("%s", path);
     
 	for(int i=0; i<strlen(path); i++){
 	  if(validateChar(path[i])){
-	   printf("Name File can't have %c \n", path[i]);
+		gotoxy(5, 6);
+	   printf("Name File can't have %c", path[i]);
 	   goto backAgainPath;
 	  }
 	 }  
@@ -39,17 +38,17 @@ void findAndReplaceFile(){
     if (fPtr == NULL || fTemp == NULL)
     {
         /* Tidak dapat membuka file maka keluar */
-        printf("\nUnable to open file.\n");
-        printf("Please check whether file exists and you have read/write privilege.\n");
+        gotoxy(5, 7);
+        printf("\nUnable to open file.");
+        printf("Please check whether file exists and you have read/write privilege.");
         exit(EXIT_SUCCESS);
     }
-    printf("\n");
 	/* print text sebelum */
 //	printFromFile(path); 
-
-    printf("\n\nEnter word to replace: ");
+	gotoxy(5, 6);
+    printf("Enter word to replace: ");
     scanf("%s", oldWord);
-
+	gotoxy(5, 7);
     printf("Replace '%s' with: ", oldWord);
     scanf("%s", newWord);
 
@@ -78,9 +77,11 @@ void findAndReplaceFile(){
 
     // print sesudah di find replace
 //	printFromFile(path); 
-
-    printf("\nSuccessfully replaced all occurrences of '%s' with '%s'.\n", oldWord, newWord);
+	gotoxy(5, 8);
+    printf("Successfully replaced all occurrences of '%s' with '%s'.", oldWord, newWord);
+    gotoxy(5, 9);
     system("Pause");
+    system("cls");
     //print text sesudah
 }
 
