@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;4;0;0;0
-UnitCount=23
+UnitCount=20
 
 [VersionInfo]
 Major=1
@@ -100,27 +100,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
-FileName=deleteText.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit7]
-FileName=duplicateFile.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit8]
 FileName=findReplace.cpp
 CompileCpp=1
 Folder=
@@ -131,36 +111,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=kelolaText.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit10]
-FileName=kelolaText.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit11]
-FileName=openFile.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit12]
 FileName=renameFile.cpp
 CompileCpp=1
 Folder=
@@ -170,7 +120,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit13]
+[Unit10]
 FileName=saveToFile.cpp
 CompileCpp=1
 Folder=
@@ -180,7 +130,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit14]
+[Unit11]
 FileName=saveToFile.h
 CompileCpp=1
 Folder=
@@ -190,7 +140,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
+[Unit12]
 FileName=helper.cpp
 CompileCpp=1
 Folder=
@@ -200,7 +150,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
+[Unit13]
 FileName=helper.h
 CompileCpp=1
 Folder=
@@ -210,7 +160,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit17]
+[Unit14]
 FileName=header.h
 CompileCpp=1
 Folder=
@@ -220,7 +170,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit18]
+[Unit15]
 FileName=newFile.cpp
 CompileCpp=1
 Folder=
@@ -230,7 +180,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit16]
 FileName=manageText.cpp
 CompileCpp=1
 Folder=
@@ -240,8 +190,38 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit17]
 FileName=manageText.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit18]
+FileName=TitorApps.dev
+CompileCpp=1
+Folder=
+Compile=0
+Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit19]
+FileName=LinkedList.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit20]
+FileName=LinkedList.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -282,6 +262,26 @@ BuildCmd=
 
 [Unit22]
 FileName=LinkedList.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=duplicateFile.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=openFile.cpp
 CompileCpp=1
 Folder=
 Compile=1
