@@ -147,13 +147,14 @@ void InsertRow (RowsList *L, address X, int posX){
 
 void DeleteRow(RowsList *L, rowAddr *current){
 	rowAddr P;
-	if(*current != NULL){
-		if(Next(*current) != NULL){ 
-			DelRowAfter(L, &P, *current);
- 		} 
-	}else if(*current == NULL){
-		DelRowFirst(L, &P);
+	
+	if(Next(Next(*current))==NULL){
+		*current = Next(*current);
+		DelRowLast(L, &P);
+		*current = Prev(*current);
+		return;
 	}
+	DelRowAfter(L, &P, *current);
 
 	// dealokasi elemen yang dihapus
 	DeAlocateRow(P);
@@ -263,18 +264,15 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 			if(ListEmpty(*text)){
 				break;
 			}
-			if(Current(*text) == NULL){
-				Current(*text) = First(*text);
-			}
-			while(Next(Current(*text)) != NULL){
-				if(Info(Next(Current(*text))) == '\n'){
-					break;
+			for(int i = *posX ; i < AmountOfChar(Current(*rows)); i++){
+				if(Current(*text) == NULL){  
+					Current(*text) = First(*text);
 				}else{
 					Current(*text) = Next(Current(*text));
 				}
 			}
 			*posX = AmountOfChar(Current(*rows));
-		break;
+			break;
 		case DELETE_BUTTON:
 			CharCountTemp = AmountOfChar(Current(*rows)); // tampung banyak nilai sekarang di baris
 			if(Info(Next(Current(*text))) == '\n'){
@@ -290,5 +288,6 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 		break;
 	}
 }
+
 
 
