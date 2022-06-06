@@ -9,7 +9,7 @@
  * @param jmlBaris 
  * @param text 
  */
-void storeFile(char *filename, List text);
+void storeFile(char *filename, CharsList text);
 
 /**
  * modul saveFile digunakan untuk menyimpan file dengan memanggil fungsi storeFile
@@ -17,7 +17,7 @@ void storeFile(char *filename, List text);
  * @param jmlBaris 
  * @param text 
 */
-void saveFile(List text);
+void saveFile(CharsList text);
 
 /**
  * modul updateFile digunakan untuk mengupdate file degan dilakukan perulangan berdaarkan jumlah baris 
@@ -25,6 +25,6 @@ void saveFile(List text);
  * @param filename 
  * @param text 
 */
-void updateFile(char *filename, List text);
+void updateFile(char *filename, CharsList text);
 
 #endif

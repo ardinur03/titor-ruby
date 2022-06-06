@@ -4,7 +4,7 @@
 #include "LinkedList.h"
 #include "ansiEscapes.h"
 
-void insertTextMode(List *text, RowsList *rows){
+void insertTextMode(CharsList *text, RowsList *rows){
     char buffer;
 	int posX=0, posY=0, CharTemp;
     
@@ -70,7 +70,7 @@ void insertTextMode(List *text, RowsList *rows){
     }while(true);
 }
 
-void Insert (List *L, infotype X){
+void Insert (CharsList *L, infotype X){
 	address P;
 	P = Alocate(X);
 
@@ -161,7 +161,7 @@ void DeleteRow(RowsList *L, rowAddr *current){
 }
 
 
-void DeleteChar(List *L, address *current){
+void DeleteChar(CharsList *L, address *current){
 	address P;
 	if(*current != NULL){
 		if(Next(*current) != NULL){ // jika cursor tidak berada di akhir
@@ -178,7 +178,7 @@ void DeleteChar(List *L, address *current){
 	DeAlocate(P);
 }
 
-void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
+void SpecialKeyHandle(CharsList *text, RowsList *rows, int *posX, int *posY){
 	int CharCountTemp;
 	switch(getch()){
 		case ARROW_UP:
