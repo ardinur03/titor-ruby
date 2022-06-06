@@ -50,19 +50,39 @@ int validateChar(char ektensiFileTemp);
 void SetCursorPosition(int x, int y);
 void gotoxy(int X, int y); //fungsi yang digunakan untuk memindahkan, di layar ke posisi yang diinginkan
 
-
 /**
  * @include {modul} app.cpp
- * 
+*/
+void color(int color); // prosedure yang digunakan untuk mengubah warna
+/**
+ * @param int color 
  */
-void color(int color); // fungsi yang digunakan untuk mengubah warna
-void hideCursor(); // fungsi yang digunakan untuk menyembunyikan cursor
-void menusBar(int menuKe, bool hilangMenu); // fungsi yang digunakan untuk menampilkan menu bar pulldown
-void menuBarApp(); // fungsi yang digunakan untuk menampilkan menu bar app
+void hideCursor(); // prosedure yang digunakan untuk menyembunyikan cursor
+void menusBar(int menuKe, bool hilangMenu); // prosedure yang digunakan untuk menampilkan menu bar pulldown
+/**
+ * @param int menuKe
+ * @param bool hilangMenu 
+ */
+void menuBarApp(); // prosedure yang digunakan untuk menampilkan menu bar app
 void index(); // base index untuk menampilkan keseluruhan modul yang di gunakan dari menu bar, pulldown
-void showCursor(); // fungsi yang digunakan untuk menampilkan cursor
-void clearPage(); // fungsi yang digunakan untuk menghapus layar
+void showCursor(); // prosedure yang digunakan untuk menampilkan cursor
+void clearPage(); // prosedure yang digunakan untuk menghapus layar
 int setTitleComandLine(); // fungsi yang digunakan untuk mengubah title bar
-boolean getLast4Char(char *str); // fungsi yang digunakan untuk mengambil 4 karakter terakhir dari nama file
-void setBgColor(int bgCodeTemp, int textCodeTemp);
+/**
+ * fungsi yang digunakan untuk mengambil 4 karakter terakhir dari nama file
+ * @param char str 
+ * @return boolean 
+*/
+boolean getLast4Char(char *str); 
+/**
+ * @brief prosedure yang digunakan untuk mengubah warna background dan text
+ * @param int bgCodeTemp 
+ * @param int textCodeTemp 
+*/
+void setBgColor(int bgCodeTemp, int textCodeTemp); 
+void SetConsoleScreenBuffer(); // prosedure yang digunakan untuk mengubah ukuran buffer
+/**
+ * @end {modul} app.cpp
+*/
+
 #endif

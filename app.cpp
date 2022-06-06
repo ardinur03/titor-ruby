@@ -30,6 +30,7 @@ bool menuConfirm = false;
 void app()
 {
 	setTitleComandLine();
+    SetConsoleScreenBuffer();
     index();
 }
 

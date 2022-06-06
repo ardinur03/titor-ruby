@@ -1,5 +1,4 @@
 /* Deskripsi  		 : modul modul yang nanti di gunakan secara reusable atau di gunakan kembali
-/* Source 			 : tidak ada
 /* Dimodifikasi oleh : Muhamad Ardi Nur Insan 211511022 */
 
 #include "helper.h"
@@ -133,4 +132,12 @@ boolean getLast4Char(char *str)
 void setBgColor(int bgCodeTemp, int textCodeTemp){
 	SetConsoleTextAttribute (GetStdHandle(STD_OUTPUT_HANDLE), bgCodeTemp<<4 | textCodeTemp);
 
+}
+
+void SetConsoleScreenBuffer(){
+	 _COORD coordinates;
+    coordinates.X = 1000;
+    coordinates.Y = 1000;
+
+    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE),coordinates);
 }
