@@ -5,15 +5,15 @@
 
 /*********** PROTOTYPE ****************/
 /**** Predikat untuk test keadaan LIST  ****/
-bool ListEmpty (List L) {
+bool ListEmpty (CharsList L) {
     return (First(L)==NIL);
 }
 
 bool ListOfRowsEmpty (RowsList L) {
     return (First(L)==NIL);
 }
-/**** Konstruktor/Kreator List Kosong ****/
-void CreateList (List * L) {
+/**** Konstruktor/Kreator CharsList Kosong ****/
+void CreateList (CharsList * L) {
 	First(*L)=NIL;
 	Current(*L)=NIL;
 }
@@ -26,7 +26,7 @@ void CreateListOfRows (RowsList * L) {
 /**** Manajemen Memory ****/
 address Alocate (infotype X) {
     address P;
-    P = (address)malloc(sizeof(ElmtList));
+    P = (address)malloc(sizeof(charNode));
     if (P!=NIL){
         Info(P) = X;
         Next(P) = NIL;
@@ -37,7 +37,7 @@ address Alocate (infotype X) {
 
 rowAddr AlocateRow (address X) {
 	rowAddr P;
-	P = (rowAddr)malloc(sizeof(ListOfRows));
+	P = (rowAddr)malloc(sizeof(rowNode));
 	if(P!=NIL){
 		Info(P) = X;
 		Next(P) = NULL;
@@ -58,7 +58,7 @@ void DeAlocateRow (rowAddr P) {
 /**** PRIMITIF BERDASARKAN ALAMAT ****/
 /**** Penambahan elemen berdasarkan alamat ****/
 
-void InsertFirst (List * L, address P) {
+void InsertFirst (CharsList * L, address P) {
 	if(First(*L)==NULL){
 		First(*L)=P;
 	}else{
@@ -78,7 +78,7 @@ void InsertRowFirst (RowsList *L, rowAddr P) {
 	}
 }
 
-void InsertAfter(List * L, address P) {
+void InsertAfter(CharsList * L, address P) {
     Next(P) = Next(Current(*L));
     Prev(P) = Current(*L);
     Prev(Next(Current(*L))) = P;
@@ -96,7 +96,7 @@ void InsertRowAfter (RowsList *L, rowAddr P) {
 	}
 }
 
-void InsertLast (List * L, address P) {
+void InsertLast (CharsList * L, address P) {
 	Next(Current(*L)) = P;
 	Prev(P) = Current(*L);
 }
@@ -107,7 +107,7 @@ void InsertRowLast (RowsList *L, rowAddr P) {
 }
 
 /**** Penghapusan sebuah address ****/
-void DelFirst (List * L, address * P) {
+void DelFirst (CharsList * L, address * P) {
 	*P = First(*L);
 	First(*L) = Next(First(*L));
 	if(First(*L) != NULL){
@@ -126,7 +126,7 @@ void DelRowFirst (RowsList * L, rowAddr * P) {
 	Next(*P) = NIL;
 }
 
-void DelLast (List * L, address * P) {
+void DelLast (CharsList * L, address * P) {
 	if(Next(First(*L)) == NIL){
 		DelFirst(L, P);
 	}else{
@@ -148,7 +148,7 @@ void DelRowLast (RowsList * L, rowAddr * P) {
 	}
 }
 
-void DelAfter (List * L, address * Pdel, address Prec) {
+void DelAfter (CharsList * L, address * Pdel, address Prec) {
 	if(Next(Next(Prec))==NULL){
 		DelLast(L, Pdel);
 	}else{
@@ -165,7 +165,7 @@ void DelRowAfter (RowsList *L, rowAddr * Pdel, rowAddr Prec) {
 }
 
 /**** PRINT ELEMEN LIST ****/
-void PrintList (List L) { 
+void PrintList (CharsList L) { 
 	address P;
 	P = First(L);
 	while(P != NIL){

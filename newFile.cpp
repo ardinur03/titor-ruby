@@ -5,7 +5,7 @@
 void newFile()
 {
     system("cls");
-    List textNow;
+    CharsList textNow;
     RowsList rows;
     char choice;
     

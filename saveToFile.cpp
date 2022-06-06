@@ -7,7 +7,7 @@
 #include "helper.h"
 #include "LinkedList.h"
 
-void storeFile(char *filename, List text){
+void storeFile(char *filename, CharsList text){
 	FILE *file;
 	address tempList;
 	
@@ -22,7 +22,7 @@ void storeFile(char *filename, List text){
 	fclose(file);
 }
 
-void saveFile(List text){
+void saveFile(CharsList text){
 	char *namaFile, *ektensiFile, *namaFileTemp;
 	system("cls");
 	backAgainNameFile:
@@ -80,7 +80,7 @@ void saveFile(List text){
 	getch();
 }
 
-void updateFile(char *filename, List text){
+void updateFile(char *filename, CharsList text){
 	FILE *file;
 	file = fopen(filename, "w");
 	address tempList;
