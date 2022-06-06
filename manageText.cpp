@@ -274,15 +274,14 @@ void SpecialKeyHandle(CharsList *text, RowsList *rows, int *posX, int *posY){
 			*posX = AmountOfChar(Current(*rows));
 			break;
 		case DELETE_BUTTON:
-			CharCountTemp = AmountOfChar(Current(*rows)); // tampung banyak nilai sekarang di baris
+			CharCountTemp = AmountOfChar(Next(Current(*rows))); // tampung banyak nilai sekarang di baris
 			if(Info(Next(Current(*text))) == '\n'){
-				Current(*rows) = Next(Current(*rows));
 				*posX = AmountOfChar(Current(*rows));
 				posY--;
 				AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharCountTemp;
-			}
-			else{
-				AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) - 1;
+			}else{
+				posX--;
+				AmountOfChar(Current(*rows))--;
 			}
 			DeleteChar(text, &Current(*text));
 		break;

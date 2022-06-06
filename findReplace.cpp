@@ -40,11 +40,11 @@ void findAndReplaceFile(){
         /* Tidak dapat membuka file maka keluar */
         gotoxy(5, 7);
         printf("\nUnable to open file.");
+        gotoxy(5, 8);
         printf("Please check whether file exists and you have read/write privilege.");
-        exit(EXIT_SUCCESS);
+        goto backAgainPath;
     }
 	/* print text sebelum */
-//	printFromFile(path); 
 	gotoxy(5, 6);
     printf("Enter word to replace: ");
     scanf("%s", oldWord);
@@ -76,7 +76,6 @@ void findAndReplaceFile(){
     rename("replace.txt", path);
 
     // print sesudah di find replace
-//	printFromFile(path); 
 	gotoxy(5, 8);
     printf("Successfully replaced all occurrences of '%s' with '%s'.", oldWord, newWord);
     gotoxy(5, 9);
