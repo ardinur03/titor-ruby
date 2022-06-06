@@ -62,13 +62,6 @@ void insertTextMode(List *text, RowsList *rows){
 					DeleteChar(text, &Current(*text));
 				}
 				break;
-			case 'p':
-				printf("\n\n");
-				PrintList(*text);
-				break;
-			case 'l':
-				printf("\n\n\n");
-				printf("%c", Info(Prev(Current(*text))));
 			default:
 				Insert(text, buffer);
 	       		posX++;
@@ -271,18 +264,15 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 			if(ListEmpty(*text)){
 				break;
 			}
-			if(Current(*text) == NULL){
-				Current(*text) = First(*text);
-			}
-			while(Next(Current(*text)) != NULL){
-				if(Info(Next(Current(*text))) == '\n'){
-					break;
+			for(int i = *posX ; i < AmountOfChar(Current(*rows)); i++){
+				if(Current(*text) == NULL){  
+					Current(*text) = First(*text);
 				}else{
 					Current(*text) = Next(Current(*text));
 				}
 			}
 			*posX = AmountOfChar(Current(*rows));
-		break;
+			break;
 		case DELETE_BUTTON:
 			if(posX != 0 || posY != 0){
 				CharCountTemp = AmountOfChar(Current(*rows));
@@ -301,5 +291,6 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 		break;
 	}
 }
+
 
 
