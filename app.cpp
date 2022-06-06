@@ -26,6 +26,7 @@ bool menuFile    = false;
 bool menuAbout   = false;
 bool menuHelp    = false;
 bool menuConfirm = false;
+bool menuContact = false;
 
 void app()
 {
@@ -164,6 +165,7 @@ void index(){
             if (counter1 == 4){
                 showWelcome = false;
                 menuHelp = false;
+                menuContact = true;
                 system("cls");
                 menuBarApp();
                 vContact();
@@ -208,11 +210,12 @@ void index(){
             } 
         }
 
-        SetMenu1[0] = (counter1 == 1) ? menuAbout = false, 8 : 7; 
+        // logika if ternary operator
+        SetMenu1[0] = (counter1 == 1) ? menuAbout = false, 8 : 7; // set menu bar
         SetMenu1[1] = (counter1 == 2) ? menuHelp = false, 8 : 7; // menu About
-        SetMenu1[2] = (counter1 == 3) ? menuAbout = false, 8 : 7; // menu Help
+        SetMenu1[2] = (counter1 == 3) ? menuAbout = false, menuContact = false, 8 : 7; // menu Help
         SetMenu1[3] = (counter1 == 4) ? menuHelp = false, 8 : 7; // menu Contact
-        SetMenu1[4] = (counter1 == 5) ? 8 : 7; // menu Exit
+        SetMenu1[4] = (counter1 == 5) ? menuContact = false, 8 : 7; // menu Exit
     }
 }
 
@@ -361,7 +364,10 @@ void menuBarApp(){
             printf("%c", 203);
         } else if(menuHelp && i == 15 || menuHelp && i == 20){ // munculin garis ╦
             printf("%c", 203);
-        } else { 
+        } else if(menuContact && i == 21 || menuContact && i == 29){ // munculin garis ╦
+            printf("%c", 203);
+        } 
+        else { 
             printf("%c", 205); 
         }
     }
