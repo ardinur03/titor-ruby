@@ -149,9 +149,13 @@ void DelRowLast (RowsList * L, rowAddr * P) {
 }
 
 void DelAfter (List * L, address * Pdel, address Prec) {
-	*Pdel = Next(Prec);
-	Prev(Next(Next(Prec))) = Prec;
-	Next(Prec) = Next(Next(Prec));
+	if(Next(Next(Prec))==NULL){
+		DelLast(L, Pdel);
+	}else{
+		*Pdel = Next(Prec);
+		Prev(Next(Next(Prec))) = Prec;
+		Next(Prec) = Next(Next(Prec));
+	}
 }
 
 void DelRowAfter (RowsList *L, rowAddr * Pdel, rowAddr Prec) {
