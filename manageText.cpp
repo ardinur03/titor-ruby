@@ -26,7 +26,7 @@ void insertTextMode(List *text, RowsList *rows){
 	    printf("Pointer row: %p\n", Current(*rows));
 	    printf("Pointer in a row: %p", Info(Current(*rows)));
     	
-	SetCursorPosition(posX, posY);
+		SetCursorPosition(posX, posY);
 		buffer = getch();
 
 		if(buffer == QUITAPP){
@@ -53,7 +53,6 @@ void insertTextMode(List *text, RowsList *rows){
 						AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharTemp;
 
 						/*Delete node di list rows*/
-						Current(*rows) = Prev(Current(*rows));
 						DeleteRow(rows, &Current(*rows));
 					}else{
 						posX--;
@@ -225,7 +224,7 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 	        if(!ListEmpty(*text)){
 	        	if(Current(*text) == NULL){ //Handle jika cursor berada di awal teks
 		       		Current(*text) = First(*text);
-		       		if(Info(First(*text))== '\n'){
+		       		if(Info(First(*text))== '\n'){ 
 		       			*posX = 0;
 						(*posY)++;
 						Current(*rows) = Next(Current(*rows));
@@ -277,20 +276,17 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 			*posX = AmountOfChar(Current(*rows));
 		break;
 		case DELETE_BUTTON:
-			if(posX != 0 || posY != 0){
-				CharCountTemp = AmountOfChar(Current(*rows));
-				if(Info(Next(Current(*text))) == '\n'){
-					Current(*rows) = Next(Current(*rows));
-					*posX = AmountOfChar(Current(*rows));
-					posY--;
-					AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharCountTemp;
-				}
-				else{
-					posX--;
-					AmountOfChar(Current(*rows))--;
-				}
-				DeleteChar(text, &Current(*text));
+			CharCountTemp = AmountOfChar(Current(*rows)); // tampung banyak nilai sekarang di baris
+			if(Info(Next(Current(*text))) == '\n'){
+				Current(*rows) = Next(Current(*rows));
+				*posX = AmountOfChar(Current(*rows));
+				posY--;
+				AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharCountTemp;
 			}
+			else{
+				AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) - 1;
+			}
+			DeleteChar(text, &Current(*text));
 		break;
 	}
 }
