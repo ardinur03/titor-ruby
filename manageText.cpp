@@ -26,7 +26,7 @@ void insertTextMode(List *text, RowsList *rows){
 	    printf("Pointer row: %p\n", Current(*rows));
 	    printf("Pointer in a row: %p", Info(Current(*rows)));
     	
-	SetCursorPosition(posX, posY);
+		SetCursorPosition(posX, posY);
 		buffer = getch();
 
 		if(buffer == QUITAPP){
@@ -53,7 +53,6 @@ void insertTextMode(List *text, RowsList *rows){
 						AmountOfChar(Current(*rows)) = AmountOfChar(Current(*rows)) + CharTemp;
 
 						/*Delete node di list rows*/
-						Current(*rows) = Prev(Current(*rows));
 						DeleteRow(rows, &Current(*rows));
 					}else{
 						posX--;
@@ -148,13 +147,14 @@ void InsertRow (RowsList *L, address X, int posX){
 
 void DeleteRow(RowsList *L, rowAddr *current){
 	rowAddr P;
-	if(*current != NULL){
-		if(Next(*current) != NULL){ 
-			DelRowAfter(L, &P, *current);
- 		} 
-	}else if(*current == NULL){
-		DelRowFirst(L, &P);
+	
+	if(Next(Next(*current))==NULL){
+		*current = Next(*current);
+		DelRowLast(L, &P);
+		*current = Prev(*current);
+		return;
 	}
+	DelRowAfter(L, &P, *current);
 
 	// dealokasi elemen yang dihapus
 	DeAlocateRow(P);
@@ -264,18 +264,15 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 			if(ListEmpty(*text)){
 				break;
 			}
-			if(Current(*text) == NULL){
-				Current(*text) = First(*text);
-			}
-			while(Next(Current(*text)) != NULL){
-				if(Info(Next(Current(*text))) == '\n'){
-					break;
+			for(int i = *posX ; i < AmountOfChar(Current(*rows)); i++){
+				if(Current(*text) == NULL){  
+					Current(*text) = First(*text);
 				}else{
 					Current(*text) = Next(Current(*text));
 				}
 			}
 			*posX = AmountOfChar(Current(*rows));
-		break;
+			break;
 		case DELETE_BUTTON:
 			if(posX != 0 || posY != 0){
 				CharCountTemp = AmountOfChar(Current(*rows));
@@ -294,5 +291,6 @@ void SpecialKeyHandle(List *text, RowsList *rows, int *posX, int *posY){
 		break;
 	}
 }
+
 
 

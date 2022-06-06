@@ -101,6 +101,7 @@ void DelRowFirst (RowsList * L, rowAddr * P);
 /* First elemen yang baru adalah suksessor elemen pertama yang lama */
 
 void DelLast(List *L, address *P);
+void DelRowLast (RowsList * L, rowAddr * P);
 /* IS : L TIDAK kosong */
 /* FS : P adalah alamat elemen terakhir list sebelum penghapusan */
 /* Elemen list berkurang satu (mungkin menjadi kosong) */

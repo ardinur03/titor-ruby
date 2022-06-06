@@ -138,13 +138,25 @@ void DelLast (List * L, address * P) {
 	}
 }
 
+void DelRowLast (RowsList * L, rowAddr * P) {
+	*P = Current(*L);
+	
+	if(Next(First(*L)) == NIL){
+		DelRowFirst(L, P);
+	}else{
+		Next(Prev(*P)) = NIL;	
+	}
+}
+
 void DelAfter (List * L, address * Pdel, address Prec) {
 	*Pdel = Next(Prec);
+	Prev(Next(Next(Prec))) = Prec;
 	Next(Prec) = Next(Next(Prec));
 }
 
 void DelRowAfter (RowsList *L, rowAddr * Pdel, rowAddr Prec) {
 	*Pdel = Next(Prec);
+	Prev(Next(Next(Prec))) = Prec;
 	Next(Prec) = Next(Next(Prec));
 }
 
